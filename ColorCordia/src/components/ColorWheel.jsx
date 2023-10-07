@@ -1,8 +1,11 @@
+/* eslint-disable react/prop-types */
 import { useEffect, useRef, useState } from 'react'
 import wheelStyles from './colorWheelStyling'
 import { hexToRgb, hsvToRgb, rgbToHex, rgbToHsv } from '../utils/colorConverters'
+import { useNavigate } from 'react-router-dom'
 
-const ColorWheel = () => {
+const ColorWheel = ({ setColor }) => {
+  const navigate = useNavigate()
   const pointer = useRef()
   const wheel = useRef()
   const [pointerBox, setPointerBox] = useState('')
@@ -85,7 +88,8 @@ const ColorWheel = () => {
 
   const handleColorSubmit = event => {
     event.preventDefault()
-    console.log(colorInput)
+    setColor(colorInput)
+    navigate(`/palettes/`)
   }
 
   return (

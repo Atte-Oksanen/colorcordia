@@ -6,18 +6,18 @@ const wrapperStyle = {
 }
 
 const wheelStyle = {
-	aspectRatio: '1/1',
-	height: '20rem',
-	content: '',
-	borderRadius: '50%',
+  aspectRatio: '1/1',
+  height: '23rem',
+  content: '',
+  borderRadius: '50%',
 }
 
 
 const bottomWheelStyle = {
   ...wheelStyle,
   gridArea: '1/1/2/2',
-	border: '1px solid black',
-	background: `conic-gradient(rgba(255, 0, 0, 1) 0%,
+  border: '1px solid black',
+  background: `conic-gradient(rgba(255, 0, 0, 1) 0%,
     rgba(255, 154, 0, 1) 10%,
     rgba(208, 222, 33, 1) 18%,
     rgba(79, 220, 74, 1) 30%,
@@ -29,27 +29,25 @@ const bottomWheelStyle = {
     rgba(186, 12, 248, 1) 80%,
     rgba(251, 7, 217, 1) 90%,
     rgba(255, 0, 0, 1) 100%)`,
-	transform: 'rotate(90deg)',
+  transform: 'rotate(90deg)',
 }
 
 const topWheelStyle = {
   ...wheelStyle,
   gridArea: '1/1/2/2',
-	background: `radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0) 85%)`,
-	zIndex: 1,
+  background: `radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0) 85%)`,
+  zIndex: 1,
 }
 
 const pointerStyle = {
-	...wheelStyle,
-	position: 'absolute',
-	// left: '9rem',
-	// top: '9rem',
-	height: '2rem',
-	background: 'black',
-	content: '',
-	cursor: 'crosshair',
-	zIndex: 2,
-	border: '1px solid white',
+  ...wheelStyle,
+  position: 'absolute',
+  height: '2rem',
+  background: 'black',
+  content: '',
+  cursor: 'crosshair',
+  zIndex: 2,
+  border: '1px solid white',
 }
 
 

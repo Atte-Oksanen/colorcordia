@@ -6,7 +6,7 @@ import {
   complementaryHarmony, splitComplementaryHarmony, doubleSplitComplementary,
   squareHarmony, compoundHarmony, shadeHarmony
 } from "../utils/colorHarmonies"
-import ColorPalette from './colorPalette'
+import ColorPalette from "./colorPalette"
 const PaletteGenerator = ({ color }) => {
   const navigate = useNavigate()
   const [colorHarmonies, setHarmonies] = useState([])

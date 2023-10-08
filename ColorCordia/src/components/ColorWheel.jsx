@@ -21,8 +21,8 @@ const ColorWheel = ({ setColor }) => {
       y: wheelBoxTemp.y + wheelBoxTemp.height / 2,
       r: wheelBoxTemp.width / 2,
     })
-    pointer.current.style.top = wheelBoxTemp.y + wheelBoxTemp.height / 2 + 'px'
-    pointer.current.style.left = wheelBoxTemp.x + wheelBoxTemp.width / 2 + 'px'
+    pointer.current.style.top = wheelBoxTemp.y + wheelBoxTemp.height / 2 - pointerBoxTemp.height / 2 + 'px'
+    pointer.current.style.left = wheelBoxTemp.x + wheelBoxTemp.width / 2 - pointerBoxTemp.width / 2 + 'px'
     setPointerBox(pointerBoxTemp)
   }, [])
 

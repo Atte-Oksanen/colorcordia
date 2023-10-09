@@ -4,10 +4,13 @@ import { Link } from "react-router-dom"
 
 /* eslint-disable react/prop-types */
 const ColorTweaker = ({ color, setColor }) => {
-  const [rgb, setRbg] = useState(hexToRgb(color))
+  const [rgb, setRbg] = useState(null)
 
   useEffect(() => {
-    setRbg(hexToRgb(color))
+    if (color) {
+
+      setRbg(hexToRgb(color))
+    }
   }, [color])
 
   const handleSliderR = event => {
@@ -25,6 +28,9 @@ const ColorTweaker = ({ color, setColor }) => {
     setRbg({ ...rgb, b: event.target.value })
     setColor(rgbToHex(rgb))
 
+  }
+  if (!rgb) {
+    return null
   }
   return (
     <>

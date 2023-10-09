@@ -8,6 +8,7 @@ import ExploreView from './components/ExploreView'
 
 function App() {
   const [pickedColor, setColor] = useState(null)
+
   return (
     <BrowserRouter>
       <nav>
@@ -19,7 +20,7 @@ function App() {
         <Link>About</Link>
       </nav>
       <Routes>
-        <Route path='/' element={<ColorWheel setColor={setColor}></ColorWheel>}></Route>
+        <Route path='/' element={<ColorWheel setColor={setColor} pickedColor={pickedColor}></ColorWheel>}></Route>
         <Route path='/palettes/' element={<PaletteView color={pickedColor} setColor={setColor}></PaletteView>}></Route>
         <Route path='/palettes/:id' element={<FollowUpPalettes></FollowUpPalettes>}></Route>
         <Route path='/palette/:id' element={<SinglePaletteView></SinglePaletteView>}></Route>

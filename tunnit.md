@@ -11,3 +11,4 @@
 |7.10.23|4| Väriharmonioiden luonti + yhdistäminen väriympyrään
 |8.10.23|4| Sivujen lisäys + Routerin refaktorointia
 |9.10.23|2| Explore toimintojen aloitus + mock API:n luonti
+|9.10.23|1| Värisatunnaistajan luonti + yhdistäminen muuhun toiminnallisuuteen

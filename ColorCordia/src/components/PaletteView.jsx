@@ -6,7 +6,7 @@ const PaletteView = ({ color, setColor }) => {
   return (
     <>
       <ColorTweaker color={color} setColor={setColor}></ColorTweaker>
-      <PaletteGenerator color={color}></PaletteGenerator>
+      <PaletteGenerator color={color} setColor={setColor}></PaletteGenerator>
     </>
   )
 }

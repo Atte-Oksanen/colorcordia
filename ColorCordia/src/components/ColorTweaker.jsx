@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { hexToRgb, rgbToHex } from "../utils/colorConverters"
+import { Link } from "react-router-dom"
 
 /* eslint-disable react/prop-types */
 const ColorTweaker = ({ color, setColor }) => {
@@ -34,6 +35,8 @@ const ColorTweaker = ({ color, setColor }) => {
       <input type="range" value={rgb.g} max={255} onChange={handleSliderG} />
       B
       <input type="range" value={rgb.b} max={255} onChange={handleSliderB} />
+
+      <Link to='/'>Pick a new color</Link>
     </>
   )
 }

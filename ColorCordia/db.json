@@ -1,0 +1,22 @@
+{
+    "palettes": [
+        {
+            "palette": "Monochromatic-cc4697-cc5ca0-ff73c8-ff57bd-ff73c8",
+            "user": "template user",
+            "name": "template name",
+            "likes": 12
+        },
+        {
+            "palette": "Complementary-a77aff-9159ff-762fff-b8ff2f-93cc26",
+            "user": "template user",
+            "name": "template name",
+            "likes": 14
+        },
+        {
+            "palette": "Square-ccaa21-29ff69-ffd429-2954ff-ff29bf",
+            "user": "template user",
+            "name": "template name",
+            "likes": 18
+        }
+    ]
+}

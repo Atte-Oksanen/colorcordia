@@ -6,7 +6,7 @@ import { hexToRgb, hsvToRgb, rgbToHex, rgbToHsv } from '../utils/colorConverters
 import { useNavigate } from 'react-router-dom'
 import { randomizeColorWheelPos } from '../utils/colorRandomizer'
 
-const ColorWheel = ({ setColor }) => {
+const ColorWheel = ({ setColor, setMessage }) => {
   const navigate = useNavigate()
   const pointer = useRef()
   const wheel = useRef()
@@ -91,14 +91,21 @@ const ColorWheel = ({ setColor }) => {
       const theta = coords.h * Math.PI / 180
       pointer.current.style.left = coords.s * Math.cos(theta) + wheelBox.current.x - pointerBox.current.width + 'px'
       pointer.current.style.top = coords.s * Math.sin(theta) + wheelBox.current.y - pointerBox.current.height + 'px'
-      console.log(pointerBox.current.width + 'px');
     }
   }
 
   const handleColorSubmit = event => {
     event.preventDefault()
-    setColor(colorInput)
-    navigate(`/palettes/`)
+    if (checkColorInput(colorInput)) {
+      setColor(colorInput)
+      navigate(`/palettes/`)
+    } else {
+      setMessage('Invalid input')
+    }
+  }
+
+  const checkColorInput = input => {
+    return hexToRgb(input)
   }
 
   return (

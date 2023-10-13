@@ -1,22 +1,67 @@
 {
-    "palettes": [
-        {
-            "palette": "Monochromatic-cc4697-cc5ca0-ff73c8-ff57bd-ff73c8",
-            "user": "template user",
-            "name": "template name",
-            "likes": 12
-        },
-        {
-            "palette": "Complementary-a77aff-9159ff-762fff-b8ff2f-93cc26",
-            "user": "template user",
-            "name": "template name",
-            "likes": 14
-        },
-        {
-            "palette": "Square-ccaa21-29ff69-ffd429-2954ff-ff29bf",
-            "user": "template user",
-            "name": "template name",
-            "likes": 18
-        }
-    ]
+  "palettes": [
+    {
+      "id": 1,
+      "palette": "Monochromatic-cc4697-cc5ca0-ff73c8-ff57bd-ff73c8",
+      "user": "template user",
+      "name": "template name",
+      "likes": 12
+    },
+    {
+      "id": 2,
+      "palette": "Complementary-a77aff-9159ff-762fff-b8ff2f-93cc26",
+      "user": "template user",
+      "name": "template name",
+      "likes": 16
+    },
+    {
+      "id": 3,
+      "palette": "Square-ccaa21-29ff69-ffd429-2954ff-ff29bf",
+      "user": "template user",
+      "name": "template name",
+      "likes": 23
+    },
+    {
+      "palette": "Monochromatic-a8ccc7-aeccc8-d9fffa-d1fff9-d9fffa",
+      "user": "template",
+      "name": "template",
+      "likes": 5,
+      "id": 4
+    },
+    {
+      "palette": "Complementary-ff2690-ff4aa3-ff68b2-68ffb5-53cc91",
+      "user": "template",
+      "name": "template",
+      "likes": 3,
+      "id": 5
+    },
+    {
+      "palette": "Monochromatic-62bdcc-48bacc-5ae8ff-7bedff-5ae8ff",
+      "user": "template",
+      "name": "template",
+      "likes": 0,
+      "id": 6
+    },
+    {
+      "palette": "Split complementary-6adeff-4cd8ff-ff6a94-6aff8b-55cc6f",
+      "user": "template",
+      "name": "template",
+      "likes": 3,
+      "id": 7
+    },
+    {
+      "palette": "Split complementary-6adeff-4cd8ff-ff6a94-6aff8b-55cc6f",
+      "user": "template",
+      "name": "template",
+      "likes": 4,
+      "id": 8
+    },
+    {
+      "palette": "Analogous-408aff-3348cc-40baff-40eaff-33ccb7",
+      "user": "template",
+      "name": "template",
+      "likes": 0,
+      "id": 9
+    }
+  ]
 }

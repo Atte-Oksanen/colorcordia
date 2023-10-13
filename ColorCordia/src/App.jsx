@@ -7,10 +7,12 @@ import SinglePaletteView from './components/SinglePaletteView'
 import ExploreView from './components/ExploreView'
 import Notification from './components/Notification'
 import UserView from './components/userView'
+import SingleCommunityPaletteView from './components/singleCommunityPaletteView'
 
 function App() {
   const [pickedColor, setColor] = useState(null)
   const [message, setMessage] = useState(null)
+  const [communityPalettes, setPalettes] = useState([])
   return (
     <BrowserRouter>
       <nav>
@@ -27,8 +29,9 @@ function App() {
         <Route path='/' element={<ColorWheel setColor={setColor} pickedColor={pickedColor} setMessage={setMessage}></ColorWheel>}></Route>
         <Route path='/palettes/' element={<PaletteView color={pickedColor} setColor={setColor}></PaletteView>}></Route>
         <Route path='/palettes/:id' element={<FollowUpPalettes></FollowUpPalettes>}></Route>
-        <Route path='/palette/:id' element={<SinglePaletteView></SinglePaletteView>}></Route>
-        <Route path='/explore' element={<ExploreView></ExploreView>}></Route>
+        <Route path='/palette/:id' element={<SinglePaletteView setMessage={setMessage}></SinglePaletteView>}></Route>
+        <Route path='/explore' element={<ExploreView palettes={communityPalettes} setPalettes={setPalettes}></ExploreView>}></Route>
+        <Route path='/explore/:id' element={<SingleCommunityPaletteView palettes={communityPalettes}></SingleCommunityPaletteView>}></Route>
         <Route path='/profile' element={<UserView></UserView>}></Route>
       </Routes>
     </BrowserRouter>

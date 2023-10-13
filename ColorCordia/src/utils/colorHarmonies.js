@@ -54,11 +54,11 @@ export const monoHarmony = hex => {
   const vMultiplier = getMultiplier(hsv.v)
   const saturationMultiplier = getMultiplier(hsv.s)
   return checkColorArray([
-    { ...hsv, v: hsv.v * vMultiplier, s: hsv.s * saturationMultiplier },
-    { ...hsv, v: hsv.v * vMultiplier },
+    { ...hsv, v: hsv.v * vMultiplier * 0.75, s: hsv.s * saturationMultiplier },
+    { ...hsv, v: hsv.v * vMultiplier * 0.8 },
     { ...hsv },
+    { ...hsv, v: hsv.v * vMultiplier * 1.1 },
     { ...hsv, v: hsv.v / vMultiplier, s: hsv.s * saturationMultiplier },
-    { ...hsv, v: hsv.v / vMultiplier * 1.1 },
   ])
 }
 

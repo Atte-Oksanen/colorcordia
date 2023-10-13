@@ -13,3 +13,5 @@
 |9.10.23|2| Explore toimintojen aloitus + mock API:n luonti
 |9.10.23|1| Värisatunnaistajan luonti + yhdistäminen muuhun toiminnallisuuteen
 |11.10.23|1| Käyttäjätietojenhallintasivun suunnittelu ja lisäys
+|13.10.23|2| Toiminnallisuuden lisäys(palettien jakaminen + tykkäys)
+||4| HTML canvas toiminnallisuuden opettelu + palettien vientitoiminnallisuuden luonti

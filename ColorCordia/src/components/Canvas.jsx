@@ -18,7 +18,7 @@ const Canvas = ({ palette, setDataUrl }) => {
       ctx.fillStyle = 'black'
       ctx.fillText(`${colors[index]}`, x + 25, 950)
     }
-    ctx.font = '30px Arial'
+    ctx.font = '38px Arial'
     ctx.fillText("ColorCordia", 1225, 1040)
     const text = `${type} pallette from ${colors[2]}`
     ctx.fillText(text, 25, 1040)

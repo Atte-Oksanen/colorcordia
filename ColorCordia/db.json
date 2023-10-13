@@ -53,7 +53,7 @@
       "palette": "Split complementary-6adeff-4cd8ff-ff6a94-6aff8b-55cc6f",
       "user": "template",
       "name": "template",
-      "likes": 4,
+      "likes": 7,
       "id": 8
     },
     {
@@ -62,6 +62,13 @@
       "name": "template",
       "likes": 0,
       "id": 9
+    },
+    {
+      "palette": "Triad-cc36ad-f9ff69-ff44d8-44b9ff-3694cc",
+      "user": "template",
+      "name": "template",
+      "likes": 4,
+      "id": 10
     }
   ]
 }

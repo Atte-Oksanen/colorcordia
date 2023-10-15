@@ -18,14 +18,14 @@ const Canvas = ({ palette, setDataUrl }) => {
       ctx.fillStyle = 'black'
       ctx.fillText(`${colors[index]}`, x + 25, 950)
     }
-    ctx.font = '38px Arial'
-    ctx.fillText("ColorCordia", 1225, 1040)
+    ctx.font = '30px Arial'
+    ctx.fillText("ColorCordia*", 25, 1060)
     const text = `${type} pallette from ${colors[2]}`
-    ctx.fillText(text, 25, 1040)
+    ctx.fillText(text, 25, 1010)
     setDataUrl(canvasRef.current.toDataURL())
   }, [colors, palette, setDataUrl, type])
 
-  return <canvas width='1500' height='1080' ref={canvasRef} style={{ display: "none" }} >Your browser does not support canvas</canvas>
+  return <canvas width='1500' height='1080' ref={canvasRef} style={{ border: "1px solid black" }} >Your browser does not support canvas</canvas>
 }
 
 export default Canvas

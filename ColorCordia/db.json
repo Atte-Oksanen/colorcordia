@@ -25,7 +25,7 @@
       "palette": "Monochromatic-a8ccc7-aeccc8-d9fffa-d1fff9-d9fffa",
       "user": "template",
       "name": "template",
-      "likes": 5,
+      "likes": 6,
       "id": 4
     },
     {
@@ -69,6 +69,48 @@
       "name": "template",
       "likes": 4,
       "id": 10
+    },
+    {
+      "palette": "Complementary-ffe097-ffd87d-ffce5d-5d8eff-4a72cc",
+      "user": "template",
+      "name": "template",
+      "likes": 0,
+      "id": 11
+    },
+    {
+      "palette": "Monochromatic-263234-2b3638-2d383a-3b4a4d-232e30",
+      "user": "template",
+      "name": "template",
+      "likes": 0,
+      "id": 12
+    },
+    {
+      "palette": "Monochromatic-873030-901c1c-e12c2c-c62727-ff5b5b",
+      "user": "template",
+      "name": "template",
+      "likes": 0,
+      "id": 13
+    },
+    {
+      "palette": "Monochromatic-0f434b-004650-004953-00606e-0e3f45",
+      "user": "template",
+      "name": "template",
+      "likes": 0,
+      "id": 14
+    },
+    {
+      "palette": "Monochromatic-73312c-7b231c-c0362c-a93027-f0665c",
+      "user": "template",
+      "name": "template",
+      "likes": 0,
+      "id": 15
+    },
+    {
+      "palette": "Monochromatic-272181-120a89-130a8f-190dbd-251e77",
+      "user": "template",
+      "name": "template",
+      "likes": 0,
+      "id": 16
     }
   ]
 }

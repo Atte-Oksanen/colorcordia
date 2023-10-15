@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { getPalettes, likePalette } from "../services/palettes"
 import Canvas from "./Canvas"
+import { getColorName } from "../utils/colorNames"
 
 const SingleCommunityPaletteView = ({ palettes }) => {
   const params = useParams().id
@@ -24,10 +25,18 @@ const SingleCommunityPaletteView = ({ palettes }) => {
       }
       const [typeTemp, ...colorsTemp] = paletteTemp.palette.split('-')
       setPalette(paletteTemp)
-      setColors(colorsTemp.map(color => `#${color}`))
+      setColors(colorsTemp.map(color => {
+        return {
+          color: `#${color}`,
+          name: getColorName(`#${color}`)
+        }
+      }))
       setType(typeTemp)
+
     })()
   }, [id, palettes])
+
+
 
   if (!palette) {
     return null
@@ -48,13 +57,13 @@ const SingleCommunityPaletteView = ({ palettes }) => {
   return (
     <>
       <h2>{`${type} pallette from ${colors[2]}`}</h2>
-      {colors.map(color => <div key={Math.random()} style={{ background: color }}>{color}</div>)}
+      {colors.map(color => <div key={Math.random()} style={{ background: color.color }}>{color.color} - {color.name}</div>)}
       <div>Created by {palette.user}</div>
       <div>{palette.likes} Likes</div>
       <button onClick={handleLike}>Like</button>
       <button onClick={downloadImage}>Download</button>
       <br />
-      <Canvas palette={palette.palette} setDataUrl={setDataUrl}></Canvas>
+      <Canvas palette={colors} type={type} setDataUrl={setDataUrl}></Canvas>
     </>
   )
 }

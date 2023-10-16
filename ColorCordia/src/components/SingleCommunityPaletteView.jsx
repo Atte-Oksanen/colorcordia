@@ -3,7 +3,8 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { getPalettes, likePalette } from "../services/palettes"
 import Canvas from "./Canvas"
-import { getColorName } from "../utils/colorNames"
+import { hexToRgb } from "../utils/colorConverters"
+import axios from "axios"
 
 const SingleCommunityPaletteView = ({ palettes }) => {
   const params = useParams().id
@@ -28,7 +29,7 @@ const SingleCommunityPaletteView = ({ palettes }) => {
       setColors(colorsTemp.map(color => {
         return {
           color: `#${color}`,
-          name: getColorName(`#${color}`)
+          name: "light blue"
         }
       }))
       setType(typeTemp)
@@ -36,7 +37,30 @@ const SingleCommunityPaletteView = ({ palettes }) => {
     })()
   }, [id, palettes])
 
+  useEffect(() => {
+    getColorName("#a77aff")
+  })
 
+  const getColorName = async hex => {
+    const colors = (await axios.get("http://localhost:3000/colors")).data
+
+    const colorsWithRgb = colors.map(color => {
+      return { ...color, rgb: hexToRgb(color.hex) }
+    })
+    const rgb = hexToRgb(hex)
+    let closestName = colors[0]
+    let distanceToName = Math.sqrt(Math.pow(rgb.r - colorsWithRgb[0].rgb.r, 2) + Math.pow(rgb.g - colorsWithRgb[0].rgb.g, 2) + Math.pow(rgb.b - colorsWithRgb[0].rgb.b, 2))
+    for (let index = 1; index < colorsWithRgb.length; index++) {
+      let newDistance = Math.pow(Math.pow(rgb.r - colorsWithRgb[index].rgb.r, 2) + Math.pow(rgb.g - colorsWithRgb[index].rgb.g, 2) + Math.pow(rgb.b - colorsWithRgb[index].rgb.b, 2), 0.5)
+      if (newDistance < distanceToName) {
+        distanceToName = newDistance
+        closestName = colors[index]
+      }
+    }
+
+    console.log(closestName)
+    return closestName.name
+  }
 
   if (!palette) {
     return null

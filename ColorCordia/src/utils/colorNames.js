@@ -3330,24 +3330,3 @@ const colors = [
     Hex: "#39A78E"
   }
 ]
-
-export const getColorName = hex => {
-  const colorsWithRgb = colors.map(color => {
-    return { ...color, rgb: hexToRgb(color.Hex) }
-  })
-  const rgb = hexToRgb(hex)
-  let closestName = colors[0]
-  let distanceToName = Math.sqrt(Math.pow(rgb.r - colorsWithRgb[0].rgb.r, 2) + Math.pow(rgb.g - colorsWithRgb[0].rgb.g, 2) + Math.pow(rgb.b - colorsWithRgb[0].rgb.b, 2))
-  for (let index = 1; index < colorsWithRgb.length; index++) {
-    let newDistance = Math.pow(Math.pow(rgb.r - colorsWithRgb[index].rgb.r, 2) + Math.pow(rgb.g - colorsWithRgb[index].rgb.g, 2) + Math.pow(rgb.b - colorsWithRgb[index].rgb.b, 2), 0.5)
-    if (newDistance < distanceToName) {
-      distanceToName = newDistance
-      closestName = colors[index]
-    }
-  }
-  const newIndex = closestName.Name.indexOf('(')
-  if (newIndex !== -1) {
-    closestName.Name = closestName.Name.substring(0, newIndex)
-  }
-  return closestName.Name
-}

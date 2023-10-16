@@ -18,3 +18,4 @@
 15.10.23|1| Vientitoiminnallisuuden parantelu + värinimien etsiminen sekä käsittely oikeaan muotoon
 ||4| Vientitoiminnallisuuden parantelu + värinimien lisäys sovellukseen
 |16.10.23|6| Backendin + tietokannan aloitus
+||1| Värinimietsinnän debuggaus ja optimointi

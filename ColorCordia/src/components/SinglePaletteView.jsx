@@ -15,11 +15,11 @@ const SinglePaletteView = ({ setMessage }) => {
     (async () => {
       const names = []
       for (let index = 0; index < harmony.length; index++) {
-        names.push((await GetColorName(harmony[index])))
+        names.push({ ...(await GetColorName(harmony[index])), hex: `#${harmony[index]}` })
       }
       setNames(names)
     })()
-  }, [harmony])
+  }, [])
 
   const handlePaletteCreation = async () => {
     await createPalette(id)

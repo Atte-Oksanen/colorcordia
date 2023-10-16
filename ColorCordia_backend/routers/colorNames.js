@@ -18,17 +18,21 @@ colorNameRouter.get('/', async (req, res) => {
 
 colorNameRouter.get('/:id', async (req, res) => {
   const hex = req.params.id
-
   const rgb = hexToRgb(hex)
   let closestName = colors[0]
   let distanceToName = Math.sqrt(Math.pow(rgb.r - colors[0].rgb.r, 2) + Math.pow(rgb.g - colors[0].rgb.g, 2) + Math.pow(rgb.b - colors[0].rgb.b, 2))
+  let loops = 0
   for (let index = 1; index < colors.length; index++) {
-    let newDistance = Math.pow(Math.pow(rgb.r - colors[index].rgb.r, 2) + Math.pow(rgb.g - colors[index].rgb.g, 2) + Math.pow(rgb.b - colors[index].rgb.b, 2), 0.5)
+    let newDistance = Math.sqrt(Math.pow(rgb.r - colors[index].rgb.r, 2) + Math.pow(rgb.g - colors[index].rgb.g, 2) + Math.pow(rgb.b - colors[index].rgb.b, 2))
     if (newDistance < distanceToName) {
       distanceToName = newDistance
       closestName = colors[index]
+      if (distanceToName < 1.2) {
+        break
+      }
     }
   }
+
   res.json(closestName)
 })
 

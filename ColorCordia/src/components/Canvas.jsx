@@ -25,7 +25,7 @@ const Canvas = ({ palette, type, setDataUrl }) => {
     setDataUrl(canvasRef.current.toDataURL())
   }, [palette, setDataUrl, type])
 
-  return <canvas width='1500' height='1080' ref={canvasRef} style={{ display: "" }} >Your browser does not support canvas</canvas>
+  return <canvas width='1500' height='1080' ref={canvasRef} style={{ display: "none" }} >Your browser does not support canvas</canvas>
 }
 
 export default Canvas

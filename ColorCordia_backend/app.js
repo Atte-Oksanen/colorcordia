@@ -5,6 +5,7 @@ const app = express()
 const mongoAdress = process.env.MONGODB_URI
 const colorNameRouter = require('./routers/colorNames')
 const cors = require('cors')
+const paletteRouter = require('./routers/palettes')
 
 mongoose.connect(mongoAdress).then(() => {
   console.log('connected to database')
@@ -20,7 +21,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api/colors', colorNameRouter)
-
+app.use('/api/palettes', paletteRouter)
 
 
 module.exports = app

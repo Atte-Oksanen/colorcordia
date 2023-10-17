@@ -3,21 +3,18 @@ import { useParams } from "react-router-dom"
 import { createPalette } from "../services/palettes"
 import { useEffect, useState } from "react"
 import Canvas from "./Canvas"
-import { GetColorName } from "../services/colorNames"
+import { GetColorNames } from "../services/colorNames"
 
 const SinglePaletteView = ({ setMessage }) => {
   const [dataUrl, setDataUrl] = useState(null)
   const id = useParams().id
-  const [type, ...harmony] = id.split('-')
-  const [colors, setNames] = useState(null)
+  const type = id.split('-')[0]
+  const [colors, setColors] = useState(null)
 
   useEffect(() => {
     (async () => {
-      const names = []
-      for (let index = 0; index < harmony.length; index++) {
-        names.push({ ...(await GetColorName(harmony[index])), hex: `#${harmony[index]}` })
-      }
-      setNames(names)
+      const colors = await GetColorNames(id.substring(id.indexOf('-') + 1))
+      setColors(colors)
     })()
   }, [])
 

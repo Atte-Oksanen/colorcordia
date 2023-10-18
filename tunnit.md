@@ -19,4 +19,5 @@
 ||4| Vientitoiminnallisuuden parantelu + värinimien lisäys sovellukseen
 |16.10.23|6| Backendin + tietokannan aloitus
 ||1| Värinimietsinnän debuggaus ja optimointi
-|17.10.23|5| Backendin toiminnallisuuden luonti vastaamaan frontin tarpeisiin + frontin adaptointi uuteen backendiin + backendin optimointi
+|17.10.23|5| Backendin toiminnallisuuden luonti vastaamaan frontin tarpeita + frontin adaptointi uuteen backendiin + backendin optimointi
+|18.10.23|4| Käyttäjähallinnan luonnin aloitus

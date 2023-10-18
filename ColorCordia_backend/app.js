@@ -6,6 +6,7 @@ const mongoAdress = process.env.MONGODB_URI
 const colorNameRouter = require('./routers/colorNames')
 const cors = require('cors')
 const paletteRouter = require('./routers/palettes')
+const userRouter = require('./routers/userRouter')
 
 mongoose.connect(mongoAdress).then(() => {
   console.log('connected to database')
@@ -22,6 +23,6 @@ app.get('/', (req, res) => {
 
 app.use('/api/colors', colorNameRouter)
 app.use('/api/palettes', paletteRouter)
-
+app.use('/api/users', userRouter)
 
 module.exports = app

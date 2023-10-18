@@ -8,6 +8,8 @@ import ExploreView from './components/ExploreView'
 import Notification from './components/Notification'
 import UserView from './components/userView'
 import SingleCommunityPaletteView from './components/singleCommunityPaletteView'
+import LoginView from './components/LoginView'
+import SignUpView from './components/SignUpView'
 
 function App() {
   const [pickedColor, setColor] = useState(null)
@@ -23,6 +25,8 @@ function App() {
         <Link>Color converter</Link>
         <Link>About</Link>
         <Link to='/profile'>User Profile</Link>
+        <Link to='/login'>Login</Link>
+        <Link to='/signup'>Sign up</Link>
       </nav>
       <Notification message={message} setMessage={setMessage}></Notification>
       <Routes>
@@ -33,6 +37,8 @@ function App() {
         <Route path='/explore' element={<ExploreView palettes={communityPalettes} setPalettes={setPalettes}></ExploreView>}></Route>
         <Route path='/explore/:id' element={<SingleCommunityPaletteView palettes={communityPalettes}></SingleCommunityPaletteView>}></Route>
         <Route path='/profile' element={<UserView></UserView>}></Route>
+        <Route path='/login' element={<LoginView></LoginView>}></Route>
+        <Route path='/signup' element={<SignUpView></SignUpView>}></Route>
       </Routes>
     </BrowserRouter>
   )

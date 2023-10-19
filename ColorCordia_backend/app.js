@@ -7,6 +7,14 @@ const colorNameRouter = require('./routers/colorNames')
 const cors = require('cors')
 const paletteRouter = require('./routers/palettes')
 const userRouter = require('./routers/userRouter')
+const jwt = require('jsonwebtoken')
+
+const authExtractor = (req, res, next) => {
+  try {
+    req.user = (jwt.verify(req.get('authorization'), process.env.SECRET)).id
+  } catch (error) { }
+  next()
+}
 
 mongoose.connect(mongoAdress).then(() => {
   console.log('connected to database')
@@ -14,9 +22,9 @@ mongoose.connect(mongoAdress).then(() => {
   console.log(`Error connecting to database ${error.message}`)
 })
 
-
 app.use(cors())
 app.use(express.json())
+app.use(authExtractor)
 app.get('/', (req, res) => {
   res.json({ test: "test" })
 })

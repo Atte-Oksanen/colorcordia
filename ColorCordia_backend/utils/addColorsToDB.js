@@ -1,6 +1,6 @@
 const axios = require('axios')
 const fs = require('fs');
-const { hexToRgb } = require('./utils/colorConverters');
+const { hexToRgb } = require('./colorConverters');
 
 const colors = JSON.parse(fs.readFileSync('./colorNames.json'))
 

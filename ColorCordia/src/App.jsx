@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import ColorWheel from './components/ColorWheel'
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import FollowUpPalettes from './components/FollowUpPalettes'
@@ -10,11 +10,25 @@ import UserView from './components/userView'
 import SingleCommunityPaletteView from './components/singleCommunityPaletteView'
 import LoginView from './components/LoginView'
 import SignUpView from './components/SignUpView'
+import { setPaletteToken } from './services/palettes'
 
 function App() {
   const [pickedColor, setColor] = useState(null)
   const [message, setMessage] = useState(null)
   const [communityPalettes, setPalettes] = useState([])
+  const [user, setUser] = useState(null)
+
+  useEffect(() => {
+    (async () => {
+      const savedUser = window.localStorage.getItem('userToken')
+      if (savedUser) {
+        const parsedUser = JSON.parse(savedUser)
+        setUser(parsedUser)
+        setPaletteToken(parsedUser.token)
+      }
+    })()
+  }, [])
+
   return (
     <BrowserRouter>
       <nav>
@@ -37,7 +51,7 @@ function App() {
         <Route path='/explore' element={<ExploreView palettes={communityPalettes} setPalettes={setPalettes}></ExploreView>}></Route>
         <Route path='/explore/:id' element={<SingleCommunityPaletteView palettes={communityPalettes}></SingleCommunityPaletteView>}></Route>
         <Route path='/profile' element={<UserView></UserView>}></Route>
-        <Route path='/login' element={<LoginView></LoginView>}></Route>
+        <Route path='/login' element={<LoginView setUser={setUser}></LoginView>}></Route>
         <Route path='/signup' element={<SignUpView></SignUpView>}></Route>
       </Routes>
     </BrowserRouter>

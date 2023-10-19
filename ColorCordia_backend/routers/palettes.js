@@ -1,6 +1,8 @@
 const paletteRouter = require('express').Router()
 const { MongooseError, default: mongoose } = require('mongoose')
 const Palette = require('../models/palette')
+const User = require('../models/user')
+const jwt = require('jsonwebtoken')
 
 paletteRouter.get('/', async (req, res) => {
   res.json(await Palette.find({}))
@@ -22,6 +24,9 @@ paletteRouter.post('/', async (req, res) => {
 })
 
 paletteRouter.put('/:id', async (req, res) => {
+  if (!req.user) {
+    return res.status(401).json({ message: "invalid credentials" })
+  }
   const updatedPalette = {
     palette: req.body.palette,
     user: req.body.user,

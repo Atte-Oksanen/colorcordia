@@ -5,7 +5,7 @@ import {
   complementaryHarmony, splitComplementaryHarmony, doubleSplitComplementary,
   squareHarmony, compoundHarmony, shadeHarmony
 } from "../utils/colorHarmonies"
-import ColorPalette from "./colorPalette"
+import ColorPalette from "./ColorPalette"
 import { randomizeColor } from "../utils/colorRandomizer"
 const PaletteGenerator = ({ color, setColor }) => {
   const [colorHarmonies, setHarmonies] = useState([])

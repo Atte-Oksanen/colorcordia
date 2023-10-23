@@ -8,7 +8,7 @@ const CommunityPalette = ({ palette }) => {
     <div>
       <h3><Link to={`/explore/${paletteId}`}>{type} from {colors[2]}</Link></h3>
       {colors.map(color => <div key={Math.random()} style={{ background: color }}>{color}</div>)}
-      <div>Created by {palette.user}</div>
+      <div>Created by {palette.user.username}</div>
       <div>Likes {palette.likes}</div>
     </div>
   )

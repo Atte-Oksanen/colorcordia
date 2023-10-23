@@ -4,14 +4,16 @@ import { useParams } from "react-router-dom"
 import { getPaletteById, likePalette } from "../services/palettes"
 import Canvas from "./Canvas"
 import { GetColorNames } from "../services/colorNames"
+import { getLikedPosts } from "../services/user"
 
-const SingleCommunityPaletteView = ({ palettes }) => {
+const SingleCommunityPaletteView = ({ palettes, user }) => {
   const params = useParams().id
   const [id, ...harmony] = params.split('-')
   const [palette, setPalette] = useState(null)
   const [colors, setColors] = useState()
   const [type, setType] = useState()
   const [dataUrl, setDataUrl] = useState(null)
+  const [disableLike, setDisableLike] = useState(false)
 
   useEffect(() => {
     (async () => {
@@ -29,8 +31,23 @@ const SingleCommunityPaletteView = ({ palettes }) => {
         setPalette(tempPalette)
         setType(harmony[0])
       }
+
     })()
   }, [])
+
+  useEffect(() => {
+    (async () => {
+      if (!user) {
+        return setDisableLike(true)
+      }
+      if (user && palette && disableLike !== true) {
+        const likes = await getLikedPosts(user.id)
+        if (likes.find(element => element === palette.id)) {
+          setDisableLike(true)
+        }
+      }
+    })()
+  }, [palette])
 
 
   if (!palette) {
@@ -41,6 +58,7 @@ const SingleCommunityPaletteView = ({ palettes }) => {
     const updatedPalette = { ...palette, likes: palette.likes + 1 }
     setPalette(updatedPalette)
     likePalette(updatedPalette)
+    setDisableLike(true)
   }
 
   const downloadImage = () => {
@@ -54,9 +72,9 @@ const SingleCommunityPaletteView = ({ palettes }) => {
     <>
       <h2>{`${type} pallette from ${colors[2].hex}`}</h2>
       {colors.map(color => <div key={Math.random()} style={{ background: color.hex }}>{color.hex} - {color.name}</div>)}
-      <div>Created by {palette.user}</div>
+      <div>Created by {palette.user.username}</div>
       <div>{palette.likes} Likes</div>
-      <button onClick={handleLike}>Like</button>
+      <button onClick={handleLike} disabled={disableLike} >Like</button>
       <button onClick={downloadImage}>Download</button>
       <br />
       <Canvas palette={colors} type={type} setDataUrl={setDataUrl}></Canvas>

@@ -13,10 +13,12 @@ paletteRouter.get('/:id', async (req, res) => {
 })
 
 paletteRouter.post('/', async (req, res) => {
+  if (!req.user) {
+    return res.status(401).json({ message: "invalid credentials" })
+  }
   const newPalette = new Palette({
     palette: req.body.palette,
-    user: req.body.user,
-    name: req.body.name,
+    user: req.user,
     likes: req.body.likes
   })
   const returnedPalette = await newPalette.save()
@@ -27,6 +29,17 @@ paletteRouter.put('/:id', async (req, res) => {
   if (!req.user) {
     return res.status(401).json({ message: "invalid credentials" })
   }
+  const user = await User.findById(req.user.id)
+  if (user.likedPosts.find(element => element === req.body.id)) {
+    return res.status(401).json({ message: "post already liked" })
+  }
+  const updatedUser = {
+    email: user.email,
+    username: user.username,
+    password: user.password,
+    likedPosts: user.likedPosts.concat(req.body.id)
+  }
+  await User.findByIdAndUpdate(req.user.id, updatedUser, { new: true })
   const updatedPalette = {
     palette: req.body.palette,
     user: req.body.user,

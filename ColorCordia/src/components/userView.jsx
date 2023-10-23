@@ -1,15 +1,26 @@
-import { useState } from "react"
+/* eslint-disable react/prop-types */
+import { useEffect, useState } from "react"
 import EditableField from "./editableField"
 
-const UserView = () => {
-  const [username, setUsername] = useState('template user')
-  const [email, setEmail] = useState('template email')
+const UserView = ({ user }) => {
+  const [username, setUsername] = useState('')
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('***********')
 
+  useEffect(() => {
+    if (user) {
+      setUsername(user.username)
+      setEmail(user.email)
+    }
+  }, [user])
+
+  if (!user) {
+    return null
+  }
   return (
     <div>
       <h2>User Info</h2>
-      <form action="">
+      <form>
         <EditableField fieldLabel='Username' fieldValue={username} setNewState={setUsername}></EditableField>
         <br />
         <EditableField fieldLabel='Email' fieldValue={email} setNewState={setEmail}></EditableField>

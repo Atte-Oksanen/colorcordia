@@ -6,7 +6,6 @@ const User = require('../models/user')
 
 
 userRouter.post('/login', async (req, res) => {
-  console.log(req.body)
   const { username, password } = req.body
   const user = await User.findOne({ username })
   const authenticated = user === null ? false : await bcrypt.compare(password, user.password)
@@ -24,7 +23,6 @@ userRouter.post('/login', async (req, res) => {
   const token = jwt.sign(tokenData, process.env.SECRET)
 
   res.json({ token: token, username: user.username, id: user._id })
-  console.log(token)
 })
 
 userRouter.post('/signup', async (req, res) => {
@@ -59,6 +57,10 @@ userRouter.get('/usernames/:username', async (req, res) => {
   } else {
     res.json({ uniqueName: false })
   }
+})
+
+userRouter.get('/likedposts/:id', async (req, res) => {
+  res.json((await User.findById(req.params.id)).likedPosts)
 })
 
 module.exports = userRouter

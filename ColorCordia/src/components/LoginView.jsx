@@ -3,18 +3,25 @@
 import { useState } from "react"
 import { login } from "../services/user"
 import { setPaletteToken } from "../services/palettes"
+import { Link, useNavigate } from "react-router-dom"
 
-const LoginView = ({ setUser }) => {
+const LoginView = ({ setUser, setMessage }) => {
+  const navigate = useNavigate()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
   const handleFormSubmit = async event => {
     event.preventDefault()
-    const user = await login({ username, password })
-    console.log(user);
-    setUser(user)
-    window.localStorage.setItem('userToken', JSON.stringify(user))
-    setPaletteToken(user.token)
+    try {
+      const user = await login({ username, password })
+      setUser(user)
+      window.localStorage.setItem('userToken', JSON.stringify(user))
+      setPaletteToken(user.token)
+      navigate('/')
+      setMessage("Logged in")
+    } catch (error) {
+      setMessage("Wrong username or password")
+    }
   }
 
   return (
@@ -28,7 +35,7 @@ const LoginView = ({ setUser }) => {
       </form>
       <div>
         <p>Forgot your password? <a href="">Reset</a></p>
-        <p>Don't have an account? <a href="">Create account</a></p>
+        <p>Don't have an account? <Link to='/signup'>Create account</Link></p>
       </div>
     </div>
 

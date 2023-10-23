@@ -11,7 +11,7 @@ const jwt = require('jsonwebtoken')
 
 const authExtractor = (req, res, next) => {
   try {
-    req.user = (jwt.verify(req.get('authorization'), process.env.SECRET)).id
+    req.user = (jwt.verify(req.get('authorization'), process.env.SECRET))
   } catch (error) { }
   next()
 }

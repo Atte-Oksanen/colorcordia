@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const PaletteSchema = mongoose.Schema({
   palette: { type: String },
-  user: { type: String },
+  user: { type: Object },
   name: { type: String },
   likes: { type: Number }
 })

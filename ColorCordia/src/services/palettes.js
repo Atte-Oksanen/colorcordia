@@ -22,9 +22,7 @@ export const likePalette = async palette => {
 export const createPalette = async paletteString => {
   const newPalette = {
     palette: paletteString,
-    user: "template",
-    name: "template",
     likes: 0
   }
-  return (await axios.post(BASE_URL, newPalette))
+  return (await axios.post(BASE_URL, newPalette, { headers: { authorization: token } }))
 }

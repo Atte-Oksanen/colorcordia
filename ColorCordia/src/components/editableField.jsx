@@ -15,6 +15,15 @@ const EditableField = ({ fieldLabel, fieldValue, setNewState }) => {
     }
   }, [fieldLabel])
 
+  useEffect(() => {
+    if (fieldValue) {
+      setText(fieldValue)
+    }
+  }, [fieldValue])
+
+  if (fieldValue === '') {
+    return null
+  }
   const changeEditState = () => {
     if (buttonMessage === 'Edit') {
       setMessage('Save')

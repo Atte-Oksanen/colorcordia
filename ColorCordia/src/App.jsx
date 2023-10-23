@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import ColorWheel from './components/ColorWheel'
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
+import { Routes, Route, Link, useNavigate } from 'react-router-dom'
 import FollowUpPalettes from './components/FollowUpPalettes'
 import PaletteView from './components/PaletteView'
 import SinglePaletteView from './components/SinglePaletteView'
@@ -13,6 +13,7 @@ import SignUpView from './components/SignUpView'
 import { setPaletteToken } from './services/palettes'
 
 function App() {
+  const navigate = useNavigate()
   const [pickedColor, setColor] = useState(null)
   const [message, setMessage] = useState(null)
   const [communityPalettes, setPalettes] = useState([])
@@ -29,8 +30,15 @@ function App() {
     })()
   }, [])
 
+
+  const logOut = () => {
+    window.localStorage.removeItem('userToken')
+    setUser(null)
+    navigate('/')
+    setMessage("Logged out")
+  }
   return (
-    <BrowserRouter>
+    <>
       <nav>
         <h1>ColorCordia</h1>
         <Link to='/'>Color wheel</Link>
@@ -38,9 +46,10 @@ function App() {
         <Link>Scheme visualiser</Link>
         <Link>Color converter</Link>
         <Link>About</Link>
-        <Link to='/profile'>User Profile</Link>
-        <Link to='/login'>Login</Link>
-        <Link to='/signup'>Sign up</Link>
+        {user && <Link to='/profile'>User Profile</Link>}
+        {!user && <Link to='/login'>Login</Link>}
+        {!user && <Link to='/signup'>Sign up</Link>}
+        {user && <button onClick={logOut}>Log out</button>}
       </nav>
       <Notification message={message} setMessage={setMessage}></Notification>
       <Routes>
@@ -49,12 +58,12 @@ function App() {
         <Route path='/palettes/:id' element={<FollowUpPalettes></FollowUpPalettes>}></Route>
         <Route path='/palette/:id' element={<SinglePaletteView setMessage={setMessage}></SinglePaletteView>}></Route>
         <Route path='/explore' element={<ExploreView palettes={communityPalettes} setPalettes={setPalettes}></ExploreView>}></Route>
-        <Route path='/explore/:id' element={<SingleCommunityPaletteView palettes={communityPalettes}></SingleCommunityPaletteView>}></Route>
-        <Route path='/profile' element={<UserView></UserView>}></Route>
-        <Route path='/login' element={<LoginView setUser={setUser}></LoginView>}></Route>
-        <Route path='/signup' element={<SignUpView></SignUpView>}></Route>
+        <Route path='/explore/:id' element={<SingleCommunityPaletteView palettes={communityPalettes} user={user}></SingleCommunityPaletteView>}></Route>
+        <Route path='/profile' element={<UserView user={user}></UserView>}></Route>
+        <Route path='/login' element={<LoginView setUser={setUser} setMessage={setMessage}></LoginView>}></Route>
+        <Route path='/signup' element={<SignUpView setMessage={setMessage}></SignUpView>}></Route>
       </Routes>
-    </BrowserRouter>
+    </>
   )
 }
 

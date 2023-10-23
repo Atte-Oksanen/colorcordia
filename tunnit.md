@@ -22,3 +22,4 @@
 |17.10.23|5| Backendin toiminnallisuuden luonti vastaamaan frontin tarpeita + frontin adaptointi uuteen backendiin + backendin optimointi
 |18.10.23|4| Käyttäjähallinnan luonnin aloitus
 |19.10.23|3| Käyttäjähallinnan jatkaminen
+|23.10.23|7| Käyttäjähallinnan jatkaminen + sovelluksen hostausmahdollisuuksien tutkiminen

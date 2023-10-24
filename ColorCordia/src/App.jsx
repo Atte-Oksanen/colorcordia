@@ -11,6 +11,8 @@ import SingleCommunityPaletteView from './components/SingleCommunityPaletteView'
 import LoginView from './components/LoginView'
 import SignUpView from './components/SignUpView'
 import { setPaletteToken } from './services/palettes'
+import { getUser, setUserToken } from './services/users'
+import ColorConverterView from './components/ColorConverterView'
 
 function App() {
   const navigate = useNavigate()
@@ -24,8 +26,9 @@ function App() {
       const savedUser = window.localStorage.getItem('userToken')
       if (savedUser) {
         const parsedUser = JSON.parse(savedUser)
-        setUser(parsedUser)
         setPaletteToken(parsedUser.token)
+        setUserToken(parsedUser.token)
+        setUser(await getUser(parsedUser.id))
       }
     })()
   }, [])
@@ -44,7 +47,7 @@ function App() {
         <Link to='/'>Color wheel</Link>
         <Link to='/explore'>Explore</Link>
         <Link>Scheme visualiser</Link>
-        <Link>Color converter</Link>
+        <Link to='/converter'>Color converter</Link>
         <Link>About</Link>
         {user && <Link to='/profile'>User Profile</Link>}
         {!user && <Link to='/login'>Login</Link>}
@@ -58,10 +61,11 @@ function App() {
         <Route path='/palettes/:id' element={<FollowUpPalettes></FollowUpPalettes>}></Route>
         <Route path='/palette/:id' element={<SinglePaletteView setMessage={setMessage}></SinglePaletteView>}></Route>
         <Route path='/explore' element={<ExploreView palettes={communityPalettes} setPalettes={setPalettes}></ExploreView>}></Route>
-        <Route path='/explore/:id' element={<SingleCommunityPaletteView palettes={communityPalettes} user={user}></SingleCommunityPaletteView>}></Route>
+        <Route path='/explore/:id' element={<SingleCommunityPaletteView palettes={communityPalettes} user={user} setUser={setUser}></SingleCommunityPaletteView>}></Route>
         <Route path='/profile' element={<UserView user={user}></UserView>}></Route>
         <Route path='/login' element={<LoginView setUser={setUser} setMessage={setMessage}></LoginView>}></Route>
         <Route path='/signup' element={<SignUpView setMessage={setMessage}></SignUpView>}></Route>
+        <Route path='/converter' element={<ColorConverterView></ColorConverterView>}></Route>
       </Routes>
     </>
   )

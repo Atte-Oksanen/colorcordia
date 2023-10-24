@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-unescaped-entities */
 import { useState } from "react"
-import { login } from "../services/user"
+import { getUser, login, setUserToken } from "../services/users"
 import { setPaletteToken } from "../services/palettes"
 import { Link, useNavigate } from "react-router-dom"
 
@@ -14,7 +14,8 @@ const LoginView = ({ setUser, setMessage }) => {
     event.preventDefault()
     try {
       const user = await login({ username, password })
-      setUser(user)
+      setUserToken(user.token)
+      setUser(await getUser(user.id))
       window.localStorage.setItem('userToken', JSON.stringify(user))
       setPaletteToken(user.token)
       navigate('/')

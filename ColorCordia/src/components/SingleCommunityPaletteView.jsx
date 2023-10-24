@@ -4,9 +4,8 @@ import { useParams } from "react-router-dom"
 import { getPaletteById, likePalette } from "../services/palettes"
 import Canvas from "./Canvas"
 import { GetColorNames } from "../services/colorNames"
-import { getLikedPosts } from "../services/user"
 
-const SingleCommunityPaletteView = ({ palettes, user }) => {
+const SingleCommunityPaletteView = ({ palettes, user, setUser }) => {
   const params = useParams().id
   const [id, ...harmony] = params.split('-')
   const [palette, setPalette] = useState(null)
@@ -41,13 +40,12 @@ const SingleCommunityPaletteView = ({ palettes, user }) => {
         return setDisableLike(true)
       }
       if (user && palette && disableLike !== true) {
-        const likes = await getLikedPosts(user.id)
-        if (likes.find(element => element === palette.id)) {
+        if (user.likedPosts.find(element => element === palette.id)) {
           setDisableLike(true)
         }
       }
     })()
-  }, [palette])
+  }, [palette, user])
 
 
   if (!palette) {
@@ -56,6 +54,8 @@ const SingleCommunityPaletteView = ({ palettes, user }) => {
 
   const handleLike = () => {
     const updatedPalette = { ...palette, likes: palette.likes + 1 }
+    const updatedUser = { ...user, likedPosts: user.likedPosts.concat(palette.id) }
+    setUser(updatedUser)
     setPalette(updatedPalette)
     likePalette(updatedPalette)
     setDisableLike(true)

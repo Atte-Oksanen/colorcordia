@@ -26,3 +26,11 @@ export const createPalette = async paletteString => {
   }
   return (await axios.post(BASE_URL, newPalette, { headers: { authorization: token } }))
 }
+
+export const getPalettesByCreator = async creatorId => {
+  return (await axios.get(`${BASE_URL}/getpalettesbycreator/${creatorId}`)).data
+}
+
+export const deletePalette = async paletteId => {
+  return (await axios.delete(`${BASE_URL}/${paletteId}`, { headers: { authorization: token } }))
+}

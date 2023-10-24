@@ -3,9 +3,9 @@ const mongoose = require('mongoose')
 require('dotenv').config()
 const app = express()
 const mongoAdress = process.env.MONGODB_URI
-const colorNameRouter = require('./routers/colorNames')
+const colorNameRouter = require('./routers/colorNameRouter')
 const cors = require('cors')
-const paletteRouter = require('./routers/palettes')
+const paletteRouter = require('./routers/paletteRouter')
 const userRouter = require('./routers/userRouter')
 const jwt = require('jsonwebtoken')
 

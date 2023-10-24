@@ -1,5 +1,10 @@
 import axios from "axios"
 const BASE_URL = 'http://localhost:3001/api/users'
+let token = null
+
+export const setUserToken = newToken => {
+  token = newToken
+}
 
 export const login = async creds => {
   return (await axios.post(`${BASE_URL}/login`, creds)).data
@@ -16,10 +21,9 @@ export const checkUsername = async username => {
   } else {
     return false
   }
-
 }
 
-export const getLikedPosts = async userId => {
-  return (await axios.get(`${BASE_URL}/likedposts/${userId}`)).data
+export const getUser = async userId => {
+  return (await axios.get(`${BASE_URL}/getuser/${userId}`, { headers: { authorization: token } })).data
 }
 

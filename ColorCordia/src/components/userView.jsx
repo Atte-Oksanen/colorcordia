@@ -1,21 +1,42 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react"
 import EditableField from "./editableField"
+import { deletePalette, getPalettesByCreator } from "../services/palettes"
+import CommunityPalette from "./CommunityPalette"
 
 const UserView = ({ user }) => {
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('***********')
+  const [palettes, setPalettes] = useState([])
 
   useEffect(() => {
     if (user) {
       setUsername(user.username)
-      setEmail(user.email)
+      setEmail(user.email);
+      (async () => {
+        setPalettes(await getPalettesByCreator(user.id))
+      })()
     }
   }, [user])
 
   if (!user) {
     return null
+  }
+
+  const countPaletteLikes = () => {
+    let likes = 0
+    palettes.forEach(palette => {
+      likes = likes + palette.likes
+    })
+    return likes
+  }
+
+  const handlePaletteDelete = event => {
+    if (window.confirm('Do you want to delete a palette?')) {
+      deletePalette(event.target.id)
+      setPalettes(palettes.filter(palette => palette.id !== event.target.id))
+    }
   }
   return (
     <div>
@@ -29,11 +50,13 @@ const UserView = ({ user }) => {
       </form>
       <div>
         <ul>
-          <li>Created palettes:</li>
-          <li>Shared palettes:</li>
-          <li>Received likes:</li>
+          <li>Shared palettes:{palettes.length}</li>
+          <li>Received likes:{countPaletteLikes()}</li>
         </ul>
       </div>
+      <h3>Your palettes</h3>
+      {palettes.map(palette => <CommunityPalette key={Math.random()} palette={palette}><button id={palette.id} onClick={event => handlePaletteDelete(event)}>Delete</button></CommunityPalette>)}
+
     </div>
   )
 }

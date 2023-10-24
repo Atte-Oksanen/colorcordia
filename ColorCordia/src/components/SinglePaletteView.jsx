@@ -10,6 +10,7 @@ const SinglePaletteView = ({ setMessage }) => {
   const id = useParams().id
   const type = id.split('-')[0]
   const [colors, setColors] = useState(null)
+  const [shareButtonDisabled, setButtonDisabled] = useState(false)
 
   useEffect(() => {
     (async () => {
@@ -21,6 +22,7 @@ const SinglePaletteView = ({ setMessage }) => {
   const handlePaletteCreation = async () => {
     await createPalette(id)
     setMessage("palette created")
+    setButtonDisabled(true)
   }
 
   const downloadImage = () => {
@@ -39,7 +41,7 @@ const SinglePaletteView = ({ setMessage }) => {
         {`${type} pallette from ${colors[2].hex}`}
       </div>
       {colors.map(color => <div key={Math.random()} style={{ background: color.hex }}>{color.hex}-{color.name}</div>)}
-      <button onClick={handlePaletteCreation}>Share</button>
+      <button disabled={shareButtonDisabled} onClick={handlePaletteCreation}>Share</button>
       <button onClick={downloadImage}>Download</button>
       <Canvas palette={colors} type={type} setDataUrl={setDataUrl}></Canvas>
     </>

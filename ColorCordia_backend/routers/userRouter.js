@@ -63,4 +63,13 @@ userRouter.get('/likedposts/:id', async (req, res) => {
   res.json((await User.findById(req.params.id)).likedPosts)
 })
 
+userRouter.get('/getuser/:id', async (req, res) => {
+  if (!req.user) {
+    return res.status(401).json({ message: "authorization needed" })
+  } else if (req.user.id !== req.params.id) {
+    return res.status(401).json({ message: "Invalid credentials" })
+  }
+  return res.json(await User.findById(req.params.id))
+})
+
 module.exports = userRouter

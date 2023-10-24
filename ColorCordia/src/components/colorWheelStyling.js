@@ -48,6 +48,7 @@ const pointerStyle = {
   cursor: 'crosshair',
   zIndex: 2,
   border: '1px solid white',
+  touchAction: 'none'
 }
 
 

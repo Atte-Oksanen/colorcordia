@@ -128,6 +128,7 @@ const ColorWheel = ({ setColor, setMessage }) => {
           onMouseDown={event => handlePointerClick(event)}
           onMouseUp={() => document.onmousemove = null}
           onTouchStart={event => {
+            event.preventDefault()
             event.stopPropagation()
           }}
           onTouchMove={event => handleTouchStart(event)}

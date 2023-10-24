@@ -49,6 +49,7 @@ const ColorWheel = ({ setColor, setMessage }) => {
   }
 
   const handleTouchStart = event => {
+    event.stopPropagation()
     movePointer(event.touches[0].clientX, event.touches[0].clientY)
   }
 

@@ -45,17 +45,42 @@ const ColorWheel = ({ setColor, setMessage }) => {
 
   const pointerDrag = event => {
     event.preventDefault()
+    movePointer(event.clientX, event.clientY)
+  }
+
+  const handleTouchStart = event => {
+    movePointer(event.touches[0].clientX, event.touches[0].clientY)
+  }
+
+  const handleColorInput = (event) => {
+    setInput(event.target.value)
+    movePointerOnInput(event.target.value)
+  }
+
+  const movePointerOnInput = hex => {
+    const rgb = hexToRgb(hex)
+    if (rgb) {
+      pointer.current.style.backgroundColor = hex
+      const hsv = (rgbToHsv(rgb))
+      const coords = { ...hsv, h: hsv.h * 360, s: hsv.s * wheelBox.current.r }
+      const theta = coords.h * Math.PI / 180
+      pointer.current.style.left = coords.s * Math.cos(theta) + wheelBox.current.x - pointerBox.current.width + 'px'
+      pointer.current.style.top = coords.s * Math.sin(theta) + wheelBox.current.y - pointerBox.current.height + 'px'
+    }
+  }
+
+  const movePointer = (clientX, clientY) => {
     const pointerElmt = pointer.current.getBoundingClientRect()
     const pointerPosition = {
       x: pointerElmt.x + pointerElmt.width / 2,
       y: pointerElmt.y + pointerElmt.height / 2,
     }
     if (
-      (Math.sqrt(Math.pow(event.clientX - wheelBox.current.x, 2) + Math.pow(event.clientY - wheelBox.current.y, 2)) + 10) <
+      (Math.sqrt(Math.pow(clientX - wheelBox.current.x, 2) + Math.pow(clientY - wheelBox.current.y, 2)) + 10) <
       wheelBox.current.r
     ) {
-      pointer.current.style.top = event.clientY - pointerBox.current.height / 2 + 'px'
-      pointer.current.style.left = event.clientX - pointerBox.current.width / 2 + 'px'
+      pointer.current.style.top = clientY - pointerBox.current.height / 2 + 'px'
+      pointer.current.style.left = clientX - pointerBox.current.width / 2 + 'px'
     }
     let degs = Math.atan2(pointerPosition.y - wheelBox.current.y, pointerPosition.x - wheelBox.current.x) * (180 / Math.PI)
     if (degs < 0) {
@@ -75,23 +100,6 @@ const ColorWheel = ({ setColor, setMessage }) => {
     const pickedColor = rgbToHex(hsvToRgb(hsvTemp))
     pointer.current.style.backgroundColor = pickedColor
     setInput(pickedColor)
-  }
-
-  const handleColorInput = (event) => {
-    setInput(event.target.value)
-    movePointerOnInput(event.target.value)
-  }
-
-  const movePointerOnInput = hex => {
-    const rgb = hexToRgb(hex)
-    if (rgb) {
-      pointer.current.style.backgroundColor = hex
-      const hsv = (rgbToHsv(rgb))
-      const coords = { ...hsv, h: hsv.h * 360, s: hsv.s * wheelBox.current.r }
-      const theta = coords.h * Math.PI / 180
-      pointer.current.style.left = coords.s * Math.cos(theta) + wheelBox.current.x - pointerBox.current.width + 'px'
-      pointer.current.style.top = coords.s * Math.sin(theta) + wheelBox.current.y - pointerBox.current.height + 'px'
-    }
   }
 
   const handleColorSubmit = event => {
@@ -118,8 +126,9 @@ const ColorWheel = ({ setColor, setMessage }) => {
           style={wheelStyles.pointerStyle}
           onMouseDown={event => handlePointerClick(event)}
           onMouseUp={() => document.onmousemove = null}
+          onTouchMove={event => handleTouchStart(event)}
         ></div>
-      </div>
+      </div >
       <form onSubmit={handleColorSubmit}>
         <input type='text' value={colorInput} onChange={handleColorInput} />
         <button type='submit'>Create palettes</button>

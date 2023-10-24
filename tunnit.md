@@ -23,3 +23,4 @@
 |18.10.23|4| Käyttäjähallinnan luonnin aloitus
 |19.10.23|3| Käyttäjähallinnan jatkaminen
 |23.10.23|7| Käyttäjähallinnan jatkaminen + sovelluksen hostausmahdollisuuksien tutkiminen
+|24.10.23|2| Väriympyrän refaktorointi + kosketuskäyttöliittymien tuen toteutus

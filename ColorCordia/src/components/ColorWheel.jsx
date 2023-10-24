@@ -50,6 +50,7 @@ const ColorWheel = ({ setColor, setMessage }) => {
 
   const handleTouchStart = event => {
     event.stopPropagation()
+    document.body.style.overflow = "hidden"
     movePointer(event.touches[0].clientX, event.touches[0].clientY)
   }
 
@@ -128,6 +129,7 @@ const ColorWheel = ({ setColor, setMessage }) => {
           onMouseDown={event => handlePointerClick(event)}
           onMouseUp={() => document.onmousemove = null}
           onTouchMove={event => handleTouchStart(event)}
+          onTouchEnd={() => document.body.style.overflow = "auto"}
         ></div>
       </div >
       <form onSubmit={handleColorSubmit}>

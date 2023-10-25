@@ -29,6 +29,10 @@ function App() {
         setPaletteToken(parsedUser.token)
         setUserToken(parsedUser.token)
         setUser(await getUser(parsedUser.id))
+        const urlParams = new URLSearchParams(window.location.search)
+        const path = urlParams.get('path')
+        console.log(path)
+        navigate(path)
       }
     })()
   }, [])

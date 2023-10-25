@@ -1,16 +1,14 @@
 const colorNameRouter = require('express').Router()
 const ColorName = require('../models/colorName')
 const { hexToRgb } = require('../utils/colorConverters')
+const fs = require('fs')
 const colors = [];
 
-(async () => {
-  const tempColors = (await ColorName.find({}))
-  tempColors.forEach(element => {
-    colors.push(element)
-  });
-  console.log(`${colors.length} color names loaded`)
-})()
-
+const tempColors = JSON.parse(fs.readFileSync('./data/color_names.json'))
+tempColors.forEach(element => {
+  colors.push({ ...element, rgb: hexToRgb(element.hex) })
+})
+console.info(`${colors.length} color names loaded`)
 
 colorNameRouter.get('/', async (req, res) => {
   res.json(colors)

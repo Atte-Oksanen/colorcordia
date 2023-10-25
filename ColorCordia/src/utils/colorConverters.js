@@ -1,31 +1,34 @@
+/* eslint-disable no-empty */
 export const hsvToRgb = (hsv) => {
-  let h = hsv.h, s = hsv.s, v = hsv.v
+  if (hsv.h > 1) {
+    return null
+  }
   let r, g, b
 
-  let i = Math.floor(h * 6)
-  let f = h * 6 - i
-  let p = v * (1 - s)
-  let q = v * (1 - f * s)
-  let t = v * (1 - (1 - f) * s)
+  let i = Math.floor(hsv.h * 6)
+  let f = hsv.h * 6 - i
+  let p = hsv.v * (1 - hsv.s)
+  let q = hsv.v * (1 - f * hsv.s)
+  let t = hsv.v * (1 - (1 - f) * hsv.s)
 
   switch (i % 6) {
     case 0:
-      (r = v), (g = t), (b = p)
+      (r = hsv.v), (g = t), (b = p)
       break
     case 1:
-      (r = q), (g = v), (b = p)
+      (r = q), (g = hsv.v), (b = p)
       break
     case 2:
-      (r = p), (g = v), (b = t)
+      (r = p), (g = hsv.v), (b = t)
       break
     case 3:
-      (r = p), (g = q), (b = v)
+      (r = p), (g = q), (b = hsv.v)
       break
     case 4:
-      (r = t), (g = p), (b = v)
+      (r = t), (g = p), (b = hsv.v)
       break
     case 5:
-      (r = v), (g = p), (b = q)
+      (r = hsv.v), (g = p), (b = q)
       break
   }
   return { r: r * 255, g: g * 255, b: b * 255 }
@@ -59,9 +62,12 @@ export const rgbToHex = (rgb) => {
     const hex = v.toString(16)
     return hex.length === 1 ? '0' + hex : hex
   }
-  return `#${valueToHex(Math.round(rgb.r))}${valueToHex(Math.round(rgb.g))}${valueToHex(
-    Math.round(rgb.b)
-  )}`
+  try {
+    if (rgb.r < 256 && rgb.g < 256 && rgb.b < 256) {
+      return `#${valueToHex(Math.round(rgb.r))}${valueToHex(Math.round(rgb.g))}${valueToHex(Math.round(rgb.b))}`
+    }
+  } catch (error) { }
+  return null
 }
 
 export const hexToRgb = (hex) => {
@@ -71,15 +77,6 @@ export const hexToRgb = (hex) => {
     g: parseInt(result[2], 16),
     b: parseInt(result[3], 16)
   } : null;
-}
-
-
-
-export const hsvToNcs = hsv => {
-  const blackness = 100 - 100 * hsv.v
-  const whiteness = 200 - (hsv.s * (200 - 100 * hsv.v)) - 100 * hsv.v
-  const chromaticness = 100 - blackness
-  console.log(blackness, chromaticness, whiteness)
 }
 
 /*
@@ -110,7 +107,7 @@ export const ncsToRgb = (ncs) => {
   ncs = ncs.trim().toUpperCase().match(ncsRe)
 
   if (ncs === null) {
-    return false
+    return null
   }
 
   const blackness = Number(ncs[1])

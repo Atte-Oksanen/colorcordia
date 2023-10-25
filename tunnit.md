@@ -25,3 +25,4 @@
 |23.10.23|7| Käyttäjähallinnan jatkaminen + sovelluksen hostausmahdollisuuksien tutkiminen
 |24.10.23|2| Väriympyrän refaktorointi + kosketuskäyttöliittymien tuen toteutus
 ||8| Värimuunnostyökalun aloitus + backendin refaktorointi
+|25.10.23|6| Värimuunnostyökalun viimeistely + backendin refaktorointi

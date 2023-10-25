@@ -65,7 +65,7 @@ function App() {
         <Route path='/profile' element={<UserView user={user}></UserView>}></Route>
         <Route path='/login' element={<LoginView setUser={setUser} setMessage={setMessage}></LoginView>}></Route>
         <Route path='/signup' element={<SignUpView setMessage={setMessage}></SignUpView>}></Route>
-        <Route path='/converter' element={<ColorConverterView></ColorConverterView>}></Route>
+        <Route path='/converter' element={<ColorConverterView setMessage={setMessage}></ColorConverterView>}></Route>
       </Routes>
     </>
   )

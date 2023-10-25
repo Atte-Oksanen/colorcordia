@@ -26,5 +26,6 @@
 |24.10.23|2| Väriympyrän refaktorointi + kosketuskäyttöliittymien tuen toteutus
 ||8| Värimuunnostyökalun aloitus + backendin refaktorointi
 |25.10.23|6| Värimuunnostyökalun viimeistely + backendin refaktorointi
+||5| Renderin konfigurointi + sovelluksen valmistelu julkaisua varten
 
-Yhteensä: 85h
+Yhteensä: 90h

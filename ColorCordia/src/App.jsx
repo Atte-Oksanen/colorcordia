@@ -31,6 +31,7 @@ function App() {
         setUser(await getUser(parsedUser.id))
         const urlParams = new URLSearchParams(window.location.search)
         const path = urlParams.get('path')
+        console.log(path)
         if (path) {
           navigate(path)
         }

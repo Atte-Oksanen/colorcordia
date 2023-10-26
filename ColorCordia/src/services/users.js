@@ -1,5 +1,7 @@
 import axios from "axios"
-const BASE_URL = 'https://colorcordia-backend.onrender.com/api/users'
+// const BASE_URL = 'https://colorcordia-backend.onrender.com/api/users'
+const BASE_URL = 'http://localhost:3001/api/users'
+
 let token = null
 
 export const setUserToken = newToken => {

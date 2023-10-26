@@ -2,14 +2,18 @@
 import { useEffect } from "react"
 import { getPalettes } from "../services/palettes"
 import CommunityPalette from "./CommunityPalette"
+import LoadingComponent from "./LoadingComponent"
 const ExploreView = ({ palettes, setPalettes }) => {
   useEffect(() => {
     (async () => {
       setPalettes(await getPalettes())
     })()
   }, [setPalettes])
+
   if (palettes.length < 1) {
-    return null
+    return (
+      <LoadingComponent></LoadingComponent>
+    )
   }
   return (
     <div>

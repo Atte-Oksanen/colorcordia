@@ -27,5 +27,6 @@
 ||8| Värimuunnostyökalun aloitus + backendin refaktorointi
 |25.10.23|6| Värimuunnostyökalun viimeistely + backendin refaktorointi
 ||5| Renderin konfigurointi + sovelluksen valmistelu julkaisua varten
+|26.10.23|3| Väriharmonioiden muokkaus + tokenien erääntymisen toteutus + CI/CD toimintojen lisäys 
 
-Yhteensä: 90h
+Yhteensä: 93h

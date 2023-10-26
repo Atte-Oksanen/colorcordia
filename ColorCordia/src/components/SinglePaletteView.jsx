@@ -5,7 +5,7 @@ import { useEffect, useState } from "react"
 import Canvas from "./Canvas"
 import { GetColorNames } from "../services/colorNames"
 
-const SinglePaletteView = ({ setMessage }) => {
+const SinglePaletteView = ({ setMessage, user }) => {
   const [dataUrl, setDataUrl] = useState(null)
   const id = useParams().id
   const type = id.split('-')[0]
@@ -17,6 +17,9 @@ const SinglePaletteView = ({ setMessage }) => {
       const colors = await GetColorNames(id.substring(id.indexOf('-') + 1))
       setColors(colors)
     })()
+    if (!user) {
+      setButtonDisabled(true)
+    }
   }, [])
 
   const handlePaletteCreation = async () => {

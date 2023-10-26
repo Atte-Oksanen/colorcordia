@@ -26,9 +26,14 @@ function App() {
       const savedUser = window.localStorage.getItem('userToken')
       if (savedUser) {
         const parsedUser = JSON.parse(savedUser)
-        setPaletteToken(parsedUser.token)
-        setUserToken(parsedUser.token)
-        setUser(await getUser(parsedUser.id))
+        try {
+          setUserToken(parsedUser.token)
+          setUser(await getUser(parsedUser.id))
+          setPaletteToken(parsedUser.token)
+        } catch (error) {
+          setMessage('Login timed out, please log back in')
+          window.localStorage.removeItem('userToken')
+        }
       }
       const urlParams = new URLSearchParams(window.location.search)
       const path = urlParams.get('path')
@@ -64,7 +69,7 @@ function App() {
         <Route path='/' element={<ColorWheel setColor={setColor} pickedColor={pickedColor} setMessage={setMessage}></ColorWheel>}></Route>
         <Route path='/palettes/' element={<PaletteView color={pickedColor} setColor={setColor}></PaletteView>}></Route>
         <Route path='/palettes/:id' element={<FollowUpPalettes></FollowUpPalettes>}></Route>
-        <Route path='/palette/:id' element={<SinglePaletteView setMessage={setMessage}></SinglePaletteView>}></Route>
+        <Route path='/palette/:id' element={<SinglePaletteView setMessage={setMessage} user={user}></SinglePaletteView>}></Route>
         <Route path='/explore' element={<ExploreView palettes={communityPalettes} setPalettes={setPalettes}></ExploreView>}></Route>
         <Route path='/explore/:id' element={<SingleCommunityPaletteView palettes={communityPalettes} user={user} setUser={setUser}></SingleCommunityPaletteView>}></Route>
         <Route path='/profile' element={<UserView user={user}></UserView>}></Route>

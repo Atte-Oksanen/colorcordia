@@ -216,7 +216,7 @@ const ColorConverterView = ({ setMessage }) => {
   return (
     <div>
       Color system
-      <select onChange={event => setStartUnit(event.target.value)}>
+      <select onChange={event => setStartUnit(event.target.value)} value={startUnit}>
         <option>Hex</option>
         <option>RGB</option>
         <option>HSV</option>
@@ -227,10 +227,10 @@ const ColorConverterView = ({ setMessage }) => {
       <button onClick={handleColorConversion}>Convert to</button>
       <br />
       Color system
-      <select onChange={event => setEndUnit(event.target.value)}>
+      <select onChange={event => setEndUnit(event.target.value)} value={endUnit}>
         <option>Hex</option>
         <option>RGB</option>
-        <option selected>HSV</option>
+        <option>HSV</option>
         <option>NCS</option>
       </select>
       <input type="text" placeholder="Color code" readOnly value={endValue}></input>

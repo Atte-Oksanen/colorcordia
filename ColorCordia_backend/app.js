@@ -13,6 +13,9 @@ const ncsConvertRouter = require('./routers/ncsConvertRouter')
 const authExtractor = (req, res, next) => {
   try {
     req.user = (jwt.verify(req.get('authorization'), process.env.SECRET))
+    if (Date.now() - req.user.lastLogin > 604800000) {
+      return res.status(401).json({ message: "Manual login required" })
+    }
   } catch (error) { }
   next()
 }

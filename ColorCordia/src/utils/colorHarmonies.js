@@ -34,8 +34,6 @@ const getMultiplier = (attribute) => {
   return 1.2
 }
 
-
-
 export const analogousHarmony = hex => {
   const hsv = transformToHsv(hex)
   const vMultiplier = getMultiplier(hsv.v)
@@ -150,6 +148,16 @@ export const compoundHarmony = hex => {
 export const shadeHarmony = hex => {
   const hsv = transformToHsv(hex)
   const vMultiplier = getMultiplier(hsv.v)
+  console.log(hsv, vMultiplier)
+  if (hsv.v > 0.8) {
+    return checkColorArray([
+      { ...hsv, v: hsv.v * vMultiplier / 1.6 },
+      { ...hsv, v: hsv.v * vMultiplier / 1.1 },
+      { ...hsv },
+      { ...hsv, v: hsv.v * vMultiplier },
+      { ...hsv, v: hsv.v * vMultiplier * 1.1 },
+    ])
+  }
   return checkColorArray([
     { ...hsv, v: hsv.v * vMultiplier / 1.6 },
     { ...hsv, v: hsv.v * vMultiplier },

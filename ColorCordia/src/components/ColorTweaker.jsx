@@ -36,11 +36,11 @@ const ColorTweaker = ({ color, setColor }) => {
     <>
       <div style={{ background: `${rgbToHex(rgb)}` }}>{color}</div>
       R
-      <input type="range" value={rgb.r} max={255} onChange={handleSliderR} />
+      <input type="range" value={rgb.r} max={255} onChange={handleSliderR} /> {rgb.r}
       G
-      <input type="range" value={rgb.g} max={255} onChange={handleSliderG} />
+      <input type="range" value={rgb.g} max={255} onChange={handleSliderG} /> {rgb.g}
       B
-      <input type="range" value={rgb.b} max={255} onChange={handleSliderB} />
+      <input type="range" value={rgb.b} max={255} onChange={handleSliderB} /> {rgb.b}
 
       <Link to='/'>Pick a new color</Link>
     </>

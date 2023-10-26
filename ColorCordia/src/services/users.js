@@ -1,6 +1,10 @@
 import axios from "axios"
-// const BASE_URL = 'https://colorcordia-backend.onrender.com/api/users'
-const BASE_URL = 'http://localhost:3001/api/users'
+let BASE_URL = ''
+if (process.env.NODE_ENV === 'development') {
+  BASE_URL = 'http://localhost:3001/api/users'
+} else {
+  BASE_URL = 'https://colorcordia-backend.onrender.com/api/users'
+}
 
 let token = null
 

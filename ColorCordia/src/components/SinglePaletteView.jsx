@@ -2,7 +2,7 @@
 import { useParams } from "react-router-dom"
 import { createPalette } from "../services/palettes"
 import { useEffect, useState } from "react"
-import Canvas from "./Canvas"
+import PaletteCanvas from "./PaletteCanvas"
 import { GetColorNames } from "../services/colorNames"
 
 const SinglePaletteView = ({ setMessage, user }) => {
@@ -46,7 +46,7 @@ const SinglePaletteView = ({ setMessage, user }) => {
       {colors.map(color => <div key={Math.random()} style={{ background: color.hex }}>{color.hex}-{color.name}</div>)}
       <button disabled={shareButtonDisabled} onClick={handlePaletteCreation}>Share</button>
       <button onClick={downloadImage}>Download</button>
-      <Canvas palette={colors} type={type} setDataUrl={setDataUrl}></Canvas>
+      <PaletteCanvas palette={colors} type={type} setDataUrl={setDataUrl}></PaletteCanvas>
     </>
 
   )

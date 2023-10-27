@@ -13,6 +13,7 @@ import SignUpView from './components/SignUpView'
 import { setPaletteToken } from './services/palettes'
 import { getUser, setUserToken } from './services/users'
 import ColorConverterView from './components/ColorConverterView'
+import SchemeVisualiserView from './components/SchemeVisualiserView'
 
 function App() {
   const navigate = useNavigate()
@@ -56,7 +57,7 @@ function App() {
         <h1>ColorCordia</h1>
         <Link to='/'>Color wheel</Link>
         <Link to='/explore'>Explore</Link>
-        <Link>Scheme visualiser</Link>
+        <Link to='/visualiser'>Scheme visualiser</Link>
         <Link to='/converter'>Color converter</Link>
         <Link>About</Link>
         {user && <Link to='/profile'>User Profile</Link>}
@@ -76,6 +77,7 @@ function App() {
         <Route path='/login' element={<LoginView setUser={setUser} setMessage={setMessage}></LoginView>}></Route>
         <Route path='/signup' element={<SignUpView setMessage={setMessage}></SignUpView>}></Route>
         <Route path='/converter' element={<ColorConverterView setMessage={setMessage}></ColorConverterView>}></Route>
+        <Route path='/visualiser' element={<SchemeVisualiserView>S</SchemeVisualiserView>}></Route>
       </Routes>
     </>
   )

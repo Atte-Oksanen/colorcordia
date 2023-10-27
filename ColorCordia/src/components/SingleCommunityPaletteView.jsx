@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { getPaletteById, likePalette } from "../services/palettes"
-import Canvas from "./Canvas"
+import PaletteCanvas from "./PaletteCanvas"
 import { GetColorNames } from "../services/colorNames"
 
 const SingleCommunityPaletteView = ({ palettes, user, setUser }) => {
@@ -77,7 +77,7 @@ const SingleCommunityPaletteView = ({ palettes, user, setUser }) => {
       <button onClick={handleLike} disabled={disableLike} >Like</button>
       <button onClick={downloadImage}>Download</button>
       <br />
-      <Canvas palette={colors} type={type} setDataUrl={setDataUrl}></Canvas>
+      <PaletteCanvas palette={colors} type={type} setDataUrl={setDataUrl}></PaletteCanvas>
     </>
   )
 }

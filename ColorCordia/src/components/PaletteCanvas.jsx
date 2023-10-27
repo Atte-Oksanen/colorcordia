@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useRef } from "react"
 
-const Canvas = ({ palette, type, setDataUrl }) => {
+const PaletteCanvas = ({ palette, type, setDataUrl }) => {
   const canvasRef = useRef(null)
   useEffect(() => {
     const canvas = canvasRef.current
@@ -28,4 +28,4 @@ const Canvas = ({ palette, type, setDataUrl }) => {
   return <canvas width='1500' height='1080' ref={canvasRef} style={{ display: "none" }} >Your browser does not support canvas</canvas>
 }
 
-export default Canvas
+export default PaletteCanvas

@@ -8,10 +8,7 @@ const VisualiserCanvas = ({ colors }) => {
   useEffect(() => {
     const canvas = canvasRef.current
     const ctx = canvas.getContext('2d')
-    const bgGradient = ctx.createLinearGradient(0, 0, 500, 0)
-    bgGradient.addColorStop(0, colors[0])
-    bgGradient.addColorStop(1, colors[1])
-    ctx.fillStyle = bgGradient
+    ctx.fillStyle = colors[1]
     ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height)
     const firstGradient = ctx.createRadialGradient(-10, 150, 30, -40, 150, 290)
     firstGradient.addColorStop(0, colors[2])
@@ -27,6 +24,14 @@ const VisualiserCanvas = ({ colors }) => {
     ctx.fillStyle = secondGradient
     ctx.beginPath();
     ctx.arc(550, -100, 400, 0, Math.PI * 2, true)
+    ctx.fill()
+    ctx.closePath()
+    const thirdGradient = ctx.createRadialGradient(380, 580, 290, 400, 580, 440)
+    thirdGradient.addColorStop(0, colors[2])
+    thirdGradient.addColorStop(1, 'transparent')
+    ctx.fillStyle = thirdGradient
+    ctx.beginPath();
+    ctx.arc(380, 580, 450, 0, Math.PI * 2, true)
     ctx.fill()
     ctx.closePath()
   }, [colors])
@@ -53,8 +58,8 @@ const VisualiserCanvas = ({ colors }) => {
 
   return (
     <div style={{ display: "grid", gridTemplateColumns: '1fr', gridTemplateRows: '1fr' }}>
-      <canvas width='600' height='200' ref={canvasRef} style={{ border: '1px solid black', gridArea: '1/1/2/2' }} >Your browser does not support canvas</canvas>
-      <canvas width='600' height='200' ref={noiseRef} style={{ border: '1px solid black', gridArea: '1/1/2/2' }} >Your browser does not support canvas</canvas>
+      <canvas width='700' height='100' ref={canvasRef} style={{ borderRadius: '1.5rem', gridArea: '1/1/2/2' }} >Your browser does not support canvas</canvas>
+      <canvas width='700' height='100' ref={noiseRef} style={{ borderRadius: '1.5rem', gridArea: '1/1/2/2' }} >Your browser does not support canvas</canvas>
     </div>
   )
 }

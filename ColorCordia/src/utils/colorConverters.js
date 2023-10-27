@@ -220,3 +220,13 @@ export const ncsToRgb = (ncs) => {
     }
   }
 }
+
+export const getTextColor = (bgColor) => {
+  const bgHsv = rgbToHsv(hexToRgb(bgColor))
+  if (bgHsv.v < 0.5) {
+    return '#ffffff'
+  } else {
+    return '#000000'
+  }
+
+}

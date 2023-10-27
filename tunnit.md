@@ -29,5 +29,6 @@
 ||5| Renderin konfigurointi + sovelluksen valmistelu julkaisua varten
 |26.10.23|3| Väriharmonioiden muokkaus + tokenien erääntymisen toteutus + CI/CD toimintojen lisäys
 |27.10.23|4| Google Material Design opiskelu + Palettien visualisoinnin aloitus 
+||3| Palettien visualisoinnin jatkaminen
 
-Yhteensä: 93h
+Yhteensä: 100h

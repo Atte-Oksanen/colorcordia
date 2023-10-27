@@ -1,5 +1,5 @@
 import { useState } from "react"
-import VisualiserCanvas from "./VisualiserCanvas"
+import VisualiserBlog from "./VisualiserBlog"
 
 const SchemeVisualiserView = () => {
   const [colors, setColors] = useState([])
@@ -16,13 +16,16 @@ const SchemeVisualiserView = () => {
   return (
     <div>
       <form onSubmit={handleColorInput}>
-        bg1<input type="color" />
-        bg2<input type="color" />
-        w1<input type="color" />
-        w2<input type="color" />
+        Primary key color<input type="color" />
+        Secondary key color<input type="color" />
+        Tertiary key color<input type="color" />
+        Supporting color<input type="color" />
         <button type="submit">submit</button>
       </form>
-      {colors.length > 1 && <VisualiserCanvas colors={colors}></VisualiserCanvas>}
+      <div style={{ border: '1px solid black', width: '50rem' }}>
+
+        <VisualiserBlog colors={colors}></VisualiserBlog>
+      </div>
     </div>
   )
 }

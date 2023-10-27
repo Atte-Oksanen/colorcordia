@@ -1,5 +1,6 @@
 import { useState } from "react"
 import VisualiserBlog from "./VisualiserBlog"
+import VisualiserCalendar from "./VisualiserCalendar"
 
 const SchemeVisualiserView = () => {
   const [colors, setColors] = useState([])
@@ -22,9 +23,11 @@ const SchemeVisualiserView = () => {
         Supporting color<input type="color" />
         <button type="submit">submit</button>
       </form>
-      <div style={{ border: '1px solid black', width: '50rem' }}>
-
+      <div style={{ display: 'inline-block', borderRadius: '1rem', width: '40rem', overflow: 'hidden' }}>
         <VisualiserBlog colors={colors}></VisualiserBlog>
+      </div>
+      <div style={{ display: 'inline-block', borderRadius: '1rem', width: '40rem', overflow: 'hidden', marginLeft: '1rem' }}>
+        <VisualiserCalendar colors={colors}></VisualiserCalendar>
       </div>
     </div>
   )

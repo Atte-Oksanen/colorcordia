@@ -8,42 +8,53 @@ const VisualiserBlog = ({ colors }) => {
     return null
   }
   return (
-    <div style={{ padding: '0.5rem 2rem', background: colors[3] }}>
-      <div style={{ padding: '1rem', background: 'white', filter: 'drop-shadow(0 0 0.2rem black)' }}>
+    <div style={{ display: "grid", gridTemplateColumns: '1fr', gridTemplateRows: '1fr', height: '51rem' }}>
+      <div style={{ gridArea: '1/1/2/2', width: '100%', overflow: 'hidden' }}>
         {colors.length > 1 && <VisualiserCanvas colors={colors}></VisualiserCanvas>}
-        <h2 style={{ display: 'inline-block', marginRight: '1rem' }}>
-          Create Meaning With Color
-        </h2>
-        <button style={{ color: getTextColor(colors[0]), background: colors[0], padding: '0.3rem', borderRadius: '1rem', border: `1px solid ${getTextColor(colors[0])}` }}>
-          Like this post
-        </button>
-        <br />
-        <h3 style={{ display: 'inline-block', marginRight: '1rem' }}>
-          Written by John Doe
-        </h3>
-        <button style={{ color: getTextColor(colors[0]), background: colors[0], padding: '0.3rem', borderRadius: '1rem', border: `1px solid ${getTextColor(colors[0])}` }}>
-          Follow
-        </button>
-        <p>
+      </div>
+      <div style={{ margin: '3rem', filter: 'drop-shadow(0 0 0.2rem black)', gridArea: '1/1/2/2', width: '85%' }}>
+        <div style={{ background: 'white', padding: '0.5rem 1rem', borderRadius: '3px' }}>
+          <h2 style={{ display: 'inline-block', marginRight: '1rem' }}>
+            Create Meaning With Color
+          </h2>
+          <button style={{ color: getTextColor(colors[0]), background: colors[0], padding: '0.3rem', borderRadius: '3px', border: `2px solid black` }}>
+            <b>
+              Share
+            </b>
+          </button>
+          <br />
+          <h4 style={{ display: 'inline-block', marginRight: '1rem' }}>
+            Written by John Doe
+          </h4>
+          <button style={{ color: getTextColor(colors[0]), background: colors[0], padding: '0.3rem', borderRadius: '3px', border: `2px solid black` }}>
+            <b>
+              Follow
+            </b>
+          </button>
+        </div>
+        <p style={{ background: 'white', padding: '1rem', borderRadius: '3px' }}>
           Color is a language in UI design. It can express emotions, set the mood, and lead users through a digital experience. To create meaning with color, one must comprehend the psychology of color and its impact on user interaction.
           <br />
           <br />
-          Colors have diverse cultural associations, but some universal emotions are tied to certain colors. For instance, red often conveys passion and urgency, blue signifies trust and professionalism, green evokes nature and tranquility, and yellow represents happiness and attention.
+          Colors have diverse cultural associations, but some universal emotions are tied to certain colors.
+          For instance, red often conveys passion and urgency, blue signifies trust and professionalism,
+          green evokes nature and tranquility, and yellow represents happiness and attention.
+
           <br />
           <br />
-          In UI design, color plays a crucial role in establishing a visual hierarchy. It guides users and draws their attention to important elements. Primary actions, such as "Sign Up" or "Buy Now" buttons, benefit from bold, contrasting colors, encouraging users to engage. Secondary actions like "Cancel" or "Learn More" buttons can use softer, complementary colors to indicate their lower priority. Red is often reserved for error messages, as it naturally grabs attention and conveys urgency.
-          <br />
-          <br />
+        </p >
+        <p style={{ background: 'white', borderRadius: '3px', padding: '0.5rem 1rem' }}>
+          <h2 style={{ borderLeft: `2px solid ${colors[1]}`, padding: '1rem', fontWeight: 'normal' }}>
+            <i>
+              Consistency is key
+            </i>
+          </h2>
+        </p>
+        <p style={{ background: 'white', padding: '1rem', borderRadius: '3px' }}>
           Consistency is key in color usage, especially when it comes to branding. A well-defined color palette that aligns with the brand identity helps users remember and trust a product. Consistent color choices create familiarity and credibility, reinforcing the brand's personality and values.
           <br />
           <br />
-          Inclusivity and accessibility are essential in UI design. Colors should not exclude anyone, including those with visual impairments. It's vital to ensure sufficient contrast between text and background colors, following accessibility guidelines. Additionally, alternative text descriptions for images and icons are essential for users who rely on screen readers. Designers must also be aware of color blindness and create interfaces that are distinguishable for users with different forms of color vision deficiencies.
-          <br />
-          <br />
           Creating meaning with color often involves testing and iteration. User testing provides valuable feedback on how users perceive and interact with color choices. A/B testing can help identify which color variations are more effective. It's important to stay updated with design trends and user preferences, as the meaning of colors can evolve over time.
-          <br />
-          <br />
-          In summary, color is a powerful tool in UI design, capable of conveying emotions, establishing hierarchy, maintaining branding, ensuring accessibility, and enhancing user experience. By effectively harnessing the language of color, designers can engage users, convey messages, and create meaningful digital experiences.
         </p>
       </div>
     </div>

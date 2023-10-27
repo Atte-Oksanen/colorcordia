@@ -10,28 +10,28 @@ const VisualiserCanvas = ({ colors }) => {
     const ctx = canvas.getContext('2d')
     ctx.fillStyle = colors[1]
     ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height)
-    const firstGradient = ctx.createRadialGradient(-10, 150, 30, -40, 150, 290)
+    const firstGradient = ctx.createRadialGradient(-10, 150, 30, -40, 150, 800)
     firstGradient.addColorStop(0, colors[2])
     firstGradient.addColorStop(1, 'transparent')
     ctx.fillStyle = firstGradient
     ctx.beginPath();
-    ctx.arc(-40, 150, 300, 0, Math.PI * 2, true)
+    ctx.arc(-40, 150, 800, 0, Math.PI * 2, true)
     ctx.fill()
     ctx.closePath()
-    const secondGradient = ctx.createRadialGradient(550, -100, 100, 550, -100, 350)
+    const secondGradient = ctx.createRadialGradient(950, -100, 100, 1050, -100, 750)
     secondGradient.addColorStop(0, colors[3])
     secondGradient.addColorStop(1, 'transparent')
     ctx.fillStyle = secondGradient
     ctx.beginPath();
-    ctx.arc(550, -100, 400, 0, Math.PI * 2, true)
+    ctx.arc(1050, -100, 800, 0, Math.PI * 2, true)
     ctx.fill()
     ctx.closePath()
-    const thirdGradient = ctx.createRadialGradient(380, 580, 290, 400, 580, 440)
+    const thirdGradient = ctx.createRadialGradient(380, 980, 90, 400, 880, 540)
     thirdGradient.addColorStop(0, colors[2])
     thirdGradient.addColorStop(1, 'transparent')
     ctx.fillStyle = thirdGradient
     ctx.beginPath();
-    ctx.arc(380, 580, 450, 0, Math.PI * 2, true)
+    ctx.arc(380, 880, 650, 0, Math.PI * 2, true)
     ctx.fill()
     ctx.closePath()
   }, [colors])
@@ -57,9 +57,9 @@ const VisualiserCanvas = ({ colors }) => {
   })
 
   return (
-    <div style={{ display: "grid", gridTemplateColumns: '1fr', gridTemplateRows: '1fr' }}>
-      <canvas width='700' height='100' ref={canvasRef} style={{ borderRadius: '1.5rem', gridArea: '1/1/2/2' }} >Your browser does not support canvas</canvas>
-      <canvas width='700' height='100' ref={noiseRef} style={{ borderRadius: '1.5rem', gridArea: '1/1/2/2' }} >Your browser does not support canvas</canvas>
+    <div style={{ display: "grid", gridTemplateColumns: '1fr', gridTemplateRows: '1fr', width: '100%', height: '100%', overflow: 'hidden' }}>
+      <canvas width='1920' height='1080' ref={canvasRef} style={{ gridArea: '1/1/2/2' }} >Your browser does not support canvas</canvas>
+      <canvas width='1920' height='1080' ref={noiseRef} style={{ gridArea: '1/1/2/2' }} >Your browser does not support canvas</canvas>
     </div>
   )
 }

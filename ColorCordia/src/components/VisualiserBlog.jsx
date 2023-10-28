@@ -44,7 +44,7 @@ const VisualiserBlog = ({ colors }) => {
           <br />
         </p >
         <p style={{ background: 'white', borderRadius: '3px', padding: '0.5rem 1rem' }}>
-          <h2 style={{ borderLeft: `2px solid ${colors[1]}`, padding: '1rem', fontWeight: 'normal' }}>
+          <h2 style={{ borderLeft: `2px solid ${colors[4]}`, padding: '1rem', fontWeight: 'normal' }}>
             <i>
               Consistency is key
             </i>

@@ -28,8 +28,9 @@
 |25.10.23|6| Värimuunnostyökalun viimeistely + backendin refaktorointi
 ||5| Renderin konfigurointi + sovelluksen valmistelu julkaisua varten
 |26.10.23|3| Väriharmonioiden muokkaus + tokenien erääntymisen toteutus + CI/CD toimintojen lisäys
-|27.10.23|4| Google Material Design opiskelu + Palettien visualisoinnin aloitus 
-||3| Palettien visualisoinnin jatkaminen
-|28.10.23|3| Palettien visualisoinnin jatkaminen
+|27.10.23|4| Google Material Design opiskelu + Palettien visualisoinnin aloitus -> Blogi 
+||3| Palettien visualisoinnin jatkaminen -> Blogi
+|28.10.23|3| Palettien visualisoinnin jatkaminen -> Blogi + kalenteri
+|28.10.23|3| Palettien visualisoinnin jatkaminen -> Kalenteri + kojelauta
 
-Yhteensä: 103h
+Yhteensä: 106h

@@ -221,9 +221,15 @@ export const ncsToRgb = (ncs) => {
   }
 }
 
+const hsvToHsl = hsv => {
+  const lightness = hsv.v - hsv.v * hsv.s / 2
+  const min = Math.min(lightness, 1 - lightness)
+  return { h: hsv.h, s: min ? (hsv.v - 1) / min : 0, l: lightness }
+}
+
 export const getTextColor = (bgColor) => {
-  const bgHsv = rgbToHsv(hexToRgb(bgColor))
-  if (bgHsv.v < 0.5) {
+  const bgHsl = hsvToHsl(rgbToHsv(hexToRgb(bgColor)))
+  if (bgHsl.l < 0.4) {
     return '#ffffff'
   } else {
     return '#000000'

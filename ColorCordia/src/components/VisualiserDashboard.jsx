@@ -50,7 +50,7 @@ const VisualiserDashboard = ({ colors }) => {
             </li>
             <li style={listElementStyle}>
               ColorCordia -
-              <span style={{ background: colors[1], ...spanElementStyle }}>
+              <span style={{ background: colors[0], ...spanElementStyle }}>
                 Requires review
               </span>
             </li>
@@ -70,7 +70,7 @@ const VisualiserDashboard = ({ colors }) => {
             </li>
             <li style={listElementStyle}>
               Voltexa -
-              <span style={{ background: colors[1], ...spanElementStyle }}>
+              <span style={{ background: colors[0], ...spanElementStyle }}>
                 Requires review
               </span>
             </li>

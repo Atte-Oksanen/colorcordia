@@ -44,7 +44,6 @@ function App() {
     })()
   }, [])
 
-
   const logOut = () => {
     window.localStorage.removeItem('userToken')
     setUser(null)
@@ -70,14 +69,14 @@ function App() {
         <Route path='/' element={<ColorWheel setColor={setColor} pickedColor={pickedColor} setMessage={setMessage}></ColorWheel>}></Route>
         <Route path='/palettes/' element={<PaletteView color={pickedColor} setColor={setColor}></PaletteView>}></Route>
         <Route path='/palettes/:id' element={<FollowUpPalettes></FollowUpPalettes>}></Route>
-        <Route path='/palette/:id' element={<SinglePaletteView setMessage={setMessage} user={user}></SinglePaletteView>}></Route>
+        <Route path='/palette/:id' element={<SinglePaletteView communityPalettes={communityPalettes} setPalettes={setPalettes} setMessage={setMessage} user={user}></SinglePaletteView>}></Route>
         <Route path='/explore' element={<ExploreView palettes={communityPalettes} setPalettes={setPalettes}></ExploreView>}></Route>
         <Route path='/explore/:id' element={<SingleCommunityPaletteView palettes={communityPalettes} user={user} setUser={setUser}></SingleCommunityPaletteView>}></Route>
         <Route path='/profile' element={<UserView user={user}></UserView>}></Route>
         <Route path='/login' element={<LoginView setUser={setUser} setMessage={setMessage}></LoginView>}></Route>
         <Route path='/signup' element={<SignUpView setMessage={setMessage}></SignUpView>}></Route>
         <Route path='/converter' element={<ColorConverterView setMessage={setMessage}></ColorConverterView>}></Route>
-        <Route path='/visualiser' element={<SchemeVisualiserView>S</SchemeVisualiserView>}></Route>
+        <Route path='/visualiser' element={<SchemeVisualiserView palettes={communityPalettes} setPalettes={setPalettes} user={user}></SchemeVisualiserView>}></Route>
       </Routes>
     </>
   )

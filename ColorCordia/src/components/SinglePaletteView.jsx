@@ -5,7 +5,7 @@ import { useEffect, useState } from "react"
 import PaletteCanvas from "./PaletteCanvas"
 import { GetColorNames } from "../services/colorNames"
 
-const SinglePaletteView = ({ setMessage, user }) => {
+const SinglePaletteView = ({ setMessage, user, communityPalettes, setPalettes }) => {
   const [dataUrl, setDataUrl] = useState(null)
   const id = useParams().id
   const type = id.split('-')[0]
@@ -23,7 +23,13 @@ const SinglePaletteView = ({ setMessage, user }) => {
   }, [])
 
   const handlePaletteCreation = async () => {
-    await createPalette(id)
+    try {
+      const newPalette = await createPalette(id)
+      setPalettes(communityPalettes.concat(newPalette))
+    } catch (error) {
+      console.log(error)
+      return
+    }
     setMessage("palette created")
     setButtonDisabled(true)
   }

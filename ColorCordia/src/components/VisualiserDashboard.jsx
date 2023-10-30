@@ -1,93 +1,47 @@
 import { getTextColor } from "../utils/colorConverters"
+import VisualiserDashboardBilling from "./VisualiserDashboardBilling"
+import VisualiserDashboardTraffic from "./VisualiserDashboardTraffic"
 
 /* eslint-disable react/prop-types */
 const VisualiserDashboard = ({ colors }) => {
-  const listElementStyle = {
-    padding: '1rem 1rem 1rem 0.5rem',
-    border: '1px solid black',
-    borderRadius: '3px',
-    margin: '0.5rem 0'
-  }
-  const spanElementStyle = {
-    padding: '0.5rem',
-    marginLeft: '0.2rem',
-    borderRadius: '3px'
-  }
+
   if (colors.length < 1) {
     return null
   }
   return (
     <div style={{ background: '#e6e6e6' }}>
-      <h3 style={{ background: colors[4], color: getTextColor(colors[4]) }}>
-        InfoVista
-      </h3>
-      <div>
-        <h4>Traffic</h4>
+      <div style={{ background: colors[3], padding: '1rem 0.5rem' }}>
+        <svg width="60" height="60" viewBox="0 0 305 305" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ verticalAlign: 'middle', filter: 'drop-shadow(0 0 2px black)' }}>
+          <g clipPath="url(#clip0_39_262)">
+            <path d="M303 152C303 234.843 235.843 302 153 302C70.1573 302 3 234.843 3 152C3 69.1573 70.1573 2 153 2C235.843 2 303 69.1573 303 152Z" fill={colors[4]} />
+            <mask id="mask0_39_262" style={{ maskType: 'alpha' }} maskUnits="userSpaceOnUse" x="-5" y="-159" width="159" height="629">
+              <path d="M153.709 152.429L8.95943 469.542L-4.47274 -158.203L153.709 152.429Z" fill="#D9D9D9" />
+            </mask>
+            <g mask="url(#mask0_39_262)">
+              <path d="M303 152C303 234.843 235.843 302 153 302C70.1573 302 3 234.843 3 152C3 69.1573 70.1573 2 153 2C235.843 2 303 69.1573 303 152Z" fill={colors[1]} />
+            </g>
+            <mask id="mask1_39_262" style={{ maskType: 'alpha' }} maskUnits="userSpaceOnUse" x="-32" y="-4" width="370" height="157">
+              <path d="M153 153L337.463 -3.75H-31.4634L153 153Z" fill="#FF0000" />
+            </mask>
+            <g mask="url(#mask1_39_262)">
+              <path d="M303 152C303 234.843 235.843 302 153 302C70.1573 302 3 234.843 3 152C3 69.1573 70.1573 2 153 2C235.843 2 303 69.1573 303 152Z" fill={colors[2]} />
+            </g>
+          </g>
+          <defs>
+            <clipPath id="clip0_39_262">
+              <rect width="305" height="305" fill="white" />
+            </clipPath>
+          </defs>
+        </svg>
+        <h2 style={{ color: getTextColor(colors[4]), display: 'inline-block', padding: '1rem' }}>
+          InfoVista
+        </h2>
       </div>
-      <div style={{ border: '1px solid black', width: '80%', borderRadius: '3px', background: 'white' }}>
-        <h3 style={{ padding: '0 0.5rem' }}>
-          Billing
-        </h3>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1rf', gridTemplateRows: '1fr' }}>
-          <ul style={{ gridArea: '1/1/2/2', listStyleType: 'none', padding: '0 0.5rem', margin: '0' }}>
-            <li style={listElementStyle}>
-              Novo Grove -
-              <span style={{ background: colors[3], ...spanElementStyle }}>
-                passed
-              </span>
-            </li>
-            <li style={listElementStyle}>
-              Lumina Forge -
-              <span style={{ background: colors[2], ...spanElementStyle }}>
-                processing
-              </span>
-            </li>
-            <li style={listElementStyle}>
-              Ember Loom -
-              <span style={{ background: colors[2], ...spanElementStyle }}>
-                processing
-              </span>
-            </li>
-            <li style={listElementStyle}>
-              ColorCordia -
-              <span style={{ background: colors[0], ...spanElementStyle }}>
-                Requires review
-              </span>
-            </li>
-          </ul>
-          <ul style={{ gridArea: '1/2/2/3', listStyleType: 'none', padding: '0 0.5rem', margin: '0' }}>
-            <li style={listElementStyle}>
-              LumiGlo -
-              <span style={{ background: colors[2], ...spanElementStyle }}>
-                processing
-              </span>
-            </li>
-            <li style={listElementStyle}>
-              ByteWave -
-              <span style={{ background: colors[3], ...spanElementStyle }}>
-                passed
-              </span>
-            </li>
-            <li style={listElementStyle}>
-              Voltexa -
-              <span style={{ background: colors[0], ...spanElementStyle }}>
-                Requires review
-              </span>
-            </li>
-            <li style={listElementStyle}>
-              QuantaCore -
-              <span style={{ background: colors[3], ...spanElementStyle }}>
-                passed
-              </span>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div>
-        <h4>Trend</h4>
-      </div>
-      <div>
-        <h4>Support</h4>
+      <div style={{ padding: '2rem 1rem 1rem 2rem' }}>
+        <VisualiserDashboardTraffic colors={colors}></VisualiserDashboardTraffic>
+      </div >
+      <div style={{ padding: '1rem 1rem 3.5rem 2rem' }}>
+        <VisualiserDashboardBilling colors={colors}></VisualiserDashboardBilling>
       </div>
     </div>
   )

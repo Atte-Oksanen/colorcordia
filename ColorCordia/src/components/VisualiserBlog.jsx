@@ -43,13 +43,13 @@ const VisualiserBlog = ({ colors }) => {
           <br />
           <br />
         </p >
-        <p style={{ background: 'white', borderRadius: '3px', padding: '0.5rem 1rem' }}>
+        <div style={{ background: 'white', borderRadius: '3px', padding: '0.5rem 1rem' }}>
           <h2 style={{ borderLeft: `2px solid ${colors[4]}`, padding: '1rem', fontWeight: 'normal' }}>
             <i>
               Consistency is key
             </i>
           </h2>
-        </p>
+        </div>
         <p style={{ background: 'white', padding: '1rem', borderRadius: '3px' }}>
           Consistency is key in color usage, especially when it comes to branding. A well-defined color palette that aligns with the brand identity helps users remember and trust a product. Consistent color choices create familiarity and credibility, reinforcing the brand's personality and values.
           <br />

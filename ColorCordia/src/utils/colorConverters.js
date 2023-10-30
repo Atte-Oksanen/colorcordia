@@ -3,6 +3,9 @@ export const hsvToRgb = (hsv) => {
   if (hsv.h > 1) {
     return null
   }
+  if (hsv.v > 1) {
+    hsv.v = 1
+  }
   let r, g, b
 
   let i = Math.floor(hsv.h * 6)

@@ -12,7 +12,9 @@ const ColorWheel = ({ setColor, setMessage }) => {
   const wheel = useRef()
   const pointerBox = useRef()
   const wheelBox = useRef()
+  const valueWheel = useRef()
   const [colorInput, setInput] = useState('')
+  const [colorValue, setValue] = useState(100)
 
   useEffect(() => {
     document.addEventListener('mouseup', () => document.onmousemove = null)
@@ -95,7 +97,7 @@ const ColorWheel = ({ setColor, setMessage }) => {
     const hsvTemp = {
       h: degs / 360,
       s: saturationTemp,
-      v: 1,
+      v: colorValue / 100,
     }
     const pickedColor = rgbToHex(hsvToRgb(hsvTemp))
     pointer.current.style.backgroundColor = pickedColor
@@ -116,6 +118,20 @@ const ColorWheel = ({ setColor, setMessage }) => {
     return hexToRgb(input)
   }
 
+  const handleSliderInput = event => {
+    setValue(event.target.value)
+    valueWheel.current.style.opacity = 1 - event.target.value / 100
+    if (event.target.value === '0') {
+      event.target.value += 1
+    } else if (event.target.value >= 100) {
+      event.target.value = 100
+    }
+    const currentHsv = rgbToHsv(hexToRgb(colorInput))
+    const newHex = rgbToHex(hsvToRgb({ ...currentHsv, v: (event.target.value / 100) }))
+    pointer.current.style.backgroundColor = newHex
+    setInput(newHex)
+  }
+
   return (
     <>
       <div style={wheelStyles.wrapperStyle}>
@@ -131,6 +147,10 @@ const ColorWheel = ({ setColor, setMessage }) => {
           }}
           onTouchMove={event => handleTouchStart(event)}
         ></div>
+        <div style={wheelStyles.valueWheelStyle} ref={valueWheel}>
+        </div>
+        V<input type="range" max={100} value={colorValue} onChange={handleSliderInput} />
+        {colorValue}
       </div >
       <form onSubmit={handleColorSubmit}>
         <input type='text' value={colorInput} onChange={handleColorInput} />

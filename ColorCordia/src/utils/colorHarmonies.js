@@ -148,7 +148,6 @@ export const compoundHarmony = hex => {
 export const shadeHarmony = hex => {
   const hsv = transformToHsv(hex)
   const vMultiplier = getMultiplier(hsv.v)
-  console.log(hsv, vMultiplier)
   if (hsv.v > 0.8) {
     return checkColorArray([
       { ...hsv, v: hsv.v * vMultiplier / 1.6 },

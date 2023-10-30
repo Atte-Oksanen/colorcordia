@@ -39,6 +39,15 @@ const topWheelStyle = {
   zIndex: 1,
 }
 
+const valueWheelStyle = {
+  ...wheelStyle,
+  gridArea: '1/1/2/2',
+  background: `black`,
+  zIndex: 1,
+  border: '1px solid black',
+  opacity: 0
+}
+
 const pointerStyle = {
   ...wheelStyle,
   position: 'absolute',
@@ -52,4 +61,4 @@ const pointerStyle = {
 }
 
 
-export default { pointerStyle, wheelStyle, topWheelStyle, bottomWheelStyle, wrapperStyle }
+export default { pointerStyle, wheelStyle, topWheelStyle, bottomWheelStyle, wrapperStyle, valueWheelStyle }

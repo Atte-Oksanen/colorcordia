@@ -32,5 +32,6 @@
 ||3| Palettien visualisoinnin jatkaminen -> Blogi
 |28.10.23|3| Palettien visualisoinnin jatkaminen -> Blogi + kalenteri
 |28.10.23|3| Palettien visualisoinnin jatkaminen -> Kalenteri + kojelauta
+|30.10.2023|2| Väriympyrän kolmannen ulottuvuuden toteutus
 
-Yhteensä: 106h
+Yhteensä: 108h

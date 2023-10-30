@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 import { useParams } from "react-router-dom"
-import { createPalette } from "../services/palettes"
+import { createPalette } from "../../services/palettes"
 import { useEffect, useState } from "react"
-import PaletteCanvas from "./PaletteCanvas"
-import { GetColorNames } from "../services/colorNames"
+import PaletteCanvas from "../utils/PaletteCanvas"
+import { GetColorNames } from "../../services/colorNames"
 
 const SinglePaletteView = ({ setMessage, user, communityPalettes, setPalettes }) => {
   const [dataUrl, setDataUrl] = useState(null)

@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { getTextColor } from "../utils/colorConverters"
+import { getTextColor } from "../../utils/colorConverters"
 
 const VisualiserDashboardBilling = ({ colors }) => {
   const listElementStyle = {

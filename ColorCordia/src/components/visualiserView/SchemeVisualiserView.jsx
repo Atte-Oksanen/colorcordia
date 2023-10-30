@@ -3,8 +3,8 @@ import { useEffect, useState } from "react"
 import VisualiserBlog from "./VisualiserBlog"
 import VisualiserCalendar from "./VisualiserCalendar"
 import VisualiserDashboard from "./VisualiserDashboard"
-import { getPalettes } from "../services/palettes"
-import PaletteDropDown from "./PaletteDropDown"
+import { getPalettes } from "../../services/palettes"
+import PaletteDropDown from "../utils/PaletteDropDown"
 
 const SchemeVisualiserView = ({ palettes, setPalettes, user }) => {
   const [colors, setColors] = useState([])

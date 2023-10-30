@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { hexToRgb, rgbToHex } from "../utils/colorConverters"
+import { hexToRgb, rgbToHex } from "../../utils/colorConverters"
 import { Link } from "react-router-dom"
 
 /* eslint-disable react/prop-types */

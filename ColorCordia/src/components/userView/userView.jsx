@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react"
-import EditableField from "./editableField"
-import { deletePalette, getPalettesByCreator } from "../services/palettes"
-import CommunityPalette from "./CommunityPalette"
+import EditableField from "../utils/editableField"
+import { deletePalette, getPalettesByCreator } from "../../services/palettes"
+import CommunityPalette from "../communityView/CommunityPalette"
 
 const UserView = ({ user }) => {
   const [username, setUsername] = useState('')

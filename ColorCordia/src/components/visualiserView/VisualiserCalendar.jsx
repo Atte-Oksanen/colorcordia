@@ -1,4 +1,4 @@
-import { getTextColor } from "../utils/colorConverters"
+import { getTextColor } from "../../utils/colorConverters"
 
 /* eslint-disable react/prop-types */
 const VisualiserCalendar = ({ colors }) => {

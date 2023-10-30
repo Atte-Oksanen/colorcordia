@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 import { useEffect } from "react"
-import { getPalettes } from "../services/palettes"
+import { getPalettes } from "../../services/palettes"
 import CommunityPalette from "./CommunityPalette"
-import LoadingComponent from "./LoadingComponent"
+import LoadingComponent from "../utils/LoadingComponent"
 const ExploreView = ({ palettes, setPalettes }) => {
   useEffect(() => {
     (async () => {

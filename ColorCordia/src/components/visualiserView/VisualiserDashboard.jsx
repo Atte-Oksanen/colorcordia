@@ -1,4 +1,4 @@
-import { getTextColor } from "../utils/colorConverters"
+import { getTextColor } from "../../utils/colorConverters"
 import VisualiserDashboardBilling from "./VisualiserDashboardBilling"
 import VisualiserDashboardTraffic from "./VisualiserDashboardTraffic"
 

@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
-import { getTextColor } from "../utils/colorConverters"
+import { getTextColor } from "../../utils/colorConverters"
 import VisualiserCanvas from "./VisualiserCanvas"
 
 const VisualiserBlog = ({ colors }) => {

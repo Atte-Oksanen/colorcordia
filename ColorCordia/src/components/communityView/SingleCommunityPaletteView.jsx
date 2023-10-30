@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { getPaletteById, likePalette } from "../services/palettes"
-import PaletteCanvas from "./PaletteCanvas"
-import { GetColorNames } from "../services/colorNames"
+import { getPaletteById, likePalette } from "../../services/palettes"
+import PaletteCanvas from "../utils/PaletteCanvas"
+import { GetColorNames } from "../../services/colorNames"
 
 const SingleCommunityPaletteView = ({ palettes, user, setUser }) => {
   const params = useParams().id

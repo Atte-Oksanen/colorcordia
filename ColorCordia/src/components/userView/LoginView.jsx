@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-unescaped-entities */
 import { useState } from "react"
-import { getUser, login, setUserToken } from "../services/users"
-import { setPaletteToken } from "../services/palettes"
+import { getUser, login, setUserToken } from "../../services/users"
+import { setPaletteToken } from "../../services/palettes"
 import { Link, useNavigate } from "react-router-dom"
 
 const LoginView = ({ setUser, setMessage }) => {

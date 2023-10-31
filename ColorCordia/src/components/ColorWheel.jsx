@@ -15,6 +15,7 @@ const ColorWheel = ({ setColor, setMessage }) => {
   const valueWheel = useRef()
   const [colorInput, setInput] = useState('')
   const [colorValue, setValue] = useState(100)
+  const [size, setSize] = useState(0)
 
   useEffect(() => {
     document.addEventListener('mouseup', () => document.onmousemove = null)
@@ -28,10 +29,19 @@ const ColorWheel = ({ setColor, setMessage }) => {
     pointer.current.style.top = wheelBoxTemp.y + wheelBoxTemp.height / 2 - pointerBoxTemp.height / 2 + 'px'
     pointer.current.style.left = wheelBoxTemp.x + wheelBoxTemp.width / 2 - pointerBoxTemp.width / 2 + 'px'
     pointerBox.current = pointerBoxTemp
-    const seedColor = randomizeColorWheelPos()
+    let seedColor
+    if (colorInput !== '') {
+      seedColor = colorInput
+    } else {
+      seedColor = randomizeColorWheelPos()
+    }
     movePointerOnInput(seedColor)
     setInput(seedColor)
-  }, [])
+  }, [size])
+
+  useEffect(() => {
+    window.onresize = () => setSize(Math.random())
+  }, [size])
 
   const handlePointerClick = event => {
     if (
@@ -133,8 +143,8 @@ const ColorWheel = ({ setColor, setMessage }) => {
   }
 
   return (
-    <>
-      <div style={wheelStyles.wrapperStyle}>
+    <div style={{ width: 'fit-content', margin: 'auto' }}>
+      <div style={{ ...wheelStyles.wrapperStyle }}>
         <div ref={wheel} style={wheelStyles.bottomWheelStyle}></div>
         <div style={wheelStyles.topWheelStyle}></div>
         <div
@@ -156,7 +166,7 @@ const ColorWheel = ({ setColor, setMessage }) => {
         <input type='text' value={colorInput} onChange={handleColorInput} />
         <button type='submit'>Create palettes</button>
       </form>
-    </>
+    </div>
   )
 }
 

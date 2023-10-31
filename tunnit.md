@@ -33,5 +33,7 @@
 |28.10.23|3| Palettien visualisoinnin jatkaminen -> Blogi + kalenteri
 |28.10.23|3| Palettien visualisoinnin jatkaminen -> Kalenteri + kojelauta
 |30.10.2023|2| Väriympyrän kolmannen ulottuvuuden toteutus
-||5| Palettien visualisoinnin loppuun tekeminen
-Yhteensä: 113h
+||5| Palettien visualisoinnin toiminnallisuuden loppuun tekeminen
+|31.10.23|3| Palettien visualisoinnin debuggaus + tailwind aloitus 
+
+Yhteensä: 116h

@@ -6,7 +6,6 @@ const PaletteDropDown = ({ palettes, setColors }) => {
   const [selectedPalette, setSelected] = useState('')
   const [selectedColors, setSelectedColors] = useState([])
   const [showDropDown, setShow] = useState(false)
-
   const selectButtonStyle = {
     padding: '0.5rem',
     background: 'white',
@@ -41,7 +40,7 @@ const PaletteDropDown = ({ palettes, setColors }) => {
     filter: 'drop-shadow(0 0 0.1rem grey)',
     width: 'fit-content',
     background: '#fcfcfc',
-    height: '40rem',
+    height: '60vh',
     overflowY: 'scroll'
   }
   const listElementStyle = {
@@ -78,11 +77,16 @@ const PaletteDropDown = ({ palettes, setColors }) => {
     setColors(colors)
   }, [selectedPalette])
 
+  useEffect(() => {
+    document.addEventListener('click', () => setShow(false))
+  }, [showDropDown])
+
   if (palettes.length < 1 || paletteArray.length < 1 || selectedPalette === '') {
     return null
   }
 
-  const changeVisibility = () => {
+  const changeVisibility = event => {
+    event.stopPropagation()
     setShow(!showDropDown)
   }
   return (
@@ -103,7 +107,7 @@ const PaletteDropDown = ({ palettes, setColors }) => {
           {paletteArray.map(palette =>
             <li key={Math.random()} id={palette.id} style={listElementStyle} onClick={event => {
               setSelected(event.currentTarget.id)
-              changeVisibility()
+              changeVisibility(event)
             }
             }>
               {palette.name}

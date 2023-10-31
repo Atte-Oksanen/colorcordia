@@ -42,8 +42,8 @@ const VisualiserCanvas = ({ colors }) => {
     const y = 0;
     const width = canvas.width;
     const height = canvas.height;
-    const alpha = 7;
-    var g = canvas.getContext("2d"),
+    const alpha = 10;
+    var g = canvas.getContext("2d", { willReadFrequently: true }),
       imageData = g.getImageData(x, y, width, height),
       random = Math.random,
       pixels = imageData.data,
@@ -54,7 +54,7 @@ const VisualiserCanvas = ({ colors }) => {
       pixels[i++] = alpha;
     }
     g.putImageData(imageData, x, y);
-  })
+  }, [])
 
   return (
     <div style={{ display: "grid", gridTemplateColumns: '1fr', gridTemplateRows: '1fr', width: '100%', height: '100%', overflow: 'hidden' }}>

@@ -19,7 +19,6 @@ export const randomizeColorWheelPos = () => {
 
 export const createRandomHarmony = hex => {
   const harmonyNum = Math.round(Math.random() * 9)
-  console.log(hex)
   switch (harmonyNum) {
     case 1:
       return analogousHarmony(hex)

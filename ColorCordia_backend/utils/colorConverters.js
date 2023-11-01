@@ -73,4 +73,4 @@ const hexToRgb = (hex) => {
   } : null;
 }
 
-module.exports = { hexToRgb }
+module.exports = { hexToRgb, rgbToHex }

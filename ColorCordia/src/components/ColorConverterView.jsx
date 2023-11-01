@@ -55,7 +55,7 @@ const ColorConverterView = ({ setMessage }) => {
           }
           case 'NCS': {
             const ncs = await hexToNcs(startValue.substring(1))
-            setEndValue(ncs.NCS)
+            setEndValue(ncs.ncs)
             setComparable([{ color: startValue, name: startValue }, ncs])
             setShowComparison(true)
             return
@@ -99,7 +99,7 @@ const ColorConverterView = ({ setMessage }) => {
           }
           case 'NCS': {
             const ncs = await hexToNcs(hex.substring(1))
-            setEndValue(ncs.NCS)
+            setEndValue(ncs.ncs)
             setComparable([{ color: startValue, name: startValue }, ncs])
             setShowComparison(true)
             return
@@ -143,7 +143,7 @@ const ColorConverterView = ({ setMessage }) => {
           }
           case 'NCS': {
             const ncs = await hexToNcs(hex.substring(1))
-            setEndValue(ncs.NCS)
+            setEndValue(ncs.ncs)
             setComparable([{ color: startValue, name: startValue }, ncs])
             setShowComparison(true)
             return
@@ -198,7 +198,7 @@ const ColorConverterView = ({ setMessage }) => {
       return (
         <div>
           <div style={{ background: `${comparableColors[0]}.color` }}>{comparableColors[0].name}</div>
-          <div style={{ background: `${comparableColors[1].HEX}` }} >{comparableColors[1].NCS}</div>
+          <div style={{ background: `${comparableColors[1].hex}` }} >{comparableColors[1].ncs}</div>
           <div>
             Note: NCS color representations shown here are merely an approximation of the nearest NCS standard color.
             <br />

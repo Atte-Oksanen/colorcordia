@@ -1,12 +1,8 @@
 const ncsConvertRouter = require('express').Router()
 const fs = require('fs')
 const { hexToRgb } = require('../utils/colorConverters')
-const ncsColors = []
+const ncsColors = JSON.parse(fs.readFileSync('./data/ncs_values.json'))
 
-const tempColors = JSON.parse(fs.readFileSync('./data/ncs_values.json'))
-tempColors.forEach(element => {
-  ncsColors.push({ ...element, rgb: hexToRgb(element.HEX), NCS: `S ${element.NCS}` })
-});
 console.info(`${ncsColors.length} ncs colors loaded`)
 
 ncsConvertRouter.get('/:id', (req, res) => {

@@ -34,6 +34,7 @@
 |28.10.23|3| Palettien visualisoinnin jatkaminen -> Kalenteri + kojelauta
 |30.10.2023|2| Väriympyrän kolmannen ulottuvuuden toteutus
 ||5| Palettien visualisoinnin toiminnallisuuden loppuun tekeminen
-|31.10.23|3| Palettien visualisoinnin debuggaus + tailwind aloitus 
+|31.10.23|3| Palettien visualisoinnin debuggaus + tailwind aloitus
+|1.11.23|4| Väriympyrän uudelleenrenderöinnin debuggaus + Muotoilun aloitus -> Navigointi + Header
 
-Yhteensä: 116h
+Yhteensä: 120h

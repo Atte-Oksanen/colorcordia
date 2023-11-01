@@ -13,6 +13,7 @@ const ColorWheel = ({ setColor, setMessage }) => {
   const pointerBox = useRef()
   const wheelBox = useRef()
   const valueWheel = useRef()
+  const [windowWidth, setWidht] = useState(0)
   const [colorInput, setInput] = useState('')
   const [colorValue, setValue] = useState(100)
 
@@ -28,10 +29,19 @@ const ColorWheel = ({ setColor, setMessage }) => {
     pointer.current.style.top = wheelBoxTemp.y + wheelBoxTemp.height / 2 - pointerBoxTemp.height / 2 + 'px'
     pointer.current.style.left = wheelBoxTemp.x + wheelBoxTemp.width / 2 - pointerBoxTemp.width / 2 + 'px'
     pointerBox.current = pointerBoxTemp
-    const seedColor = randomizeColorWheelPos()
+    let seedColor
+    if (colorInput !== '') {
+      seedColor = colorInput
+    } else {
+      seedColor = randomizeColorWheelPos()
+    }
     movePointerOnInput(seedColor)
     setInput(seedColor)
-  }, [])
+  }, [windowWidth])
+
+  useEffect(() => {
+    window.onresize = () => setWidht(window.innerWidth)
+  }, [windowWidth])
 
   const handlePointerClick = event => {
     if (
@@ -133,7 +143,8 @@ const ColorWheel = ({ setColor, setMessage }) => {
   }
 
   return (
-    <>
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', marginTop: '10rem' }}>
+      <h2>Start by choosing a color.</h2>
       <div style={wheelStyles.wrapperStyle}>
         <div ref={wheel} style={wheelStyles.bottomWheelStyle}></div>
         <div style={wheelStyles.topWheelStyle}></div>
@@ -149,14 +160,15 @@ const ColorWheel = ({ setColor, setMessage }) => {
         ></div>
         <div style={wheelStyles.valueWheelStyle} ref={valueWheel}>
         </div>
-        V<input type="range" max={100} value={colorValue} onChange={handleSliderInput} />
+        <label htmlFor='vSlider'>V</label>
+        <input type="range" max={100} value={colorValue} id='vSlider' onChange={handleSliderInput} />
         {colorValue}
       </div >
       <form onSubmit={handleColorSubmit}>
         <input type='text' value={colorInput} onChange={handleColorInput} />
         <button type='submit'>Create palettes</button>
       </form>
-    </>
+    </div>
   )
 }
 

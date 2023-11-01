@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import ColorWheel from './components/ColorWheel'
-import { Routes, Route, Link, useNavigate } from 'react-router-dom'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 import FollowUpPalettes from './components/paletteView/FollowUpPalettes'
 import PaletteView from './components/paletteView/PaletteView'
 import SinglePaletteView from './components/paletteView/SinglePaletteView'
@@ -14,6 +14,7 @@ import { setPaletteToken } from './services/palettes'
 import { getUser, setUserToken } from './services/users'
 import ColorConverterView from './components/ColorConverterView'
 import SchemeVisualiserView from './components/visualiserView/SchemeVisualiserView'
+import Header from './components/Header'
 
 function App() {
   const navigate = useNavigate()
@@ -44,26 +45,10 @@ function App() {
     })()
   }, [])
 
-  const logOut = () => {
-    window.localStorage.removeItem('userToken')
-    setUser(null)
-    navigate('/')
-    setMessage("Logged out")
-  }
+
   return (
-    <>
-      <nav>
-        <h1>ColorCordia</h1>
-        <Link to='/'>Color wheel</Link>
-        <Link to='/explore'>Explore</Link>
-        <Link to='/visualiser'>Scheme visualiser</Link>
-        <Link to='/converter'>Color converter</Link>
-        <Link>About</Link>
-        {user && <Link to='/profile'>User Profile</Link>}
-        {!user && <Link to='/login'>Login</Link>}
-        {!user && <Link to='/signup'>Sign up</Link>}
-        {user && <button onClick={logOut}>Log out</button>}
-      </nav>
+    <div className='font-extralight'>
+      <Header user={user} setMessage={setMessage} setUser={setUser}></Header>
       <Notification message={message} setMessage={setMessage}></Notification>
       <Routes>
         <Route path='/' element={<ColorWheel setColor={setColor} pickedColor={pickedColor} setMessage={setMessage}></ColorWheel>}></Route>
@@ -78,7 +63,7 @@ function App() {
         <Route path='/converter' element={<ColorConverterView setMessage={setMessage}></ColorConverterView>}></Route>
         <Route path='/visualiser' element={<SchemeVisualiserView palettes={communityPalettes} setPalettes={setPalettes} user={user}></SchemeVisualiserView>}></Route>
       </Routes>
-    </>
+    </div>
   )
 }
 

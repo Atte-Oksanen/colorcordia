@@ -7,3 +7,9 @@
     font-family: "Rubik", system-ui, sans-serif;
   }
 }
+
+@layer components {
+  .menu-item {
+    @apply hover:bg-gray-300 block w-full transition duration-200 ease-in-out px-5
+  }
+}

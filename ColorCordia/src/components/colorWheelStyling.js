@@ -2,7 +2,7 @@ const wrapperStyle = {
   display: "grid",
   width: 'fit-content',
   gridTemplateColumns: '1fr',
-  gridTemplateRows: '1fr'
+  gridTemplateRows: '1fr',
 }
 
 const wheelStyle = {

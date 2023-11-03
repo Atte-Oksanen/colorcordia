@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import ColorWheel from './components/ColorWheel'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 import FollowUpPalettes from './components/paletteView/FollowUpPalettes'
 import PaletteView from './components/paletteView/PaletteView'
@@ -15,6 +14,7 @@ import { getUser, setUserToken } from './services/users'
 import ColorConverterView from './components/ColorConverterView'
 import SchemeVisualiserView from './components/visualiserView/SchemeVisualiserView'
 import Header from './components/Header'
+import ColorWheelView from './components/colorWheelView/ColorWheelView'
 
 function App() {
   const navigate = useNavigate()
@@ -47,11 +47,11 @@ function App() {
 
 
   return (
-    <div className='font-extralight'>
+    <div className='font-extralight grid main-grid-layout'>
       <Header user={user} setMessage={setMessage} setUser={setUser}></Header>
       <Notification message={message} setMessage={setMessage}></Notification>
       <Routes>
-        <Route path='/' element={<ColorWheel setColor={setColor} pickedColor={pickedColor} setMessage={setMessage}></ColorWheel>}></Route>
+        <Route path='/' element={<ColorWheelView setColor={setColor} setMessage={setMessage}></ColorWheelView>}></Route>
         <Route path='/palettes/' element={<PaletteView color={pickedColor} setColor={setColor}></PaletteView>}></Route>
         <Route path='/palettes/:id' element={<FollowUpPalettes></FollowUpPalettes>}></Route>
         <Route path='/palette/:id' element={<SinglePaletteView communityPalettes={communityPalettes} setPalettes={setPalettes} setMessage={setMessage} user={user}></SinglePaletteView>}></Route>

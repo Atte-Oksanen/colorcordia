@@ -1,10 +1,8 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useEffect, useRef, useState } from 'react'
-import wheelStyles from './colorWheelStyling'
-import { hexToRgb, hsvToRgb, rgbToHex, rgbToHsv } from '../utils/colorConverters'
+import { hexToRgb, hsvToRgb, rgbToHex, rgbToHsv } from '../../utils/colorConverters'
 import { useNavigate } from 'react-router-dom'
-import { randomizeColorWheelPos } from '../utils/colorRandomizer'
+import { randomizeColorWheelPos } from '../../utils/colorRandomizer'
 
 const ColorWheel = ({ setColor, setMessage }) => {
   const navigate = useNavigate()
@@ -143,14 +141,13 @@ const ColorWheel = ({ setColor, setMessage }) => {
   }
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', marginTop: '10rem' }}>
-      <h2>Start by choosing a color.</h2>
-      <div style={wheelStyles.wrapperStyle}>
-        <div ref={wheel} style={wheelStyles.bottomWheelStyle}></div>
-        <div style={wheelStyles.topWheelStyle}></div>
+    <>
+      <div className='color-wheel-wrapper'>
+        <div ref={wheel} className='bottom-wheel'></div>
+        <div className='top-wheel'></div>
         <div
           ref={pointer}
-          style={wheelStyles.pointerStyle}
+          className='pointer'
           onMouseDown={event => handlePointerClick(event)}
           onMouseUp={() => document.onmousemove = null}
           onTouchStart={event => {
@@ -158,17 +155,27 @@ const ColorWheel = ({ setColor, setMessage }) => {
           }}
           onTouchMove={event => handleTouchStart(event)}
         ></div>
-        <div style={wheelStyles.valueWheelStyle} ref={valueWheel}>
+        <div className='value-wheel' ref={valueWheel}>
         </div>
-        <label htmlFor='vSlider'>V</label>
-        <input type="range" max={100} value={colorValue} id='vSlider' onChange={handleSliderInput} />
-        {colorValue}
-      </div >
-      <form onSubmit={handleColorSubmit}>
-        <input type='text' value={colorInput} onChange={handleColorInput} />
-        <button type='submit'>Create palettes</button>
+      </div>
+      <div className='flex mt-4'>
+        <label htmlFor='vSlider' className='mx-2'>
+          V
+        </label>
+        <input className='inline-block w-full' type="range" max={100} value={colorValue} id='vSlider' onChange={handleSliderInput} />
+        <span className='w-6 mx-2'>
+          {colorValue}
+        </span>
+      </div>
+      <form onSubmit={handleColorSubmit} className=''>
+        <input className='appearance-none mt-4 bg-gray-200 border-2 border-gray-200 rounded py-2 px-4 text-gray-700 focus:bg-white focus:border-gray-700'
+          type='text'
+          value={colorInput}
+          onChange={handleColorInput} />
+        <br />
+        <button className='pill-button mt-4' type='submit'>Create palettes</button>
       </form>
-    </div>
+    </>
   )
 }
 

@@ -37,5 +37,6 @@
 |31.10.23|3| Palettien visualisoinnin debuggaus + tailwind aloitus
 |1.11.23|4| Väriympyrän uudelleenrenderöinnin debuggaus + Muotoilun aloitus -> Navigointi + Header
 ||1| NCS väriavaruuden parantelu + frontendiin liittyvien moduulien refaktorointi
+3.11.23|8| Muotoilun jatko -> Navigointi + Header + väriympyrä + palettinäkymä
 
 Yhteensä: 120h

@@ -69,7 +69,7 @@ const SingleCommunityPaletteView = ({ palettes, user, setUser }) => {
   }
 
   return (
-    <>
+    <div>
       <h2>{`${type} pallette from ${colors[2].hex}`}</h2>
       {colors.map(color => <div key={Math.random()} style={{ background: color.hex }}>{color.hex} - {color.name}</div>)}
       <div>Created by {palette.user.username}</div>
@@ -78,7 +78,7 @@ const SingleCommunityPaletteView = ({ palettes, user, setUser }) => {
       <button onClick={downloadImage}>Download</button>
       <br />
       <PaletteCanvas palette={colors} type={type} setDataUrl={setDataUrl}></PaletteCanvas>
-    </>
+    </div>
   )
 }
 

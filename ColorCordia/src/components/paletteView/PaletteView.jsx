@@ -4,10 +4,14 @@ import PaletteGenerator from "./paletteGenerator"
 
 const PaletteView = ({ color, setColor }) => {
   return (
-    <>
-      <ColorTweaker color={color} setColor={setColor}></ColorTweaker>
-      <PaletteGenerator color={color} setColor={setColor}></PaletteGenerator>
-    </>
+    <div className="grid palette-grid-layout">
+      <div className="p-4 my-4 border-r-2  border-gray-200">
+        <ColorTweaker color={color} setColor={setColor}></ColorTweaker>
+      </div>
+      <div className="h-screen overflow-y-scroll">
+        <PaletteGenerator color={color} setColor={setColor}></PaletteGenerator>
+      </div>
+    </div>
   )
 }
 

@@ -9,7 +9,86 @@
 }
 
 @layer components {
+  .main-grid-layout {
+    grid-template-columns: 8rem 1fr;
+    grid-template-rows: 1fr;
+  }
+
+  .palette-grid-layout {
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: 1fr;
+  }
+
   .menu-item {
-    @apply hover:bg-gray-300 block w-full transition duration-200 ease-in-out px-5
+    @apply hover:bg-gray-300 block w-32 transition duration-150 ease-in-out py-2 rounded-lg
+  }
+
+  .dark-grey-hover {
+    @apply hover:bg-gray-300 transition duration-150 ease-in-out
+  }
+
+  .color-wheel-wrapper {
+    display: grid;
+    width: fit-content;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+  }
+
+  .color-wheel {
+    aspect-ratio: 1/1;
+    height: 23rem;
+    content: '';
+    border-radius: 50%;
+    grid-area: 1/1/2/2;
+  }
+
+  .bottom-wheel {
+    @apply color-wheel;
+    border: 1px solid black;
+    background: conic-gradient(#ff0000 0%,
+        #ff9a00 10%,
+        #d0de21 18%,
+        #4fdc4a 30%,
+        #3fdad8 45%,
+        #2fc9e2 48%,
+        #007fee 58%,
+        #001aff 65%,
+        #5f15f2 74%,
+        #ba0cf8 80%,
+        #fb07d9 90%,
+        #ff0000 100%);
+    transform: rotate(90deg);
+  }
+
+  .top-wheel {
+    @apply color-wheel;
+    background: radial-gradient(circle, #ffffffe6 0%, #ffffff00 85%);
+    z-index: 1;
+  }
+
+  .value-wheel {
+    @apply color-wheel;
+    background: black;
+    z-index: 2;
+    opacity: 0;
+  }
+
+  .pointer {
+    @apply color-wheel;
+    position: absolute;
+    height: 2rem;
+    content: '';
+    cursor: crosshair;
+    z-index: 3;
+    border: 1px solid white;
+    touch-action: none;
+  }
+
+  .test-border {
+    @apply border-solid border-2 border-gray-600
+  }
+
+  .pill-button {
+    @apply bg-blue-600 hover:bg-blue-800 text-white font-normal py-2 px-4 rounded-full
   }
 }

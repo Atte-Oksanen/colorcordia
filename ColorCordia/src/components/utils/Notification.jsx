@@ -1,3 +1,5 @@
+import XIcon from "../icons/XIcon"
+
 /* eslint-disable react/prop-types */
 const Notification = ({ message, setMessage }) => {
   if (!message) {
@@ -6,11 +8,14 @@ const Notification = ({ message, setMessage }) => {
 
   setTimeout(() => {
     setMessage(null)
-  }, 2500)
+  }, 5000)
 
   return (
-    <div style={{ position: 'fixed', zIndex: '101', left: '50%', top: '85%', translate: '-50%', padding: '1.5rem 3rem', background: '#fcfcfc', filter: 'drop-shadow(0 0 0.2rem grey)', border: '1px solid black', borderRadius: '1rem' }}>
+    <div className="fixed drop-shadow-md z-50 inset-x-0 flex items-center mx-auto w-fit px-4 py-3 bottom-20 border-l-4 border-blue-400 bg-gray-200 text-lg font-normal rounded-r-md" >
       {message}
+      <button onClick={() => setMessage(null)} className="h-fit ml-2">
+        <XIcon sizeClass='h-7 w-7'></XIcon>
+      </button>
     </div>
   )
 }

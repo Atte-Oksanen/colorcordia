@@ -45,7 +45,7 @@ const SinglePaletteView = ({ setMessage, user, communityPalettes, setPalettes })
     return null
   }
   return (
-    <>
+    <div>
       <div>
         {`${type} pallette from ${colors[2].hex}`}
       </div>
@@ -53,7 +53,7 @@ const SinglePaletteView = ({ setMessage, user, communityPalettes, setPalettes })
       <button disabled={shareButtonDisabled} onClick={handlePaletteCreation}>Share</button>
       <button onClick={downloadImage}>Download</button>
       <PaletteCanvas palette={colors} type={type} setDataUrl={setDataUrl}></PaletteCanvas>
-    </>
+    </div>
 
   )
 }

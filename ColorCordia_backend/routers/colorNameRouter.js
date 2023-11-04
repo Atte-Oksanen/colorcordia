@@ -16,7 +16,6 @@ colorNameRouter.get('/', async (req, res) => {
 
 colorNameRouter.get('/:id', async (req, res) => {
   const hexArray = req.params.id.split('-')
-  console.log(hexArray)
   const returnArray = []
   hexArray.forEach(element => {
     const elementRgb = hexToRgb(element)

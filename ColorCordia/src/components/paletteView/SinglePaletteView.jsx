@@ -72,7 +72,7 @@ const SinglePaletteView = ({ setMessage, user, communityPalettes, setPalettes })
           <DownloadIcon sizeClass='h-5 w-5'></DownloadIcon>
         </div>
       </button>
-      <button className="pill-button mx-5">
+      <button className="pill-button-empty mx-5">
         <Link to={`/palettes/${colorsForId.toString().replaceAll(',', '-')}`}>
           Find derivative palettes
           <div className="inline-block align-middle ml-2">

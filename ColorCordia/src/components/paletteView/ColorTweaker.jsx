@@ -53,7 +53,7 @@ const ColorTweaker = ({ color, setColor }) => {
           <input className="w-full" type="range" id="rgb-b" value={rgb.b} max={255} onChange={handleSliderB} /> {rgb.b}
         </div>
       </div>
-      <button className="pill-button mt-5 w-fit m-auto">
+      <button className="pill-button-empty mt-5 w-fit m-auto">
         <Link to='/'>
           <div className="inline-block align-text-top rotate-180 mr-2">
             <NextIcon sizeClass={'h-5 w-5'}></NextIcon>

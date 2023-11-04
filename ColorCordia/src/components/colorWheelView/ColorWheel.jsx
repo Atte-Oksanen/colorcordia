@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react'
 import { hexToRgb, hsvToRgb, rgbToHex, rgbToHsv } from '../../utils/colorConverters'
 import { useNavigate } from 'react-router-dom'
 import { randomizeColorWheelPos } from '../../utils/colorRandomizer'
+import NextIcon from '../icons/NextIcon'
 
 const ColorWheel = ({ setColor, setMessage, reRenderWheel }) => {
   const navigate = useNavigate()
@@ -173,7 +174,12 @@ const ColorWheel = ({ setColor, setMessage, reRenderWheel }) => {
           value={colorInput}
           onChange={handleColorInput} />
         <br />
-        <button className='pill-button mt-4' type='submit'>Create palettes</button>
+        <button className='pill-button mt-4' type='submit'>
+          Create palettes
+          <div className='inline-block align-text-bottom ml-1'>
+            <NextIcon sizeClass={'h-5 w-5'}></NextIcon>
+          </div>
+        </button>
       </form>
     </>
   )

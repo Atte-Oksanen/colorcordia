@@ -9,29 +9,20 @@
 }
 
 @layer components {
-  .main-grid-layout {
-    grid-template-columns: 8rem 1fr;
-    grid-template-rows: 1fr;
-  }
-
-  .palette-grid-layout {
-    grid-template-columns: 1fr 4fr;
-    grid-template-rows: 1fr;
-  }
-
   .menu-item {
-    @apply hover:bg-gray-300 block w-32 transition duration-150 ease-in-out py-2 rounded-lg
+    @apply block w-32 transition duration-150 ease-in-out py-2 rounded-lg
+  }
+
+  .menu-item-dark-hover{
+    @apply hover:bg-black hover:bg-opacity-10
+  }
+
+  .menu-item-light-hover{
+    @apply hover:bg-white hover:bg-opacity-10
   }
 
   .dark-grey-hover {
     @apply hover:bg-gray-300 transition duration-150 ease-in-out
-  }
-
-  .color-wheel-wrapper {
-    display: grid;
-    width: fit-content;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
   }
 
   .color-wheel {
@@ -44,7 +35,6 @@
 
   .bottom-wheel {
     @apply color-wheel;
-    border: 1px solid black;
     background: conic-gradient(#ff0000 0%,
         #ff9a00 10%,
         #d0de21 18%,
@@ -90,5 +80,9 @@
 
   .pill-button {
     @apply bg-blue-600 hover:bg-blue-800 text-white font-normal py-2 px-4 rounded-full
+  }
+
+  .text-input {
+    @apply appearance-none mt-4 bg-gray-200 border-2 border-gray-200 rounded py-2 px-4 text-gray-700 focus:bg-white focus:border-gray-700
   }
 }

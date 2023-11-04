@@ -40,3 +40,11 @@ export const createRandomHarmony = hex => {
       return shadeHarmony(hex)
   }
 }
+
+export const createRandomBgColor = () => {
+  return (rgbToHex(hsvToRgb({
+    h: Math.random(),
+    s: 0.2,
+    v: 1
+  })))
+}

@@ -1,14 +1,17 @@
 /* eslint-disable react/prop-types */
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import { createPalette } from "../../services/palettes"
 import { useEffect, useState } from "react"
 import PaletteCanvas from "../utils/PaletteCanvas"
 import { GetColorNames } from "../../services/colorNames"
+import ShareIcon from "../icons/ShareIcon"
+import NextIcon from "../icons/NextIcon"
+import DownloadIcon from "../icons/DownloadIcon"
 
 const SinglePaletteView = ({ setMessage, user, communityPalettes, setPalettes }) => {
   const [dataUrl, setDataUrl] = useState(null)
   const id = useParams().id
-  const type = id.split('-')[0]
+  const [type, ...colorsForId] = id.split('-')
   const [colors, setColors] = useState(null)
   const [shareButtonDisabled, setButtonDisabled] = useState(false)
 
@@ -45,13 +48,43 @@ const SinglePaletteView = ({ setMessage, user, communityPalettes, setPalettes })
     return null
   }
   return (
-    <div>
-      <div>
+    <div className="w-[95%] m-auto">
+      <h2 className="text-2xl font-normal my-2">
         {`${type} pallette from ${colors[2].hex}`}
+      </h2>
+      <div className="grid grid-cols-1 grid-rows-[15fr_1fr]">
+        <div className="grid grid-cols-5 rounded-md overflow-hidden border border-gray-200">
+          {colors.map(color => <div key={Math.random()} style={{ background: color.hex }}></div>)}
+        </div>
+        <div className="grid grid-cols-5">
+          {colors.map(color => <div className="px-5 py-2 text-center" key={Math.random()}>{color.hex} - {color.name}</div>)}
+        </div>
       </div>
-      {colors.map(color => <div key={Math.random()} style={{ background: color.hex }}>{color.hex}-{color.name}</div>)}
-      <button disabled={shareButtonDisabled} onClick={handlePaletteCreation}>Share</button>
-      <button onClick={downloadImage}>Download</button>
+      <button className="pill-button mr-5 disabled:bg-blue-400" disabled={shareButtonDisabled} onClick={handlePaletteCreation}>
+        Share
+        <div className="inline-block align-middle ml-2">
+          <ShareIcon sizeClass='h-5 w-5'></ShareIcon>
+        </div>
+      </button>
+      <button className="pill-button " onClick={downloadImage}>
+        Download
+        <div className="inline-block align-middle ml-2">
+          <DownloadIcon sizeClass='h-5 w-5'></DownloadIcon>
+        </div>
+      </button>
+      <button className="pill-button mx-5">
+        <Link to={`/palettes/${colorsForId.toString().replaceAll(',', '-')}`}>
+          Find derivative palettes
+          <div className="inline-block align-middle ml-2">
+            <NextIcon sizeClass='h-5 w-5'></NextIcon>
+          </div>
+        </Link>
+      </button>
+      {!user &&
+        <div className="mt-4">
+          You have to be logged in to share this palette. <Link className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600" to='/login'>Login</Link>
+        </div>
+      }
       <PaletteCanvas palette={colors} type={type} setDataUrl={setDataUrl}></PaletteCanvas>
     </div>
 

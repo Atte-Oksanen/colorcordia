@@ -56,7 +56,7 @@ const PaletteGenerator = ({ color, setColor }) => {
   }, [color, setColor])
 
   return (
-    <div className="h-fit m-4">
+    <div className="h-fit ml-4">
       {colorHarmonies.map(harmony => <ColorPalette key={Math.random()} palette={harmony}></ColorPalette>)}
     </div>
   )

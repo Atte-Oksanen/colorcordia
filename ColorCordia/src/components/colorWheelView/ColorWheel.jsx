@@ -4,14 +4,14 @@ import { hexToRgb, hsvToRgb, rgbToHex, rgbToHsv } from '../../utils/colorConvert
 import { useNavigate } from 'react-router-dom'
 import { randomizeColorWheelPos } from '../../utils/colorRandomizer'
 
-const ColorWheel = ({ setColor, setMessage }) => {
+const ColorWheel = ({ setColor, setMessage, reRenderWheel }) => {
   const navigate = useNavigate()
   const pointer = useRef()
   const wheel = useRef()
   const pointerBox = useRef()
   const wheelBox = useRef()
   const valueWheel = useRef()
-  const [windowWidth, setWidht] = useState(0)
+  const [windowWidth, setWidth] = useState(0)
   const [colorInput, setInput] = useState('')
   const [colorValue, setValue] = useState(100)
 
@@ -35,10 +35,10 @@ const ColorWheel = ({ setColor, setMessage }) => {
     }
     movePointerOnInput(seedColor)
     setInput(seedColor)
-  }, [windowWidth])
+  }, [windowWidth, reRenderWheel])
 
   useEffect(() => {
-    window.onresize = () => setWidht(window.innerWidth)
+    window.onresize = () => setWidth(window.innerWidth)
   }, [windowWidth])
 
   const handlePointerClick = event => {
@@ -142,8 +142,8 @@ const ColorWheel = ({ setColor, setMessage }) => {
 
   return (
     <>
-      <div className='color-wheel-wrapper'>
-        <div ref={wheel} className='bottom-wheel'></div>
+      <div className='grid w-fit grid-cols-1 grid-rows-1'>
+        <div ref={wheel} className='bottom-wheel border border-black'></div>
         <div className='top-wheel'></div>
         <div
           ref={pointer}
@@ -168,7 +168,7 @@ const ColorWheel = ({ setColor, setMessage }) => {
         </span>
       </div>
       <form onSubmit={handleColorSubmit} className=''>
-        <input className='appearance-none mt-4 bg-gray-200 border-2 border-gray-200 rounded py-2 px-4 text-gray-700 focus:bg-white focus:border-gray-700'
+        <input className='text-input'
           type='text'
           value={colorInput}
           onChange={handleColorInput} />

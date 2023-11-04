@@ -5,13 +5,24 @@ const CommunityPalette = (props) => {
   const colors = colorHarmony.map(color => `#${color}`)
   const paletteId = `${props.palette.id}-`.concat(type).concat('-').concat(colorHarmony).toString().replaceAll(',', '-')
   return (
-    <div>
-      <h3><Link to={`/explore/${paletteId}`}>{type} from {colors[2]}</Link></h3>
-      {colors.map(color => <div key={Math.random()} style={{ background: color }}>{color}</div>)}
-      <div>Created by {props.palette.user.username}</div>
-      <div>Likes {props.palette.likes}</div>
-      {props.children}
-    </div>
+    <Link to={`/explore/${paletteId}`}>
+      <div className="bg-gray-200 rounded-md p-2 m-2 dark-grey-hover">
+        <h3 className="text-xl font-normal mb-2">{type} palette from {colors[2]}</h3>
+        <div className="grid grid-cols-1 grid-rows-[8fr_1fr]">
+          <div className="grid grid-cols-5 rounded-md overflow-hidden border border-gray-300">
+            {colors.map(color => <div key={Math.random()} style={{ background: color }}></div>)}
+          </div>
+          <div className="grid grid-cols-5">
+            {colors.map(color => <div key={Math.random()}>{color}</div>)}
+          </div>
+        </div>
+        <div className="leading-loose">
+          Created by {props.palette.user.username}
+          <br />
+          Likes {props.palette.likes}
+        </div>
+      </div>
+    </Link>
   )
 }
 

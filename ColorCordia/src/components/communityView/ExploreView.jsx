@@ -16,9 +16,11 @@ const ExploreView = ({ palettes, setPalettes }) => {
     )
   }
   return (
-    <div>
-      <h2>Explore the latest community created palettes</h2>
-      {palettes.map(palette => <CommunityPalette key={Math.random()} palette={palette}></CommunityPalette>)}
+    <div className="m-4">
+      <h2 className="text-2xl font-normal">Explore the latest community created palettes</h2>
+      <div className="grid grid-cols-3 grid-flow-row">
+        {palettes.toReversed().map(palette => <CommunityPalette key={Math.random()} palette={palette}></CommunityPalette>)}
+      </div>
     </div>
   )
 }

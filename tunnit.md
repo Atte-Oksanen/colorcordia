@@ -38,5 +38,6 @@
 |1.11.23|4| Väriympyrän uudelleenrenderöinnin debuggaus + Muotoilun aloitus -> Navigointi + Header
 ||1| NCS väriavaruuden parantelu + frontendiin liittyvien moduulien refaktorointi
 3.11.23|8| Muotoilun jatko -> Navigointi + Header + väriympyrä + palettinäkymä
+4.11.23|6| Backendin debuggaus + Muotoilua -> Navigointi + väriympyrä + explore + lataus
 
-Yhteensä: 120h
+Yhteensä: 134h

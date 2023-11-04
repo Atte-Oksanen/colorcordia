@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { hexToRgb, rgbToHex } from "../../utils/colorConverters"
 import { Link } from "react-router-dom"
+import NextIcon from "../icons/NextIcon"
 
 /* eslint-disable react/prop-types */
 const ColorTweaker = ({ color, setColor }) => {
@@ -35,7 +36,7 @@ const ColorTweaker = ({ color, setColor }) => {
   return (
     <div className="grid grid-rows-[3fr_1fr_1fr] grid-cols-1 py-10">
       <div className="grid grid-rows-[3fr_1fr] grid-cols-1">
-        <div className="rounded-lg" style={{ background: `${rgbToHex(rgb)}` }}></div>
+        <div className="rounded-lg border border-gray-300" style={{ background: `${rgbToHex(rgb)}` }}></div>
         <div className="text-xl font-normal">{color}</div>
       </div>
       <div>
@@ -52,7 +53,14 @@ const ColorTweaker = ({ color, setColor }) => {
           <input className="w-full" type="range" id="rgb-b" value={rgb.b} max={255} onChange={handleSliderB} /> {rgb.b}
         </div>
       </div>
-      <Link className="pill-button mt-5 w-fit m-auto" to='/'>Pick a new color</Link>
+      <button className="pill-button mt-5 w-fit m-auto">
+        <Link to='/'>
+          <div className="inline-block align-text-top rotate-180 mr-2">
+            <NextIcon sizeClass={'h-5 w-5'}></NextIcon>
+          </div>
+          Pick a new color
+        </Link>
+      </button>
     </div>
   )
 }

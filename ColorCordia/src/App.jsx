@@ -15,6 +15,7 @@ import ColorConverterView from './components/ColorConverterView'
 import SchemeVisualiserView from './components/visualiserView/SchemeVisualiserView'
 import Header from './components/Header'
 import ColorWheelView from './components/colorWheelView/ColorWheelView'
+import { createRandomBgColor } from './utils/colorRandomizer'
 
 function App() {
   const navigate = useNavigate()
@@ -22,6 +23,8 @@ function App() {
   const [message, setMessage] = useState(null)
   const [communityPalettes, setPalettes] = useState([])
   const [user, setUser] = useState(null)
+  const [bgColor, setBgColor] = useState(null)
+  const [reRenderWheel, setWheelPos] = useState(null)
 
   useEffect(() => {
     (async () => {
@@ -45,13 +48,18 @@ function App() {
     })()
   }, [])
 
+  useEffect(() => {
+    setBgColor(createRandomBgColor())
+    setWheelPos(Math.random())
+  }, [])
+
 
   return (
-    <div className='font-extralight grid main-grid-layout'>
-      <Header user={user} setMessage={setMessage} setUser={setUser}></Header>
+    <div className='font-extralight grid grid-cols-[8rem_1fr]'>
+      <Header user={user} setMessage={setMessage} setUser={setUser} bgColor={pickedColor || bgColor}></Header>
       <Notification message={message} setMessage={setMessage}></Notification>
       <Routes>
-        <Route path='/' element={<ColorWheelView setColor={setColor} setMessage={setMessage}></ColorWheelView>}></Route>
+        <Route path='/' element={<ColorWheelView setColor={setColor} setMessage={setMessage} reRenderWheel={reRenderWheel}></ColorWheelView>}></Route>
         <Route path='/palettes/' element={<PaletteView color={pickedColor} setColor={setColor}></PaletteView>}></Route>
         <Route path='/palettes/:id' element={<FollowUpPalettes></FollowUpPalettes>}></Route>
         <Route path='/palette/:id' element={<SinglePaletteView communityPalettes={communityPalettes} setPalettes={setPalettes} setMessage={setMessage} user={user}></SinglePaletteView>}></Route>

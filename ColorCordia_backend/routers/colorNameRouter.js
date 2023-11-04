@@ -16,6 +16,7 @@ colorNameRouter.get('/', async (req, res) => {
 
 colorNameRouter.get('/:id', async (req, res) => {
   const hexArray = req.params.id.split('-')
+  console.log(hexArray)
   const returnArray = []
   hexArray.forEach(element => {
     const elementRgb = hexToRgb(element)
@@ -29,8 +30,7 @@ colorNameRouter.get('/:id', async (req, res) => {
         closestName = colors[index]
       }
     }
-    closestName.hex = `#${element}`
-    returnArray.push(closestName)
+    returnArray.push({ ...closestName, hex: `#${element}` })
   })
   res.json(returnArray)
 })

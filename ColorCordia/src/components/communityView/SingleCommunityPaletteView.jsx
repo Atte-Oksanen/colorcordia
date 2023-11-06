@@ -102,7 +102,7 @@ const SingleCommunityPaletteView = ({ palettes, user, setUser }) => {
       </button>
       {!user &&
         <div className="mt-4">
-          You have to be logged in to like this palette. <Link className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600" to='/login'>Login</Link>
+          You have to be logged in to like this palette. <Link className="link-text" to='/login'>Login</Link>
         </div>
       }
       <PaletteCanvas palette={colors} type={type} setDataUrl={setDataUrl}></PaletteCanvas>

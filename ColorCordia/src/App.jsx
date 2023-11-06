@@ -5,7 +5,7 @@ import PaletteView from './components/paletteView/PaletteView'
 import SinglePaletteView from './components/paletteView/SinglePaletteView'
 import ExploreView from './components/communityView/ExploreView'
 import Notification from './components/utils/Notification'
-import UserView from './components/userView/userView'
+import UserView from './components/userView/UserView'
 import SingleCommunityPaletteView from './components/communityView/SingleCommunityPaletteView'
 import LoginView from './components/userView/LoginView'
 import SignUpView from './components/userView/SignUpView'
@@ -65,7 +65,7 @@ function App() {
         <Route path='/palette/:id' element={<SinglePaletteView communityPalettes={communityPalettes} setPalettes={setPalettes} setMessage={setMessage} user={user}></SinglePaletteView>}></Route>
         <Route path='/explore' element={<ExploreView palettes={communityPalettes} setPalettes={setPalettes}></ExploreView>}></Route>
         <Route path='/explore/:id' element={<SingleCommunityPaletteView palettes={communityPalettes} user={user} setUser={setUser}></SingleCommunityPaletteView>}></Route>
-        <Route path='/profile' element={<UserView user={user}></UserView>}></Route>
+        <Route path='/profile' element={<UserView user={user} setUser={setUser} setMessage={setMessage}></UserView>}></Route>
         <Route path='/login' element={<LoginView setUser={setUser} setMessage={setMessage}></LoginView>}></Route>
         <Route path='/signup' element={<SignUpView setMessage={setMessage}></SignUpView>}></Route>
         <Route path='/converter' element={<ColorConverterView setMessage={setMessage}></ColorConverterView>}></Route>

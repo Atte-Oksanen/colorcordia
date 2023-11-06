@@ -1,9 +1,13 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react"
+import { changePassword } from "../../services/users"
+import { useNavigate } from "react-router-dom"
 
-const EditableField = ({ fieldLabel, fieldValue, setNewState }) => {
-  const [buttonMessage, setMessage] = useState('Edit')
+const EditableField = ({ fieldLabel, fieldValue, setNewState, user, setUser, setMessage }) => {
+  const navigate = useNavigate()
+  const [buttonMessage, setButtonMessage] = useState('Edit')
   const [fieldText, setText] = useState(fieldValue)
+  const [newPass, setNewPass] = useState('')
   const [isPassword, setPasswordCheck] = useState('password')
   const [disabled, setDisabled] = useState(true)
 
@@ -21,17 +25,15 @@ const EditableField = ({ fieldLabel, fieldValue, setNewState }) => {
     }
   }, [fieldValue])
 
-  if (fieldValue === '') {
-    return null
-  }
+
   const changeEditState = () => {
     if (buttonMessage === 'Edit') {
-      setMessage('Save')
+      setButtonMessage('Save')
       setPasswordCheck('text')
       setDisabled(!disabled)
     } else {
       setNewState(fieldText)
-      setMessage('Edit')
+      setButtonMessage('Edit')
       if (fieldLabel === 'Password') {
         setPasswordCheck('password')
       }
@@ -46,10 +48,37 @@ const EditableField = ({ fieldLabel, fieldValue, setNewState }) => {
     }
   }
 
+  const handleNewPass = event => {
+    if (buttonMessage === 'Save') {
+      setNewPass(event.target.value)
+    }
+  }
+
+  const sendNewPass = () => {
+    changePassword({ username: user.username, currentPassword: fieldText, newPassword: newPass })
+    changeEditState()
+    window.localStorage.removeItem('userToken')
+    setUser(null)
+    navigate('/login')
+    setMessage("Logged out")
+  }
 
   return (
     <div>
-      {fieldLabel} <input disabled={disabled} type={isPassword} value={fieldText} onChange={handleTextChange} /> <button type="button" onClick={changeEditState}>{buttonMessage}</button>
+      {disabled && fieldLabel}
+      {!disabled && <>Current password </>}
+      <input className="text-input enabled:bg-white enabled:border-gray-400" disabled={disabled} type={isPassword} placeholder="***********" value={fieldText} onChange={handleTextChange} />
+      {disabled && <button className="pill-button" type="button" onClick={changeEditState}>{buttonMessage}</button>}
+      {!disabled &&
+        <>
+          <br />
+          New password <input className="text-input enabled:bg-white enabled:border-gray-400" disabled={disabled} type={isPassword} placeholder="***********" value={newPass} onChange={handleNewPass} />
+          <button className="pill-button" type="button" onClick={sendNewPass}>{buttonMessage}</button>
+          <p className="underline mt-3">
+            Note: You must log in again after changing your password
+          </p>
+        </>
+      }
     </div>
   )
 }

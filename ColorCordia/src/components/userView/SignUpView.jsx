@@ -5,7 +5,6 @@ import { useNavigate, Link } from "react-router-dom"
 
 const SignUpView = ({ setMessage }) => {
   const navigate = useNavigate()
-  const [email, setEmail] = useState('')
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
@@ -13,27 +12,36 @@ const SignUpView = ({ setMessage }) => {
     event.preventDefault()
     const checkUserName = await checkUsername(username)
     if (checkUserName) {
-      await signUp({ email, username, password })
-      setMessage("Account succesfully created")
-      navigate('/login')
+      try {
+        await signUp({ username, password })
+        setMessage("Account succesfully created")
+        navigate('/login')
+      } catch (error) {
+        setMessage('This username does not comply with our platform policies')
+      }
     } else {
       setMessage("username already taken")
     }
   }
 
   return (
-    <div>
+    <div className="w-fit m-auto border bg-white border-black drop-shadow-md p-10 rounded-lg">
+      <h2 className="text-4xl font-normal">Sign up</h2>
       <form onSubmit={handleFormSubmit}>
-        <input type="email" placeholder="Email" value={email} onChange={event => setEmail(event.target.value)} />
+        <input className="text-input border-gray-600 w-full" type="text" placeholder="Username" value={username} onChange={event => setUsername(event.target.value)} />
         <br />
-        <input type="text" placeholder="Username" value={username} onChange={event => setUsername(event.target.value)} />
+        <p className="text-gray-600 text-sm">
+          The username can only consist of alphanumerical character (a-z, 0-9).
+          <br />
+          Hyphens (-) and underscores (_) are also permitted.
+          <br />
+          Profanities or names in bad taste are not permitted.</p>
+        <input className="text-input border-gray-600 w-full" type="password" placeholder="Password" value={password} onChange={event => setPassword(event.target.value)} />
         <br />
-        <input type="password" placeholder="Password" value={password} onChange={event => setPassword(event.target.value)} />
-        <br />
-        <button type="submit">Sign up</button>
+        <button className="pill-button my-4 w-full" type="submit">Sign up</button>
       </form>
       <div>
-        <p>Already have an account? <Link to='/login'>Log in</Link></p>
+        <p>Already have an account? <Link className="link-text" to='/login'>Log in</Link></p>
       </div>
     </div>
 

@@ -39,5 +39,6 @@
 ||1| NCS väriavaruuden parantelu + frontendiin liittyvien moduulien refaktorointi
 3.11.23|8| Muotoilun jatko -> Navigointi + Header + väriympyrä + palettinäkymä
 4.11.23|6| Backendin debuggaus + Muotoilua -> Navigointi + väriympyrä + explore + lataus
+6.11.23|6| Kirosanafiltterin luonti + salasanan vaihtotoiminnallisuuden lisäys + muotoilua -> kirjautumisnäkymä
 
-Yhteensä: 134h
+Yhteensä: 140h

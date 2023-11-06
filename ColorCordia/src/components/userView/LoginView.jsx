@@ -26,20 +26,19 @@ const LoginView = ({ setUser, setMessage }) => {
   }
 
   return (
-    <div>
+    <div className="w-fit m-auto border bg-white border-black drop-shadow-md p-10 rounded-lg">
+      <h2 className="text-4xl font-normal">Login</h2>
       <form onSubmit={handleFormSubmit}>
-        <input type="text" placeholder="Username" value={username} onChange={event => setUsername(event.target.value)} />
+        <input className="text-input border-gray-600 w-full" type="text" placeholder="Username" value={username} onChange={event => setUsername(event.target.value)} />
         <br />
-        <input type="password" placeholder="Password" value={password} onChange={event => setPassword(event.target.value)} />
+        <input className="text-input border-gray-600 w-full" type="password" placeholder="Password" value={password} onChange={event => setPassword(event.target.value)} />
         <br />
-        <button type="submit">Log in</button>
+        <button className="pill-button my-4 w-full" type="submit">Log in</button>
       </form>
       <div>
-        <p>Forgot your password? <a href="">Reset</a></p>
-        <p>Don't have an account? <Link to='/signup'>Create account</Link></p>
+        <p>Don't have an account? <Link className="link-text" to='/signup'>Create account</Link></p>
       </div>
     </div>
-
   )
 }
 

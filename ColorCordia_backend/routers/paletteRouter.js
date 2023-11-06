@@ -38,7 +38,6 @@ paletteRouter.put('/:id', async (req, res) => {
     return res.status(401).json({ message: "post already liked" })
   }
   const updatedUser = {
-    email: user.email,
     username: user.username,
     password: user.password,
     likedPosts: user.likedPosts.concat(req.body.id)

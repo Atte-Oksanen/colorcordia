@@ -33,3 +33,6 @@ export const getUser = async userId => {
   return (await axios.get(`${BASE_URL}/getuser/${userId}`, { headers: { authorization: token } })).data
 }
 
+export const changePassword = async creds => {
+  return (await axios.post(`${BASE_URL}/password`, creds)).data
+}

@@ -2,73 +2,66 @@
 import { getTextColor } from "../../utils/colorConverters"
 
 const VisualiserDashboardBilling = ({ colors }) => {
-  const listElementStyle = {
-    padding: '1rem 1rem 1rem 0.5rem',
-    border: '1px solid black',
-    borderRadius: '3px',
-    margin: '0.5rem 0'
-  }
-  const spanElementStyle = {
-    padding: '0.5rem',
-    marginLeft: '0.2rem',
-    borderRadius: '3px'
-  }
   return (
-    <div style={{ border: '1px solid black', width: '35rem', borderRadius: '3px', background: 'white' }}>
-      <h3 style={{ padding: '0 0.5rem' }}>
+    <div className="border border-black rounded-md bg-white h-fit">
+      <h3 className="p-2 text-lg">
         Billing
       </h3>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1rf', gridTemplateRows: '1fr' }}>
-        <ul style={{ gridArea: '1/1/2/2', listStyleType: 'none', padding: '0 0.5rem', margin: '0' }}>
-          <li style={listElementStyle}>
-            Novo Grove -
-            <span style={{ color: getTextColor(colors[3]), background: colors[3], ...spanElementStyle }}>
-              passed
-            </span>
+      <div className="grid grid-cols-4 grid-rows-1">
+        <ul className="px-2">
+          <li className="p-4 border border-black m-2 rounded-md" style={{ color: getTextColor(colors[3]), background: colors[3] }}>
+            Novo Grove
           </li>
-          <li style={listElementStyle}>
-            Lumina Forge -
-            <span style={{ color: getTextColor(colors[2]), background: colors[2], ...spanElementStyle }}>
-              processing
-            </span>
+          <li className="p-4 border border-black m-2 rounded-md" style={{ color: getTextColor(colors[2]), background: colors[2] }}>
+            Lumina Forge
           </li>
-          <li style={listElementStyle}>
-            Ember Loom -
-            <span style={{ color: getTextColor(colors[2]), background: colors[2], ...spanElementStyle }}>
-              processing
-            </span>
+          <li className="p-4 border border-black m-2 rounded-md" style={{ color: getTextColor(colors[1]), background: colors[1] }}>
+            Ember Loom
           </li>
-          <li style={listElementStyle}>
-            ColorCordia -
-            <span style={{ color: getTextColor(colors[0]), background: colors[0], ...spanElementStyle }}>
-              Requires review
-            </span>
+          <li className="p-4 border border-black m-2 rounded-md" style={{ color: getTextColor(colors[0]), background: colors[0] }}>
+            ColorCordia
           </li>
         </ul>
-        <ul style={{ gridArea: '1/2/2/3', listStyleType: 'none', padding: '0 0.5rem', margin: '0' }}>
-          <li style={listElementStyle}>
-            LumiGlo -
-            <span style={{ color: getTextColor(colors[2]), background: colors[2], ...spanElementStyle }}>
-              processing
-            </span>
+        <ul className="px-2">
+          <li className="p-4 border border-black m-2 rounded-md" style={{ color: getTextColor(colors[2]), background: colors[2] }}>
+            LumiGlo
           </li>
-          <li style={listElementStyle}>
-            ByteWave -
-            <span style={{ color: getTextColor(colors[3]), background: colors[3], ...spanElementStyle }}>
-              passed
-            </span>
+          <li className="p-4 border border-black m-2 rounded-md" style={{ color: getTextColor(colors[3]), background: colors[3] }}>
+            ByteWave
           </li>
-          <li style={listElementStyle}>
-            Voltexa -
-            <span style={{ color: getTextColor(colors[0]), background: colors[0], ...spanElementStyle }}>
-              Requires review
-            </span>
+          <li className="p-4 border border-black m-2 rounded-md" style={{ color: getTextColor(colors[0]), background: colors[0] }}>
+            Voltexa
           </li>
-          <li style={listElementStyle}>
-            QuantaCore -
-            <span style={{ color: getTextColor(colors[3]), background: colors[3], ...spanElementStyle }}>
-              passed
-            </span>
+          <li className="p-4 border border-black m-2 rounded-md" style={{ color: getTextColor(colors[3]), background: colors[3] }}>
+            QuantaCore
+          </li>
+        </ul>
+        <ul className="px-2">
+          <li className="p-4 border border-black m-2 rounded-md" style={{ color: getTextColor(colors[1]), background: colors[0] }}>
+            CodeCraft
+          </li>
+          <li className="p-4 border border-black m-2 rounded-md" style={{ color: getTextColor(colors[2]), background: colors[2] }}>
+            DataSphere
+          </li>
+          <li className="p-4 border border-black m-2 rounded-md" style={{ color: getTextColor(colors[0]), background: colors[0] }}>
+            CodePeak
+          </li>
+          <li className="p-4 border border-black m-2 rounded-md" style={{ color: getTextColor(colors[2]), background: colors[3] }}>
+            InfraLock
+          </li>
+        </ul>
+        <ul className="px-2">
+          <li className="p-4 border border-black m-2 rounded-md" style={{ color: getTextColor(colors[2]), background: colors[2] }}>
+            TechVista
+          </li>
+          <li className="p-4 border border-black m-2 rounded-md" style={{ color: getTextColor(colors[1]), background: colors[1] }}>
+            Cybervault
+          </li>
+          <li className="p-4 border border-black m-2 rounded-md" style={{ color: getTextColor(colors[2]), background: colors[2] }}>
+            Infinitech
+          </li>
+          <li className="p-4 border border-black m-2 rounded-md" style={{ color: getTextColor(colors[0]), background: colors[0] }}>
+            ByteSpace
           </li>
         </ul>
       </div>

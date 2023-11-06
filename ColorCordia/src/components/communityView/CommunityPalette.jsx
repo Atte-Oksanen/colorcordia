@@ -5,8 +5,8 @@ const CommunityPalette = (props) => {
   const colors = colorHarmony.map(color => `#${color}`)
   const paletteId = `${props.palette.id}-`.concat(type).concat('-').concat(colorHarmony).toString().replaceAll(',', '-')
   return (
-    <Link to={`/explore/${paletteId}`}>
-      <div className="bg-gray-200 rounded-md p-2 m-2 dark-grey-hover">
+    <Link className="m-2" to={`/explore/${paletteId}`}>
+      <div className="bg-gray-200 rounded-md p-2 dark-grey-hover h-full">
         <h3 className="text-xl font-normal mb-2">{type} palette from {colors[2]}</h3>
         <div className="grid grid-cols-1 grid-rows-[8fr_1fr]">
           <div className="grid grid-cols-5 rounded-md overflow-hidden border border-gray-300">

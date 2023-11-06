@@ -40,7 +40,8 @@ const PaletteDropDown = ({ palettes, setColors }) => {
     filter: 'drop-shadow(0 0 0.1rem grey)',
     width: 'fit-content',
     background: '#fcfcfc',
-    height: '60vh',
+    height: 'fit-content',
+    maxHeight: '45vh',
     overflowY: 'scroll'
   }
   const listElementStyle = {

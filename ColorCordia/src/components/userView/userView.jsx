@@ -33,6 +33,7 @@ const UserView = ({ user, setUser, setMessage }) => {
   }
 
   const handlePaletteDelete = event => {
+    event.preventDefault()
     if (window.confirm('Do you want to delete a palette?')) {
       deletePalette(event.target.id)
       setPalettes(palettes.filter(palette => palette.id !== event.target.id))

@@ -9,7 +9,7 @@ const VisualiserDashboard = ({ colors }) => {
     return null
   }
   return (
-    <div className="bg-gray-200 pb-4 h-fit">
+    <div className="bg-gray-200 pb-4 h-[66vh] rounded-lg overflow-hidden">
       <div className="px-4 py-2"
         style={{ background: colors[3] }}>
         <svg className="align-top rounded-full p-[1px] bg-black inline-block" width="60" height="60" viewBox="0 0 305 305" fill="none" xmlns="http://www.w3.org/2000/svg">

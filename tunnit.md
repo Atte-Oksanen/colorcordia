@@ -41,5 +41,6 @@
 4.11.23|6| Backendin debuggaus + Muotoilua -> Navigointi + väriympyrä + explore + lataus
 6.11.23|6| Kirosanafiltterin luonti + salasanan vaihtotoiminnallisuuden lisäys + muotoilua -> kirjautumisnäkymä
 ||4| Muotoilun jatko -> Palettien visualisointi
+|7.11.23|6| RGB värivalitsimen luonti + Muotoilun jatko -> Palettien visualisointi
 
-Yhteensä: 144h
+Yhteensä: 150h

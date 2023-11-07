@@ -6,8 +6,8 @@ const VisualiserDashboardTraffic = ({ colors }) => {
         Traffic
       </h3>
       <div className="grid grid-cols-2 p-2">
-        <div className="grid m-4 pl-1 grid-cols-[1fr_10fr] grid-rows-1 border-l border-b border-r border-black">
-          <div className="grid grid-rows-6 grid-cols-1 text-sm">
+        <div className="grid m-4 pl-1 grid-cols-[2em_10fr] grid-rows-1">
+          <div className="grid grid-rows-6 grid-cols-1">
             <div>130</div>
             <div>120</div>
             <div>110</div>
@@ -15,7 +15,7 @@ const VisualiserDashboardTraffic = ({ colors }) => {
             <div>90</div>
             <div>80</div>
           </div>
-          <div className="grid grid-cols-12 grid-rows-6">
+          <div className="grid grid-cols-12 grid-rows-6 border-l border-b border-r border-black px-1">
             <div style={{ gridArea: '2/1/7/2', background: colors[2] }}>
             </div>
             <div style={{ gridArea: '1/2/7/3', background: colors[3] }}>
@@ -42,8 +42,8 @@ const VisualiserDashboardTraffic = ({ colors }) => {
             </div>
           </div>
         </div>
-        <div className="grid m-4 pl-1 grid-cols-[1fr_10fr] grid-rows-1 border-l border-b border-r border-black">
-          <div className="grid grid-rows-6 grid-cols-1 text-sm">
+        <div className="grid m-4 pl-1 grid-cols-[2em_10fr] grid-rows-1 ">
+          <div className="grid grid-rows-6 grid-cols-1">
             <div>60%</div>
             <div>55%</div>
             <div>50%</div>
@@ -51,7 +51,7 @@ const VisualiserDashboardTraffic = ({ colors }) => {
             <div>40%</div>
             <div>35%</div>
           </div>
-          <div className="grid grid-cols-12 grid-rows-6">
+          <div className="grid grid-cols-12 grid-rows-6 border-l border-b border-r border-black px-1">
             <div style={{ gridArea: '1/1/7/2', background: colors[0] }}>
             </div>
             <div style={{ gridArea: '3/2/7/3', background: colors[2] }}>

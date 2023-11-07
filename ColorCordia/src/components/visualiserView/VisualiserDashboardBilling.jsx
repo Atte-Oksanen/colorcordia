@@ -8,12 +8,12 @@ const VisualiserDashboardBilling = ({ colors }) => {
         Billing
       </h3>
       <div className="grid grid-cols-4 grid-rows-1">
-        <ul className="px-2">
+        <ul className="px-1">
           <li className="p-4 border border-black m-2 rounded-md" style={{ color: getTextColor(colors[3]), background: colors[3] }}>
             Novo Grove
           </li>
           <li className="p-4 border border-black m-2 rounded-md" style={{ color: getTextColor(colors[2]), background: colors[2] }}>
-            Lumina Forge
+            LuminaForge
           </li>
           <li className="p-4 border border-black m-2 rounded-md" style={{ color: getTextColor(colors[1]), background: colors[1] }}>
             Ember Loom
@@ -22,7 +22,7 @@ const VisualiserDashboardBilling = ({ colors }) => {
             ColorCordia
           </li>
         </ul>
-        <ul className="px-2">
+        <ul className="pr-1">
           <li className="p-4 border border-black m-2 rounded-md" style={{ color: getTextColor(colors[2]), background: colors[2] }}>
             LumiGlo
           </li>
@@ -36,7 +36,7 @@ const VisualiserDashboardBilling = ({ colors }) => {
             QuantaCore
           </li>
         </ul>
-        <ul className="px-2">
+        <ul className="pl-1">
           <li className="p-4 border border-black m-2 rounded-md" style={{ color: getTextColor(colors[1]), background: colors[0] }}>
             CodeCraft
           </li>
@@ -50,7 +50,7 @@ const VisualiserDashboardBilling = ({ colors }) => {
             InfraLock
           </li>
         </ul>
-        <ul className="px-2">
+        <ul className="pr-1">
           <li className="p-4 border border-black m-2 rounded-md" style={{ color: getTextColor(colors[2]), background: colors[2] }}>
             TechVista
           </li>

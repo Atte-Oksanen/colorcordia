@@ -6,50 +6,6 @@ const PaletteDropDown = ({ palettes, setColors }) => {
   const [selectedPalette, setSelected] = useState('')
   const [selectedColors, setSelectedColors] = useState([])
   const [showDropDown, setShow] = useState(false)
-  const selectButtonStyle = {
-    padding: '0.5rem',
-    background: 'white',
-    borderRadius: '0.5rem',
-    cursor: 'pointer',
-    border: '1px solid black',
-    margin: '0'
-  }
-  const selectTriangleStyle = {
-    display: 'inline-block',
-    marginLeft: '0.5rem',
-    width: 0,
-    height: 0,
-    borderLeft: '0.5rem solid transparent',
-    borderRight: '0.5rem solid transparent',
-    borderTop: '0.5rem solid #D9D9D9'
-  }
-
-  const gridContainerStyle = {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(5, 1fr)',
-    gridTemplateRows: '1fr',
-    height: '1rem'
-  }
-
-  const dropDownListStyle = {
-    listStyle: 'none',
-    padding: '0.5rem',
-    margin: '0',
-    position: 'absolute',
-    zIndex: '100',
-    filter: 'drop-shadow(0 0 0.1rem grey)',
-    width: 'fit-content',
-    background: '#fcfcfc',
-    height: 'fit-content',
-    maxHeight: '45vh',
-    overflowY: 'scroll'
-  }
-  const listElementStyle = {
-    padding: '0.3rem',
-    margin: '0',
-    border: '0',
-    cursor: 'pointer'
-  }
 
   useEffect(() => {
     if (palettes.length < 1) {
@@ -73,9 +29,7 @@ const PaletteDropDown = ({ palettes, setColors }) => {
     if (palettes.length < 1 || paletteArray.length < 1 || selectedPalette === '') {
       return
     }
-    const colors = (paletteArray.find(element => element.id === selectedPalette)).colors
-    setSelectedColors(colors)
-    setColors(colors)
+    setSelectedColors((paletteArray.find(element => element.id === selectedPalette)).colors)
   }, [selectedPalette])
 
   useEffect(() => {
@@ -90,39 +44,44 @@ const PaletteDropDown = ({ palettes, setColors }) => {
     event.stopPropagation()
     setShow(!showDropDown)
   }
+
+  const handlePaletteSelection = event => {
+    setSelected(event.currentTarget.id)
+    changeVisibility(event)
+    setColors((paletteArray.find(element => element.id === event.currentTarget.id)).colors)
+  }
   return (
-    <div>
-      <button onClick={changeVisibility} style={selectButtonStyle}>
-        {paletteArray.find(element => element.id === selectedPalette).name}
-        <div style={selectTriangleStyle}></div>
-        <div style={gridContainerStyle}>
-          <div style={{ background: selectedColors[0], gridArea: '1/1/2/2' }}></div>
-          <div style={{ background: selectedColors[1], gridArea: '1/2/2/3' }}></div>
-          <div style={{ background: selectedColors[2], gridArea: '1/3/2/4' }}></div>
-          <div style={{ background: selectedColors[3], gridArea: '1/4/2/5' }}></div>
-          <div style={{ background: selectedColors[4], gridArea: '1/5/2/6' }}></div>
-        </div>
-      </button>
+    <div className="relative">
       {showDropDown &&
-        <ul style={dropDownListStyle}>
+        <ul className="p-2 absolute bottom-full z-50 drop-shadow-lg w-fit bg-gray-100 h-fit max-h-[60vh] overflow-y-auto">
           {paletteArray.map(palette =>
-            <li key={Math.random()} id={palette.id} style={listElementStyle} onClick={event => {
-              setSelected(event.currentTarget.id)
-              changeVisibility(event)
-            }
-            }>
+            <li className="p-1 cursor-pointer dark-grey-hover"
+              key={Math.random()} id={palette.id} onClick={handlePaletteSelection}>
               {palette.name}
               <br />
-              <div style={gridContainerStyle}>
-                <div style={{ background: palette.colors[0], gridArea: '1/1/2/2' }}></div>
-                <div style={{ background: palette.colors[1], gridArea: '1/2/2/3' }}></div>
-                <div style={{ background: palette.colors[2], gridArea: '1/3/2/4' }}></div>
-                <div style={{ background: palette.colors[3], gridArea: '1/4/2/5' }}></div>
-                <div style={{ background: palette.colors[4], gridArea: '1/5/2/6' }}></div>
+              <div className="grid grid-cols-5 grid-rows-1 h-4">
+                <div style={{ background: palette.colors[0] }}></div>
+                <div style={{ background: palette.colors[1] }}></div>
+                <div style={{ background: palette.colors[2] }}></div>
+                <div style={{ background: palette.colors[3] }}></div>
+                <div style={{ background: palette.colors[4] }}></div>
               </div>
             </li>
           )}
         </ul>}
+      <button className="p-2 dark-grey-hover bg-white rounded-lg cursor-pointer border border-black"
+        onClick={changeVisibility}>
+        {paletteArray.find(element => element.id === selectedPalette).name}
+        <div className="inline-block ml-2 w-0 h-0"
+          style={{ borderLeft: '0.5rem solid transparent', borderRight: '0.5rem solid transparent', borderTop: '0.5rem solid #D9D9D9' }}></div>
+        <div className="grid grid-cols-5 grid-rows-1 h-4">
+          <div style={{ background: selectedColors[0] }}></div>
+          <div style={{ background: selectedColors[1] }}></div>
+          <div style={{ background: selectedColors[2] }}></div>
+          <div style={{ background: selectedColors[3] }}></div>
+          <div style={{ background: selectedColors[4] }}></div>
+        </div>
+      </button>
     </div>
   )
 }

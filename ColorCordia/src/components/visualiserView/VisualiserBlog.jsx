@@ -8,7 +8,7 @@ const VisualiserBlog = ({ colors }) => {
     return null
   }
   return (
-    <div className="grid grid-cols-1 grid-rows-1 h-[53rem] overflow-hidden">
+    <div className="grid grid-cols-1 grid-rows-1 h-[66vh] overflow-hidden rounded-lg">
       <div style={{ gridArea: '1/1/2/2' }}>
         {colors.length > 1 && <VisualiserCanvas colors={colors}></VisualiserCanvas>}
       </div>

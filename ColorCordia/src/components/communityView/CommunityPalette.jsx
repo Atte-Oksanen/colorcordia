@@ -21,6 +21,7 @@ const CommunityPalette = (props) => {
           <br />
           Likes {props.palette.likes}
         </div>
+        {props.children}
       </div>
     </Link>
   )

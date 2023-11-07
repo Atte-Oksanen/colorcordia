@@ -55,7 +55,15 @@ const UserView = ({ user, setUser, setMessage }) => {
         </div>
       </div>
       <h3 className="text-2xl font-normal">Your palettes</h3>
-      {palettes.map(palette => <CommunityPalette key={Math.random()} palette={palette}><button id={palette.id} onClick={event => handlePaletteDelete(event)}>Delete</button></CommunityPalette>)}
+      <div className="grid grid-cols-3 gap-4">
+        {palettes.map(palette => {
+          return (
+            <div key={Math.random()}>
+              <CommunityPalette key={Math.random()} palette={palette}><button className="pill-button-empty" id={palette.id} onClick={event => handlePaletteDelete(event)}>Delete</button></CommunityPalette>
+            </div>
+          )
+        })}
+      </div>
 
     </div>
   )

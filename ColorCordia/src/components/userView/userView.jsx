@@ -4,6 +4,7 @@ import EditableField from "../utils/editableField"
 import { deletePalette, getPalettesByCreator } from "../../services/palettes"
 import CommunityPalette from "../communityView/CommunityPalette"
 
+
 const UserView = ({ user, setUser, setMessage }) => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')

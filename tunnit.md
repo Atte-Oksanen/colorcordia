@@ -46,4 +46,4 @@
 ||1| Palettien + lataustoiminnon refaktorointi + Muotoilun jatko -> Palettinäkymät valmiit
 ||1| Muotoilun jatko -> Värikonversionäkymä
 
-Yhteensä: 150h
+Yhteensä: 155h

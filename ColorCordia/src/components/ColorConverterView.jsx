@@ -208,7 +208,7 @@ const ColorConverterView = ({ setMessage }) => {
           <div>
             Note: NCS color representations shown here are merely an approximation of the nearest NCS standard color.
             <br />
-            For accurate color representations visit your local paint shop or <a href="https://ncscolour.com/" target="_blank" rel="noreferrer">ncscolour.com</a>
+            For accurate color representations visit your local paint shop or <a className="link-text" href="https://ncscolour.com/" target="_blank" rel="noreferrer">ncscolour.com</a>
           </div>
         </div>
       )

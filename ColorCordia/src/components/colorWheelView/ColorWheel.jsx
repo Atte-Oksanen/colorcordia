@@ -169,7 +169,7 @@ const ColorWheel = ({ setColor, setMessage, reRenderWheel }) => {
         </span>
       </div>
       <form onSubmit={handleColorSubmit} className=''>
-        <input className='text-input'
+        <input className='text-input mt-4'
           type='text'
           value={colorInput}
           onChange={handleColorInput} />

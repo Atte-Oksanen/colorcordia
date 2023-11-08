@@ -6,13 +6,13 @@ import { hexToNcs } from "../services/ncsConvert"
 const ColorConverterView = ({ setMessage }) => {
   const [startUnit, setStartUnit] = useState('Hex')
   const [startValue, setStartValue] = useState('')
-  const [endUnit, setEndUnit] = useState('HSV')
+  const [endUnit, setEndUnit] = useState('NCS')
   const [endValue, setEndValue] = useState('')
   const [showComparison, setShowComparison] = useState(false)
   const [comparableColors, setComparable] = useState([])
 
-  const getPlaceHolderFormat = () => {
-    switch (startUnit) {
+  const getPlaceHolderFormat = (unit) => {
+    switch (unit) {
       case 'Hex':
         return 'e.g. #85d2d6'
       case 'RGB':
@@ -196,9 +196,15 @@ const ColorConverterView = ({ setMessage }) => {
     }
     if (showComparison) {
       return (
-        <div>
-          <div style={{ background: `${comparableColors[0]}.color` }}>{comparableColors[0].name}</div>
-          <div style={{ background: `${comparableColors[1].hex}` }} >{comparableColors[1].ncs}</div>
+        <div className="w-1/2 mx-auto h-full">
+          <div className="grid grid-cols-2 h-1/2 rounded-lg overflow-hidden mt-8">
+            <div style={{ background: `${comparableColors[0].color}` }}></div>
+            <div style={{ background: `${comparableColors[1].hex}` }} ></div>
+          </div>
+          <div className="grid grid-cols-2 text-center">
+            <div>{comparableColors[0].name}</div>
+            <div>{comparableColors[1].ncs}</div>
+          </div>
           <div>
             Note: NCS color representations shown here are merely an approximation of the nearest NCS standard color.
             <br />
@@ -208,32 +214,41 @@ const ColorConverterView = ({ setMessage }) => {
       )
     }
     return (
-      <div>
-        <div style={{ background: `${comparableColors[0].color}` }}>{comparableColors[0].name}</div>
+      <div className="w-1/2 mx-auto h-full">
+        <div className="h-1/2 rounded-lg overflow-hidden mt-8" style={{ background: `${comparableColors[0].color}` }}></div>
+        <div className="text-center">{comparableColors[0].name}</div>
       </div>
     )
   }
   return (
-    <div>
-      Color system
-      <select onChange={event => setStartUnit(event.target.value)} value={startUnit}>
-        <option>Hex</option>
-        <option>RGB</option>
-        <option>HSV</option>
-        <option>NCS</option>
-      </select>
-      <input type="text" placeholder={getPlaceHolderFormat()} value={startValue} onChange={event => setStartValue(event.target.value)}></input>
-      <br />
-      <button onClick={handleColorConversion}>Convert to</button>
-      <br />
-      Color system
-      <select onChange={event => setEndUnit(event.target.value)} value={endUnit}>
-        <option>Hex</option>
-        <option>RGB</option>
-        <option>HSV</option>
-        <option>NCS</option>
-      </select>
-      <input type="text" placeholder="Color code" readOnly value={endValue}></input>
+    <div className="w-full h-2/3 m-auto ">
+      <div className=" w-fit p-8 mx-auto">
+        <div className="inline-block">
+          <label htmlFor="startUnit">
+            Color system
+          </label>
+          <select id="startUnit" className="dropdown mx-4" onChange={event => setStartUnit(event.target.value)} value={startUnit}>
+            <option>Hex</option>
+            <option>RGB</option>
+            <option>HSV</option>
+            <option>NCS</option>
+          </select>
+          <input className="text-input" type="text" placeholder={getPlaceHolderFormat(startUnit)} value={startValue} onChange={event => setStartValue(event.target.value)}></input>
+        </div>
+        <button className="pill-button mx-4" onClick={handleColorConversion}>Convert to</button>
+        <div className="inline-block">
+          <label htmlFor="endUnit">
+            Color system
+          </label>
+          <select className="dropdown mx-4" id="endUnit" onChange={event => setEndUnit(event.target.value)} value={endUnit}>
+            <option>Hex</option>
+            <option>RGB</option>
+            <option>HSV</option>
+            <option>NCS</option>
+          </select>
+          <input className="text-input" type="text" placeholder={getPlaceHolderFormat(endUnit)} readOnly value={endValue}></input>
+        </div>
+      </div>
       {renderComparison()}
     </div>
   )

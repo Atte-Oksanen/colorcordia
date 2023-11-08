@@ -58,8 +58,8 @@ const VisualiserCanvas = ({ colors }) => {
 
   return (
     <div style={{ display: "grid", gridTemplateColumns: '1fr', gridTemplateRows: '1fr', width: '100%', height: '100%', overflow: 'hidden' }}>
-      <canvas width='1920' height='1080' ref={canvasRef} style={{ gridArea: '1/1/2/2' }} >Your browser does not support canvas</canvas>
-      <canvas width='1920' height='1080' ref={noiseRef} style={{ gridArea: '1/1/2/2' }} >Your browser does not support canvas</canvas>
+      <canvas width='3840' height='2160' ref={canvasRef} style={{ gridArea: '1/1/2/2' }} >Your browser does not support canvas</canvas>
+      <canvas width='3840' height='2160' ref={noiseRef} style={{ gridArea: '1/1/2/2' }} >Your browser does not support canvas</canvas>
     </div>
   )
 }

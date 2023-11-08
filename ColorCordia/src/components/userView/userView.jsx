@@ -42,10 +42,11 @@ const UserView = ({ user, setUser, setMessage }) => {
   return (
     <div className="m-5">
       <h2 className="text-4xl font-normal">User Info</h2>
-      <div className="w-full p-5 bg-gray-200">
+      <div className="w-fit p-5 mt-4 border border-gray-200 rounded-lg">
         <form>
-          Username <input className="text-input" type="text" disabled value={username} />
+          Username
           <br />
+          <input className="text-input" type="text" disabled value={username} />
           <EditableField fieldLabel='Password' fieldValue={password} setNewState={setPassword} user={user} setUser={setUser} setMessage={setMessage}></EditableField>
         </form>
         <div>
@@ -55,7 +56,7 @@ const UserView = ({ user, setUser, setMessage }) => {
           </ul>
         </div>
       </div>
-      <h3 className="text-2xl font-normal">Your palettes</h3>
+      <h3 className="mt-4 text-2xl font-normal">Your palettes</h3>
       <div className="grid grid-cols-3 gap-4">
         {palettes.map(palette => {
           return (

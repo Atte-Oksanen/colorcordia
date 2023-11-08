@@ -8,16 +8,9 @@ const EditableField = ({ fieldLabel, fieldValue, setNewState, user, setUser, set
   const [buttonMessage, setButtonMessage] = useState('Edit')
   const [fieldText, setText] = useState(fieldValue)
   const [newPass, setNewPass] = useState('')
-  const [isPassword, setPasswordCheck] = useState('password')
   const [disabled, setDisabled] = useState(true)
 
-  useEffect(() => {
-    if (fieldLabel === 'Password') {
-      setPasswordCheck('password')
-    } else {
-      setPasswordCheck('text')
-    }
-  }, [fieldLabel])
+
 
   useEffect(() => {
     if (fieldValue) {
@@ -29,14 +22,11 @@ const EditableField = ({ fieldLabel, fieldValue, setNewState, user, setUser, set
   const changeEditState = () => {
     if (buttonMessage === 'Edit') {
       setButtonMessage('Save')
-      setPasswordCheck('text')
       setDisabled(!disabled)
     } else {
       setNewState(fieldText)
       setButtonMessage('Edit')
-      if (fieldLabel === 'Password') {
-        setPasswordCheck('password')
-      }
+
       setDisabled(!disabled)
 
     }
@@ -66,14 +56,20 @@ const EditableField = ({ fieldLabel, fieldValue, setNewState, user, setUser, set
   return (
     <div>
       {disabled && fieldLabel}
-      {!disabled && <>Current password </>}
-      <input className="text-input enabled:bg-white enabled:border-gray-400" disabled={disabled} type={isPassword} placeholder="***********" value={fieldText} onChange={handleTextChange} />
+      <br />
+      {!disabled && <>Current password <br /></>}
+      <input className="text-input my-1 enabled:bg-white enabled:border-gray-400" disabled={disabled} type='password' placeholder="***********" value={fieldText} onChange={handleTextChange} />
+      <br />
       {disabled && <button className="pill-button" type="button" onClick={changeEditState}>{buttonMessage}</button>}
       {!disabled &&
         <>
           <br />
-          New password <input className="text-input enabled:bg-white enabled:border-gray-400" disabled={disabled} type={isPassword} placeholder="***********" value={newPass} onChange={handleNewPass} />
-          <button className="pill-button" type="button" onClick={sendNewPass}>{buttonMessage}</button>
+          New password
+          <br />
+          <input className="text-input my-1 enabled:bg-white enabled:border-gray-400" disabled={disabled} type='password' placeholder="***********" value={newPass} onChange={handleNewPass} />
+          <br />
+          <button className="pill-button mr-2" type="button" onClick={sendNewPass}>{buttonMessage}</button>
+          <button className="pill-button-empty" onClick={changeEditState}>Cancel</button>
           <p className="underline mt-3">
             Note: You must log in again after changing your password
           </p>

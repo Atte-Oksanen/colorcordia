@@ -66,7 +66,7 @@ const SchemeVisualiserView = ({ palettes, setPalettes, user }) => {
         </div>
         <ColorRange color={colors[4]} setColor={returnable => setColors([colors[0], colors[1], colors[2], colors[3], returnable])}></ColorRange>
       </div>
-      <div className="grid grid-cols-1 grid-rows-[1fr_fit-content] h-screen">
+      <div className="grid grid-cols-1 h-screen">
         <div className="text-sm overflow-auto p-3 bg-gray-200">
           <div className="pb-4">
             <VisualiserBlog colors={colors}></VisualiserBlog>

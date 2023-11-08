@@ -43,5 +43,6 @@
 ||4| Muotoilun jatko -> Palettien visualisointi
 |7.11.23|6| RGB värivalitsimen luonti + Muotoilun jatko -> Palettien visualisointi
 |8.11.23|3| Muotoilun jatko -> Palettien visualisointi valmis
+||1| Palettien + lataustoiminnon refaktorointi + Muotoilun jatko -> Palettinäkymät valmiit
 
 Yhteensä: 150h

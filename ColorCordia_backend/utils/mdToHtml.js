@@ -1,5 +1,6 @@
 
 const mdToHtml = mdString => {
+  console.log(mdString)
   const textArray = mdString.split('\n')
   const htmlArray = textArray.map(element => {
     let returnObject

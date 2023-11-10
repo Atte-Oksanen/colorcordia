@@ -9,6 +9,7 @@ const paletteRouter = require('./routers/paletteRouter')
 const userRouter = require('./routers/userRouter')
 const jwt = require('jsonwebtoken')
 const ncsConvertRouter = require('./routers/ncsConvertRouter')
+const mdRouter = require('./routers/mdRouter')
 
 const authExtractor = (req, res, next) => {
   try {
@@ -37,5 +38,6 @@ app.use('/api/colors', colorNameRouter)
 app.use('/api/palettes', paletteRouter)
 app.use('/api/users', userRouter)
 app.use('/api/convertncs', ncsConvertRouter)
+app.use('/api/md', mdRouter)
 
 module.exports = app

@@ -16,6 +16,7 @@ import SchemeVisualiserView from './components/visualiserView/SchemeVisualiserVi
 import Header from './components/Header'
 import ColorWheelView from './components/colorWheelView/ColorWheelView'
 import { createRandomBgColor } from './utils/colorRandomizer'
+import AboutView from './components/AboutView'
 
 function App() {
   const navigate = useNavigate()
@@ -70,6 +71,7 @@ function App() {
         <Route path='/signup' element={<SignUpView setMessage={setMessage}></SignUpView>}></Route>
         <Route path='/converter' element={<ColorConverterView setMessage={setMessage}></ColorConverterView>}></Route>
         <Route path='/visualiser' element={<SchemeVisualiserView palettes={communityPalettes} setPalettes={setPalettes} user={user}></SchemeVisualiserView>}></Route>
+        <Route path='/about' element={<AboutView></AboutView>}></Route>
       </Routes>
     </div>
   )

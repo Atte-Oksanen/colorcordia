@@ -73,7 +73,7 @@ const Header = ({ user, setUser, setMessage, bgColor }) => {
             </Link>
           </li>
           <li>
-            <Link className={`menu-item ${invertColor === '' ? 'menu-item-dark-hover' : 'menu-item-light-hover'}`} >
+            <Link className={`menu-item ${invertColor === '' ? 'menu-item-dark-hover' : 'menu-item-light-hover'}`} to='/about' >
               <div className={`w-fit m-auto ${invertColor}`}>
                 <AboutIcon sizeClass={sizeClass}></AboutIcon>
               </div>

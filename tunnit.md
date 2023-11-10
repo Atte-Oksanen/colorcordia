@@ -45,5 +45,6 @@
 |8.11.23|3| Muotoilun jatko -> Palettien visualisointi valmis
 ||1| Palettien + lataustoiminnon refaktorointi + Muotoilun jatko -> Palettinäkymät valmiit
 ||1| Muotoilun jatko -> Värikonversionäkymä
+|10.11.23|4| About näkymän aloitus + rajoitetun cms:n rakentaminen backendiin
 
 Yhteensä: 155h

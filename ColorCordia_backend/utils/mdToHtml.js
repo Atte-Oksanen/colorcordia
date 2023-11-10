@@ -1,6 +1,6 @@
 
 const mdToHtml = mdString => {
-  const textArray = mdString.split('\r\n')
+  const textArray = mdString.replaceAll('\r', '').split('\n')
   const htmlArray = textArray.map(element => {
     let returnObject
     if (element[0] === '#') {

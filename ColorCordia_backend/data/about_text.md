@@ -34,7 +34,7 @@ Users can create an account with a username (must be over 3 characters long and 
 
 ### ColorCordia
 
-This project and it's source code are licensed under the MIT License
+This project and it's source code are licensed under the MIT License. Source code can be found from the [GitHub](https://github.com/Atte-Oksanen/Full_stack_open_Project)
 
 ### NCS to RGB conversion
 

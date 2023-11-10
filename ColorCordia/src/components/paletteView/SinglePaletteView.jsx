@@ -7,6 +7,7 @@ import ShareIcon from "../icons/ShareIcon"
 import NextIcon from "../icons/NextIcon"
 import DownloadablePalette from "../utils/DownloadablePalette"
 import ColorPaletteSkeleton from "../utils/ColorPaletteSkeleton"
+import LoadingComponent from "../utils/LoadingComponent"
 
 const SinglePaletteView = ({ setMessage, user, communityPalettes, setPalettes }) => {
   const id = useParams().id
@@ -37,7 +38,11 @@ const SinglePaletteView = ({ setMessage, user, communityPalettes, setPalettes })
   }
 
   if (!colors) {
-    return null
+    return (
+      <div className="h-fit m-auto">
+        <LoadingComponent></LoadingComponent>
+      </div>
+    )
   }
   return (
     <ColorPaletteSkeleton type={type} colors={colors}>

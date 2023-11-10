@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import LoadingComponent from "./LoadingComponent"
 
 /* eslint-disable react/prop-types */
 const PaletteDropDown = ({ palettes, setColors }) => {
@@ -37,7 +38,11 @@ const PaletteDropDown = ({ palettes, setColors }) => {
   }, [showDropDown])
 
   if (palettes.length < 1 || paletteArray.length < 1 || selectedPalette === '') {
-    return null
+    return (
+      <div className="h-fit m-auto">
+        <LoadingComponent></LoadingComponent>
+      </div>
+    )
   }
 
   const changeVisibility = event => {

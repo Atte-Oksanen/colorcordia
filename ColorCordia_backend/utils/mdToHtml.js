@@ -8,37 +8,37 @@ const mdToHtml = mdString => {
         case 0:
           returnObject = {
             element: 'h1',
-            text: element.trim()
+            text: element.replace(/#/g, '').trim()
           }
           break
         case 1:
           returnObject = {
             element: 'h2',
-            text: element.trim()
+            text: element.replace(/#/g, '').trim()
           }
           break
         case 2:
           returnObject = {
             element: 'h3',
-            text: element.trim()
+            text: element.replace(/#/g, '').trim()
           }
           break
         case 3:
           returnObject = {
             element: 'h4',
-            text: element.trim()
+            text: element.replace(/#/g, '').trim()
           }
           break
         case 4:
           returnObject = {
             element: 'h5',
-            text: element.trim()
+            text: element.replace(/#/g, '').trim()
           }
           break
         case 5:
           returnObject = {
             element: 'h6',
-            text: element.trim()
+            text: element.replace(/#/g, '').trim()
           }
       }
     } else if (element.charAt(0).match(/^\p{L}$/u)) {

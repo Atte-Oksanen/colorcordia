@@ -24,7 +24,7 @@ Users can convert colors between HEX, RGB, HSV, and NCS color systems. Note: NCS
 
 ### User profile
 
-Logged in users can view their shared palettes, and statistics about them, here or delete unwanted palettes from their account . Password can be changed via the User profile.
+Logged in users can view their shared palettes, and statistics about them, here or delete unwanted palettes from their account. Password can be changed via the User profile.
 
 ### Login & Signup
 
@@ -88,4 +88,4 @@ color-names [Github](https://github.com/meodai/color-names)
 
 ### NCS Color space
 
-Natural Color System (NCS) color notation and spesification created by Skandinaviska Färginstitutet AB, [ncscolour.com](https://ncscolour.com/).
+Natural Color System color notation and specification created by Skandinaviska Färginstitutet AB, [ncscolour.com](https://ncscolour.com).

@@ -7,7 +7,7 @@ export const textToJsx = text => {
         jsxElement = <h1 key={Math.random()} className="text-4xl mb-8 font-normal" dangerouslySetInnerHTML={{ __html: text[index].text }}></h1>
         break;
       case 'h2':
-        jsxElement = <h2 key={Math.random()} className="text-2xl mt-8 font-normal" dangerouslySetInnerHTML={{ __html: text[index].text }}></h2>
+        jsxElement = <h2 key={Math.random()} className="text-2xl my-4 font-normal" dangerouslySetInnerHTML={{ __html: text[index].text }}></h2>
         break;
       case 'h3':
         jsxElement = <h3 key={Math.random()} className="text-xl font-normal mt-4 mb-2" dangerouslySetInnerHTML={{ __html: text[index].text }}></h3>

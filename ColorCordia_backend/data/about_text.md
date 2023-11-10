@@ -34,11 +34,11 @@ Users can create an account with a username (must be over 3 characters long and 
 
 ### ColorCordia
 
-This project and it's source code are licensed under the MIT License. Source code can be found from the [GitHub](https://github.com/Atte-Oksanen/Full_stack_open_Project)
+This project and it's source code are licensed under the MIT License. Source code can be found from the [GitHub](https://github.com/Atte-Oksanen/Full_stack_open_Project).
 
 ### NCS to RGB conversion
 
-Algorithm for color system conversion provided by [Frederik Ring](https://www.frederikring.com/), Frederik Ring's [GitHub](https://github.com/m90) under the MIT License
+Algorithm for color system conversion provided by [Frederik Ring](https://www.frederikring.com/), Frederik Ring's [GitHub](https://github.com/m90) under the MIT License.
 
 MIT License
 
@@ -52,13 +52,13 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ### Font
 
-Font [Rubik](https://fonts.google.com/specimen/Rubik) Designed by [Hubert and Fischer](https://hfs-studio.com/), [Meir Sadan](https://meirsadan.com/), [Cyreal](https://github.com/cyrealtype), [Daniel Grumer](http://www.danielgrumer.com/), and Omaima Dajani. Licensed under the [Open Font License](https://scripts.sil.org/OFL)
+Font [Rubik](https://fonts.google.com/specimen/Rubik) Designed by [Hubert and Fischer](https://hfs-studio.com/), [Meir Sadan](https://meirsadan.com/), [Cyreal](https://github.com/cyrealtype), [Daniel Grumer](http://www.danielgrumer.com/), and Omaima Dajani. Licensed under the [Open Font License](https://scripts.sil.org/OFL).
 
 ### Icons
 
-Icons provided by [Google Icons](https://fonts.google.com/icons) under [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0.txt)
+Icons provided by [Google Icons](https://fonts.google.com/icons) under [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0.txt).
 
-Icons provided by [Refactoring UI Inc](https://tailwindcss.com/) via [HeroIcons](https://heroicons.com/) under MIT License
+Icons provided by [Refactoring UI Inc](https://tailwindcss.com/) via [HeroIcons](https://heroicons.com/) under MIT License.
 
 MIT License
 
@@ -72,7 +72,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ### List of color names
 
-Color names provided by [David Aerne](https://bento.me/meodai) via [color-names GitHub](https://github.com/meodai/color-names)
+Color names provided by [David Aerne](https://bento.me/meodai) via [color-names GitHub](https://github.com/meodai/color-names).
 
 MIT License
 
@@ -88,4 +88,4 @@ color-names [Github](https://github.com/meodai/color-names)
 
 ### NCS Color space
 
-Natural Color System (NCS) color notation and spesification created by Skandinaviska Färginstitutet AB, [ncscolour.com](https://ncscolour.com/)
+Natural Color System (NCS) color notation and spesification created by Skandinaviska Färginstitutet AB, [ncscolour.com](https://ncscolour.com/).

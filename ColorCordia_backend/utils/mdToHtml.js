@@ -83,7 +83,7 @@ const mdToHtml = mdString => {
         links.push(element.substring(leftSquareBrackets[index] + 1, rightSquareBrackets[index]))
         slicedElement = slicedElement.replace(`[${links[links.length - 1]}]`, `<a href=${addresses[index]} target="_blank" rel="noreferrer" class='link-text'>${links[links.length - 1]}</a>`)
       }
-      returnObject = { ...returnObject, links: addresses, text: slicedElement }
+      returnObject = { ...returnObject, text: slicedElement }
     }
     return returnObject
   })

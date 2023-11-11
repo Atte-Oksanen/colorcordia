@@ -47,4 +47,5 @@
 ||1| Muotoilun jatko -> Värikonversionäkymä
 |10.11.23|4| About näkymän aloitus + rajoitetun cms:n rakentaminen backendiin
 ||1| About näkymän viimeistely + Sisällön kirjoitus
-Yhteensä: 161h
+|11.11.23|2| Ladattavan paletin optimointi + järjestelmäviestien rikastus + sessioriippuvaisen kirjautumisen mahdollistaminen
+Yhteensä: 163h

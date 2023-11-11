@@ -29,7 +29,8 @@ function App() {
 
   useEffect(() => {
     (async () => {
-      const savedUser = window.localStorage.getItem('userToken')
+      const savedUser = window.localStorage.getItem('userToken') || window.sessionStorage.getItem('userToken')
+      console.log(savedUser)
       if (savedUser) {
         const parsedUser = JSON.parse(savedUser)
         try {

@@ -30,7 +30,7 @@ const Header = ({ user, setUser, setMessage, bgColor }) => {
     window.localStorage.removeItem('userToken')
     setUser(null)
     navigate('/')
-    setMessage("Logged out")
+    setMessage({ text: "Logged out", warning: false })
   }
   if (!bgColor) {
     return null

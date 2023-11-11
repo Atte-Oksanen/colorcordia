@@ -10,7 +10,7 @@ This project was created as a part of [Full stack open](https://fullstackopen.co
 
 Users can pick from any of the 16 581 375 colors represented in RGB color space, and ColorCordia creates all calculable color harmonies fomr the chosen color in additive color space. The succeeding palettes can be tweaked, and once a palette is chosen, ColorCordia finds names for all of the harmonies colors. The palettes can be downloaded as .png files, or for logged in users shared within the ColorCordia community for others to enjoy. ColorCordia also provides functionality to create derivative palettes from the one chosen. 
 
-### Exlpore
+### Explore
 
 Users can explore palettes created by other users. For logged in users, it is also possible to like other peoples (or your own) palettes. These palettes can also be downloaded as .png files
 

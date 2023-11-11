@@ -33,7 +33,7 @@ const SinglePaletteView = ({ setMessage, user, communityPalettes, setPalettes })
       console.log(error)
       return
     }
-    setMessage("palette created")
+    setMessage({ text: "palette created", warning: false })
     setButtonDisabled(true)
   }
 

@@ -63,7 +63,6 @@ const SingleCommunityPaletteView = ({ palettes, user, setUser }) => {
 
 
   return (
-
     <ColorPaletteSkeleton colors={colors} type={type}>
       <div className="text-xl my-3 leading-loose">
         Created by {palette.user.username}

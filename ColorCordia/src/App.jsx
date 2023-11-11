@@ -37,7 +37,7 @@ function App() {
           setUser(await getUser(parsedUser.id))
           setPaletteToken(parsedUser.token)
         } catch (error) {
-          setMessage('Login timed out, please log back in')
+          setMessage({ text: 'Login timed out, please log back in', warning: true })
           window.localStorage.removeItem('userToken')
         }
       }

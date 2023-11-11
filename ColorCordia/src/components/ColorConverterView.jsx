@@ -30,8 +30,8 @@ const ColorConverterView = ({ setMessage }) => {
     setShowComparison(false)
     switch (startUnit) {
       case 'Hex':
-        if (!hexToRgb(startValue)) {
-          setMessage("Invalid color input")
+        if (!hexToRgb(startValue) || startValue[0] !== '#') {
+          setMessage({ text: "Invalid color input", warning: true })
           break
         }
         switch (endUnit) {
@@ -66,7 +66,7 @@ const ColorConverterView = ({ setMessage }) => {
       case 'RGB': {
         const rgbArray = startValue.split(',')
         if (rgbArray.length !== 3) {
-          setMessage("Invalid color input")
+          setMessage({ text: "Invalid color input", warning: true })
           break
         }
         const rgbObj = {
@@ -76,7 +76,7 @@ const ColorConverterView = ({ setMessage }) => {
         }
         const hex = rgbToHex(rgbObj)
         if (!hex) {
-          setMessage("Invalid color input")
+          setMessage({ text: "Invalid color input", warning: true })
           break
         }
         switch (endUnit) {
@@ -111,7 +111,7 @@ const ColorConverterView = ({ setMessage }) => {
       case 'HSV': {
         const hsvArray = startValue.split(',')
         if (hsvArray.length !== 3) {
-          setMessage("Invalid color input")
+          setMessage({ text: "Invalid color input", warning: true })
           break
         }
         const hsvObj = {
@@ -121,7 +121,7 @@ const ColorConverterView = ({ setMessage }) => {
         }
         const hex = rgbToHex(hsvToRgb(hsvObj))
         if (!hex) {
-          setMessage("Invalid color input")
+          setMessage({ text: "Invalid color input", warning: true })
           break
         }
         switch (endUnit) {
@@ -156,7 +156,7 @@ const ColorConverterView = ({ setMessage }) => {
       case 'NCS': {
         const hex = rgbToHex(ncsToRgb(startValue))
         if (!hex) {
-          setMessage("Invalid color input")
+          setMessage({ text: "Invalid color input", warning: true })
           break
         }
         switch (endUnit) {

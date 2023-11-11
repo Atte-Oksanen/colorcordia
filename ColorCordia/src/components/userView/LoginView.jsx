@@ -19,9 +19,9 @@ const LoginView = ({ setUser, setMessage }) => {
       window.localStorage.setItem('userToken', JSON.stringify(user))
       setPaletteToken(user.token)
       navigate('/')
-      setMessage("Logged in")
+      setMessage({ text: "Logged in", warning: false })
     } catch (error) {
-      setMessage("Wrong username or password")
+      setMessage({ text: "Wrong username or password", warning: true })
     }
   }
 

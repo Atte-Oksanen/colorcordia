@@ -14,13 +14,13 @@ const SignUpView = ({ setMessage }) => {
     if (checkUserName) {
       try {
         await signUp({ username, password })
-        setMessage("Account succesfully created")
+        setMessage({ text: "Account succesfully created", warning: false })
         navigate('/login')
       } catch (error) {
-        setMessage('This username does not comply with our platform policies')
+        setMessage({ text: 'This username does not comply with our platform policies', warning: true })
       }
     } else {
-      setMessage("username already taken")
+      setMessage({ text: "username already taken", warning: true })
     }
   }
 

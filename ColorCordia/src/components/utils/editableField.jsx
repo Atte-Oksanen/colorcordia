@@ -26,9 +26,7 @@ const EditableField = ({ fieldLabel, fieldValue, setNewState, user, setUser, set
     } else {
       setNewState(fieldText)
       setButtonMessage('Edit')
-
       setDisabled(!disabled)
-
     }
   }
 
@@ -50,7 +48,7 @@ const EditableField = ({ fieldLabel, fieldValue, setNewState, user, setUser, set
     window.localStorage.removeItem('userToken')
     setUser(null)
     navigate('/login')
-    setMessage("Logged out")
+    setMessage({ text: "Logged out", warning: false })
   }
 
   return (

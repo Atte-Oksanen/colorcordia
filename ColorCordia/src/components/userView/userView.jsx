@@ -10,7 +10,7 @@ const UserView = ({ user, setUser, setMessage }) => {
   const [password, setPassword] = useState('')
   const [palettes, setPalettes] = useState([])
   const deleteConfirm = useRef()
-
+  const [paletteForDelete, setForDelete] = useState(null)
   useEffect(() => {
     if (user) {
       setUsername(user.username);
@@ -35,14 +35,29 @@ const UserView = ({ user, setUser, setMessage }) => {
 
   const handlePaletteDelete = event => {
     event.preventDefault()
-    if (window.confirm('Do you want to delete a palette?')) {
-      deletePalette(event.target.id)
-      setPalettes(palettes.filter(palette => palette.id !== event.target.id))
-    }
+    deleteConfirm.current.showModal()
+    setForDelete(event.target.id)
+
   }
   return (
     <div className="m-5">
-      <dialog ref={deleteConfirm}></dialog>
+      <dialog ref={deleteConfirm} className="rounded-lg">
+        <div className="p-8 w-full">
+          <div className="w-fit mb-4">
+            Do you want to delete a palette?
+            <br />
+            This action cannot be undone
+          </div>
+          <div className="text-right w-full">
+            <button className="pill-button-delete mr-2" onClick={() => {
+              deletePalette(paletteForDelete)
+              setPalettes(palettes.filter(palette => palette.id !== paletteForDelete))
+              deleteConfirm.current.close()
+            }}>Delete</button>
+            <button className="pill-button" onClick={() => deleteConfirm.current.close()}>Cancel</button>
+          </div>
+        </div>
+      </dialog>
       <h2 className="text-4xl font-normal">User Info</h2>
       <div className="w-fit p-5 mt-4 border border-gray-200 rounded-lg">
         <form>

@@ -13,7 +13,7 @@ const checkProfanity = (input) => {
     .replace(/2/g, 'z')
   const keys = Object.keys(badWords)
   for (let index = 0; index < keys.length; index++) {
-    if (badWords[keys[index]].some(word => cleanedInput.replaceAll('1', 'i').includes(word)) || badWords[keys[index]].some(word => cleanedInput.replaceAll('1', 'l').includes(word))) {
+    if (badWords[keys[index]].some(word => cleanedInput.replace(/1/g, 'i').includes(word)) || badWords[keys[index]].some(word => cleanedInput.replace(/1/g, 'l').includes(word))) {
       return true
     }
   }

@@ -18,7 +18,7 @@ const AboutView = () => {
     )
   }
   return (
-    <div className="w-1/2 mx-auto mt-8">
+    <div className="md:w-1/2 w-3/4 mx-auto mt-8">
       {viewContent}
     </div>
   )

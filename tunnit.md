@@ -48,4 +48,5 @@
 |10.11.23|4| About näkymän aloitus + rajoitetun cms:n rakentaminen backendiin
 ||1| About näkymän viimeistely + Sisällön kirjoitus
 |11.11.23|2| Ladattavan paletin optimointi + järjestelmäviestien rikastus + sessioriippuvaisen kirjautumisen mahdollistaminen
-Yhteensä: 163h
+|12-13.11.23|4| Mobiilikäyttöliittymän toteutus
+Yhteensä: 167h

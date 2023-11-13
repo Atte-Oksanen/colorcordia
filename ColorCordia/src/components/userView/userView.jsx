@@ -57,11 +57,11 @@ const UserView = ({ user, setUser, setMessage }) => {
         </div>
       </div>
       <h3 className="mt-4 text-2xl font-normal">Your palettes</h3>
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid md:grid-cols-3 gap-4">
         {palettes.map(palette => {
           return (
             <div key={Math.random()}>
-              <CommunityPalette key={Math.random()} palette={palette}><button className="pill-button-empty" id={palette.id} onClick={event => handlePaletteDelete(event)}>Delete</button></CommunityPalette>
+              <CommunityPalette key={Math.random()} palette={palette}><button className="pill-button-delete" id={palette.id} onClick={event => handlePaletteDelete(event)}>Delete</button></CommunityPalette>
             </div>
           )
         })}

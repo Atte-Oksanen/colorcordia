@@ -8,7 +8,7 @@ const ColorTweaker = ({ color, setColor }) => {
     return null
   }
   return (
-    <div className="grid grid-rows-[2fr_1fr_1fr] grid-cols-1 py-10">
+    <div className="grid md:grid-rows-[2fr_1fr_1fr] grid-rows-[1fr_1fr_1fr] grid-cols-1 md:py-10">
       <div className="grid grid-rows-[3fr_1fr] grid-cols-1">
         <div className="rounded-lg border border-gray-300" style={{ background: color }}></div>
         <div className="text-xl font-normal">{color}</div>

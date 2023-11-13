@@ -32,19 +32,21 @@ const LoginView = ({ setUser, setMessage }) => {
   }
 
   return (
-    <div className="w-fit m-auto border bg-white border-black drop-shadow-md p-10 rounded-lg">
-      <h2 className="text-4xl font-normal">Login</h2>
-      <form className="my-4" onSubmit={handleFormSubmit}>
-        <input className="text-input border-gray-600 w-full" type="text" placeholder="Username" value={username} onChange={event => setUsername(event.target.value)} />
-        <br />
-        <input className="text-input border-gray-600 w-full my-4" type="password" placeholder="Password" value={password} onChange={event => setPassword(event.target.value)} />
-        <br />
-        <input className="w-4 h-4 align-middle" id="stayLoggedCheckBox" type="checkbox" checked={stayLogged} onClick={() => setStayLogged(!stayLogged)} />
-        <label className="mx-2" htmlFor="stayLoggedCheckBox">Stay logged in</label>
-        <button className="pill-button my-4 w-full" type="submit">Log in</button>
-      </form>
-      <div>
-        <p>Don't have an account? <Link className="link-text" to='/signup'>Create account</Link></p>
+    <div className="flex h-full">
+      <div className="w-fit m-auto border bg-white border-black drop-shadow-md p-10 rounded-lg">
+        <h2 className="text-4xl font-normal">Login</h2>
+        <form className="my-4" onSubmit={handleFormSubmit}>
+          <input className="text-input border-gray-600 w-full" type="text" placeholder="Username" value={username} onChange={event => setUsername(event.target.value)} />
+          <br />
+          <input className="text-input border-gray-600 w-full my-4" type="password" placeholder="Password" value={password} onChange={event => setPassword(event.target.value)} />
+          <br />
+          <input className="w-4 h-4 align-middle" id="stayLoggedCheckBox" type="checkbox" checked={stayLogged} onChange={() => setStayLogged(!stayLogged)} />
+          <label className="mx-2" htmlFor="stayLoggedCheckBox">Stay logged in</label>
+          <button className="pill-button my-4 w-full" type="submit">Log in</button>
+        </form>
+        <div>
+          <p>Don't have an account? <Link className="link-text" to='/signup'>Create account</Link></p>
+        </div>
       </div>
     </div>
   )

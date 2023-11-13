@@ -41,7 +41,6 @@ const ColorConverterView = ({ setMessage }) => {
             return
           case 'RGB': {
             const rgb = hexToRgb(startValue)
-            console.log(rgb)
             setEndValue(`${rgb.r}, ${rgb.g}, ${rgb.b}`)
             setComparable([{ color: startValue, name: `${rgb.r}, ${rgb.g}, ${rgb.b}` }])
             return
@@ -196,7 +195,7 @@ const ColorConverterView = ({ setMessage }) => {
     }
     if (showComparison) {
       return (
-        <div className="w-1/2 mx-auto h-full">
+        <div className="md:w-1/2 md:px-0 px-2 mx-auto h-full">
           <div className="grid grid-cols-2 h-1/2 rounded-lg overflow-hidden mt-8">
             <div style={{ background: `${comparableColors[0].color}` }}></div>
             <div style={{ background: `${comparableColors[1].hex}` }} ></div>
@@ -214,42 +213,44 @@ const ColorConverterView = ({ setMessage }) => {
       )
     }
     return (
-      <div className="w-1/2 mx-auto h-full">
+      <div className="md:w-1/2 md:px-0 px-2 mx-auto h-full">
         <div className="h-1/2 rounded-lg overflow-hidden mt-8" style={{ background: `${comparableColors[0].color}` }}></div>
         <div className="text-center">{comparableColors[0].name}</div>
       </div>
     )
   }
   return (
-    <div className="w-full h-2/3 m-auto ">
-      <div className=" w-fit p-8 mx-auto">
-        <div className="inline-block">
-          <label htmlFor="startUnit">
-            Color system
-          </label>
-          <select id="startUnit" className="dropdown mx-4" onChange={event => setStartUnit(event.target.value)} value={startUnit}>
-            <option>Hex</option>
-            <option>RGB</option>
-            <option>HSV</option>
-            <option>NCS</option>
-          </select>
-          <input className="text-input" type="text" placeholder={getPlaceHolderFormat(startUnit)} value={startValue} onChange={event => setStartValue(event.target.value)}></input>
+    <div className="h-full md:flex">
+      <div className="w-full h-2/3 m-auto">
+        <div className="w-fit p-4 mx-auto md:block flex flex-col items-center text-center md:h-auto h-4/5 justify-between">
+          <div className="inline-block w-fit">
+            <label htmlFor="startUnit">
+              Color system
+            </label>
+            <select id="startUnit" className="dropdown mx-4 my-2" onChange={event => setStartUnit(event.target.value)} value={startUnit}>
+              <option>Hex</option>
+              <option>RGB</option>
+              <option>HSV</option>
+              <option>NCS</option>
+            </select>
+            <input className="text-input" type="text" placeholder={getPlaceHolderFormat(startUnit)} value={startValue} onChange={event => setStartValue(event.target.value)}></input>
+          </div>
+          <button className="pill-button mx-4" onClick={handleColorConversion}>Convert to</button>
+          <div className="inline-block">
+            <label htmlFor="endUnit">
+              Color system
+            </label>
+            <select className="dropdown mx-4 my-2" id="endUnit" onChange={event => setEndUnit(event.target.value)} value={endUnit}>
+              <option>Hex</option>
+              <option>RGB</option>
+              <option>HSV</option>
+              <option>NCS</option>
+            </select>
+            <input className="text-input" type="text" placeholder={getPlaceHolderFormat(endUnit)} readOnly value={endValue}></input>
+          </div>
         </div>
-        <button className="pill-button mx-4" onClick={handleColorConversion}>Convert to</button>
-        <div className="inline-block">
-          <label htmlFor="endUnit">
-            Color system
-          </label>
-          <select className="dropdown mx-4" id="endUnit" onChange={event => setEndUnit(event.target.value)} value={endUnit}>
-            <option>Hex</option>
-            <option>RGB</option>
-            <option>HSV</option>
-            <option>NCS</option>
-          </select>
-          <input className="text-input" type="text" placeholder={getPlaceHolderFormat(endUnit)} readOnly value={endValue}></input>
-        </div>
+        {renderComparison()}
       </div>
-      {renderComparison()}
     </div>
   )
 }

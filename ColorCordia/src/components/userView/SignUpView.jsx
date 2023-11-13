@@ -25,26 +25,27 @@ const SignUpView = ({ setMessage }) => {
   }
 
   return (
-    <div className="w-fit m-auto border bg-white border-black drop-shadow-md p-10 rounded-lg">
-      <h2 className="text-4xl font-normal">Sign up</h2>
-      <form onSubmit={handleFormSubmit}>
-        <input className="text-input border-gray-600 w-full" type="text" placeholder="Username" value={username} onChange={event => setUsername(event.target.value)} />
-        <br />
-        <p className="text-gray-600 text-sm">
-          The username can only consist of alphanumerical character (a-z, 0-9).
+    <div className="flex h-full">
+      <div className="w-fit m-auto border bg-white border-black drop-shadow-md p-10 rounded-lg">
+        <h2 className="text-4xl font-normal">Sign up</h2>
+        <form onSubmit={handleFormSubmit}>
+          <input className="text-input border-gray-600 w-full" type="text" placeholder="Username" value={username} onChange={event => setUsername(event.target.value)} />
           <br />
-          Hyphens (-) and underscores (_) are also permitted.
+          <p className="text-gray-600 text-sm">
+            The username can only consist of alphanumerical character (a-z, 0-9).
+            <br />
+            Hyphens (-) and underscores (_) are also permitted.
+            <br />
+            Profanities or names in bad taste are not permitted.</p>
+          <input className="text-input border-gray-600 w-full" type="password" placeholder="Password" value={password} onChange={event => setPassword(event.target.value)} />
           <br />
-          Profanities or names in bad taste are not permitted.</p>
-        <input className="text-input border-gray-600 w-full" type="password" placeholder="Password" value={password} onChange={event => setPassword(event.target.value)} />
-        <br />
-        <button className="pill-button my-4 w-full" type="submit">Sign up</button>
-      </form>
-      <div>
-        <p>Already have an account? <Link className="link-text" to='/login'>Log in</Link></p>
+          <button className="pill-button my-4 w-full" type="submit">Sign up</button>
+        </form>
+        <div>
+          <p>Already have an account? <Link className="link-text" to='/login'>Log in</Link></p>
+        </div>
       </div>
     </div>
-
   )
 }
 

@@ -46,21 +46,23 @@ const SinglePaletteView = ({ setMessage, user, communityPalettes, setPalettes })
   }
   return (
     <ColorPaletteSkeleton type={type} colors={colors}>
-      <button className="pill-button mr-5 disabled:bg-blue-400" disabled={shareButtonDisabled} onClick={handlePaletteCreation}>
-        Share
-        <div className="inline-block align-middle ml-2">
-          <ShareIcon sizeClass='h-5 w-5'></ShareIcon>
-        </div>
-      </button>
-      <DownloadablePalette palette={colors} type={type}></DownloadablePalette>
-      <button className="pill-button-empty mx-5">
-        <Link to={`/palettes/${colorsForId.toString().replaceAll(',', '-')}`}>
-          Find derivative palettes
-          <div className="inline-block align-middle ml-2">
-            <NextIcon sizeClass='h-5 w-5'></NextIcon>
+      <div className="md:block flex justify-between mx-1 md:h-fit">
+        <button className="pill-button md:mr-5 disabled:bg-blue-400" disabled={shareButtonDisabled} onClick={handlePaletteCreation}>
+          Share
+          <div className="inline-block align-middle md:ml-2">
+            <ShareIcon sizeClass='h-5 w-5'></ShareIcon>
           </div>
-        </Link>
-      </button>
+        </button>
+        <DownloadablePalette palette={colors} type={type}></DownloadablePalette>
+        <button className="pill-button-empty md:mx-5">
+          <Link to={`/palettes/${colorsForId.toString().replaceAll(',', '-')}`}>
+            Derivative palettes
+            <div className="inline-block align-middle ml-2">
+              <NextIcon sizeClass='h-5 w-5'></NextIcon>
+            </div>
+          </Link>
+        </button>
+      </div>
       {!user &&
         <div className="mt-4">
           You have to be logged in to share this palette. <Link className="link-text" to='/login'>Login</Link>

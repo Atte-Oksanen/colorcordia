@@ -30,7 +30,6 @@ function App() {
   useEffect(() => {
     (async () => {
       const savedUser = window.localStorage.getItem('userToken') || window.sessionStorage.getItem('userToken')
-      console.log(savedUser)
       if (savedUser) {
         const parsedUser = JSON.parse(savedUser)
         try {
@@ -57,23 +56,27 @@ function App() {
 
 
   return (
-    <div className='font-extralight grid grid-cols-[8rem_1fr]'>
-      <Header user={user} setMessage={setMessage} setUser={setUser} bgColor={pickedColor || bgColor}></Header>
+    <div className='font-extralight grid md:grid-cols-[8rem_1fr] md:grid-rows-1 grid-rows-[1fr_7rem] h-screen'>
+      <div className='order-last md:order-none'>
+        <Header user={user} setMessage={setMessage} setUser={setUser} bgColor={pickedColor || bgColor}></Header>
+      </div>
       <Notification message={message} setMessage={setMessage}></Notification>
-      <Routes>
-        <Route path='/' element={<ColorWheelView setColor={setColor} setMessage={setMessage} reRenderWheel={reRenderWheel}></ColorWheelView>}></Route>
-        <Route path='/palettes/' element={<PaletteView color={pickedColor} setColor={setColor}></PaletteView>}></Route>
-        <Route path='/palettes/:id' element={<FollowUpPalettes></FollowUpPalettes>}></Route>
-        <Route path='/palette/:id' element={<SinglePaletteView communityPalettes={communityPalettes} setPalettes={setPalettes} setMessage={setMessage} user={user}></SinglePaletteView>}></Route>
-        <Route path='/explore' element={<ExploreView palettes={communityPalettes} setPalettes={setPalettes}></ExploreView>}></Route>
-        <Route path='/explore/:id' element={<SingleCommunityPaletteView palettes={communityPalettes} user={user} setUser={setUser}></SingleCommunityPaletteView>}></Route>
-        <Route path='/profile' element={<UserView user={user} setUser={setUser} setMessage={setMessage}></UserView>}></Route>
-        <Route path='/login' element={<LoginView setUser={setUser} setMessage={setMessage}></LoginView>}></Route>
-        <Route path='/signup' element={<SignUpView setMessage={setMessage}></SignUpView>}></Route>
-        <Route path='/converter' element={<ColorConverterView setMessage={setMessage}></ColorConverterView>}></Route>
-        <Route path='/visualiser' element={<SchemeVisualiserView palettes={communityPalettes} setPalettes={setPalettes} user={user}></SchemeVisualiserView>}></Route>
-        <Route path='/about' element={<AboutView></AboutView>}></Route>
-      </Routes>
+      <div className='h-full overflow-auto'>
+        <Routes>
+          <Route path='/' element={<ColorWheelView setColor={setColor} setMessage={setMessage} reRenderWheel={reRenderWheel}></ColorWheelView>}></Route>
+          <Route path='/palettes/' element={<PaletteView color={pickedColor} setColor={setColor}></PaletteView>}></Route>
+          <Route path='/palettes/:id' element={<FollowUpPalettes></FollowUpPalettes>}></Route>
+          <Route path='/palette/:id' element={<SinglePaletteView communityPalettes={communityPalettes} setPalettes={setPalettes} setMessage={setMessage} user={user}></SinglePaletteView>}></Route>
+          <Route path='/explore' element={<ExploreView palettes={communityPalettes} setPalettes={setPalettes}></ExploreView>}></Route>
+          <Route path='/explore/:id' element={<SingleCommunityPaletteView palettes={communityPalettes} user={user} setUser={setUser}></SingleCommunityPaletteView>}></Route>
+          <Route path='/profile' element={<UserView user={user} setUser={setUser} setMessage={setMessage}></UserView>}></Route>
+          <Route path='/login' element={<LoginView setUser={setUser} setMessage={setMessage}></LoginView>}></Route>
+          <Route path='/signup' element={<SignUpView setMessage={setMessage}></SignUpView>}></Route>
+          <Route path='/converter' element={<ColorConverterView setMessage={setMessage}></ColorConverterView>}></Route>
+          <Route path='/visualiser' element={<SchemeVisualiserView palettes={communityPalettes} setPalettes={setPalettes} user={user}></SchemeVisualiserView>}></Route>
+          <Route path='/about' element={<AboutView></AboutView>}></Route>
+        </Routes>
+      </div>
     </div>
   )
 }

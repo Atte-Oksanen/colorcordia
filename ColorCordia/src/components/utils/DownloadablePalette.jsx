@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-import { useEffect, useState } from "react"
 import DownloadIcon from "../icons/DownloadIcon"
 
 const DownloadablePalette = ({ palette, type }) => {
@@ -33,8 +32,8 @@ const DownloadablePalette = ({ palette, type }) => {
 
   return (
     <button className="pill-button" onClick={downloadImage}>
-      Download
-      <div className="inline-block align-middle ml-2">
+      <span className="hidden md:inline-block">Download</span>
+      <div className="inline-block align-middle md:ml-2">
         <DownloadIcon sizeClass='h-5 w-5'></DownloadIcon>
       </div>
     </button>

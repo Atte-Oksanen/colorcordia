@@ -5,7 +5,7 @@ const ColorPalette = ({ palette }) => {
   const paletteId = palette.harmony.toString().replaceAll('#', '').replaceAll(',', '-')
   return (
     <Link to={`/palette/${palette.type}-${paletteId}`}>
-      <div className="grid grid-cols-[1fr_5fr] bg-gray-200 rounded-md p-2 m-2 dark-grey-hover">
+      <div className="md:grid grid-cols-[1fr_5fr] bg-gray-200 rounded-md p-2 m-2 dark-grey-hover">
         <div className="flex">
           <h2 className="text-lg text-center m-auto font-normal">
             {palette.type}
@@ -15,7 +15,7 @@ const ColorPalette = ({ palette }) => {
           <div className="grid grid-cols-5 rounded-md overflow-hidden border border-gray-300">
             {palette.harmony.map(color => <div key={Math.random()} style={{ background: color }} />)}
           </div>
-          <div className="grid grid-cols-5">
+          <div className="grid grid-cols-5 text-sm">
             {palette.harmony.map(color => <div key={Math.random()}>{color}</div>)}
           </div>
         </div>

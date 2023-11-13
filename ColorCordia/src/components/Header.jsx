@@ -11,10 +11,12 @@ import LogOutIcon from "./icons/LogOutIcon"
 import ProfileIcon from "./icons/ProfileIcon"
 import { useEffect, useState } from "react"
 import { getTextColor } from "../utils/colorConverters"
+import MoreIcon from "./icons/MoreIcon"
 const Header = ({ user, setUser, setMessage, bgColor }) => {
   const navigate = useNavigate()
   const sizeClass = 'h-10 w-10'
   const [invertColor, setInvert] = useState('')
+  const [showDropdown, setShow] = useState(false)
 
   useEffect(() => {
     if (bgColor) {
@@ -37,10 +39,11 @@ const Header = ({ user, setUser, setMessage, bgColor }) => {
   }
 
   return (
-    <div style={{ background: bgColor, color: getTextColor(bgColor) }} className="border-r border-gray-200 transition duration-150 ease-in-out">
-      <nav className="h-screen flex items-center">
-        <ul className="text-center fixed m-auto">
-          <li >
+    <div style={{ background: bgColor, color: getTextColor(bgColor) }}
+      className="md:relative md:md:border-r md:border-gray-200 transition duration-150 ease-in-out z-50 w-full h-full md:text-base text-sm">
+      <nav className="md:h-screen md:flex md:items-center">
+        <ul className="text-center md:fixed md:m-auto md:block grid grid-cols-4 p-1 md:p-0">
+          <li className="md:block inline-block">
             <Link className={`menu-item ${invertColor === '' ? 'menu-item-dark-hover' : 'menu-item-light-hover'}`} to='/' >
               <div className={`w-fit m-auto ${invertColor}`}>
                 <ColorPaletteIcon sizeClass={sizeClass}></ColorPaletteIcon>
@@ -48,7 +51,7 @@ const Header = ({ user, setUser, setMessage, bgColor }) => {
               Color wheel
             </Link>
           </li>
-          <li>
+          <li className="md:block inline-block">
             <Link className={`menu-item ${invertColor === '' ? 'menu-item-dark-hover' : 'menu-item-light-hover'}`} to='/explore' >
               <div className={`w-fit m-auto ${invertColor}`}>
                 <ExploreIcon sizeClass={sizeClass}></ExploreIcon>
@@ -56,7 +59,7 @@ const Header = ({ user, setUser, setMessage, bgColor }) => {
               Explore
             </Link>
           </li>
-          <li>
+          <li className="md:block hidden">
             <Link className={`menu-item ${invertColor === '' ? 'menu-item-dark-hover' : 'menu-item-light-hover'}`} to='/visualiser' >
               <div className={`w-fit m-auto ${invertColor}`}>
                 <VisualiserIcon sizeClass={sizeClass}></VisualiserIcon>
@@ -64,7 +67,7 @@ const Header = ({ user, setUser, setMessage, bgColor }) => {
               Scheme visualiser
             </Link>
           </li>
-          <li>
+          <li className="md:block inline-block">
             <Link className={`menu-item ${invertColor === '' ? 'menu-item-dark-hover' : 'menu-item-light-hover'}`} to='/converter' >
               <div className={`w-fit m-auto ${invertColor}`}>
                 <ColorConverterIcon sizeClass={sizeClass}></ColorConverterIcon>
@@ -72,7 +75,7 @@ const Header = ({ user, setUser, setMessage, bgColor }) => {
               Color converter
             </Link>
           </li>
-          <li>
+          <li className="md:block hidden">
             <Link className={`menu-item ${invertColor === '' ? 'menu-item-dark-hover' : 'menu-item-light-hover'}`} to='/about' >
               <div className={`w-fit m-auto ${invertColor}`}>
                 <AboutIcon sizeClass={sizeClass}></AboutIcon>
@@ -80,9 +83,9 @@ const Header = ({ user, setUser, setMessage, bgColor }) => {
               About
             </Link>
           </li>
-          <li className={`border-b-2 border-black border-opacity-30 w-4/5 mx-auto my-5 ${invertColor}`}></li>
+          <li className={`border-b-2 border-black border-opacity-30 w-4/5 mx-auto my-5 ${invertColor} md:block hidden`}></li>
           {user &&
-            <li >
+            <li className="md:block hidden">
               <Link className={`menu-item ${invertColor === '' ? 'menu-item-dark-hover' : 'menu-item-light-hover'}`} to='/profile' >
                 <div className={`w-fit m-auto ${invertColor}`}>
                   <ProfileIcon sizeClass={sizeClass}></ProfileIcon>
@@ -93,7 +96,7 @@ const Header = ({ user, setUser, setMessage, bgColor }) => {
           }
           {!user &&
             <>
-              <li>
+              <li className="md:block hidden">
                 <Link className={`menu-item ${invertColor === '' ? 'menu-item-dark-hover' : 'menu-item-light-hover'}`} to='/login' >
                   <div className={`w-fit m-auto ${invertColor}`}>
                     <LoginIcon sizeClass={sizeClass}></LoginIcon>
@@ -101,7 +104,7 @@ const Header = ({ user, setUser, setMessage, bgColor }) => {
                   Login
                 </Link>
               </li>
-              <li>
+              <li className="md:block hidden">
                 <Link className={`menu-item ${invertColor === '' ? 'menu-item-dark-hover' : 'menu-item-light-hover'}`} to='/signup' >
                   <div className={`w-fit m-auto ${invertColor}`}>
                     <SignUpIcon sizeClass={sizeClass}></SignUpIcon>
@@ -112,7 +115,7 @@ const Header = ({ user, setUser, setMessage, bgColor }) => {
             </>
           }
           {user &&
-            <li>
+            <li className="md:block hidden">
               <button className={`menu-item ${invertColor === '' ? 'menu-item-dark-hover' : 'menu-item-light-hover'}`} onClick={logOut}>
                 <div className={`w-fit m-auto ${invertColor}`}>
                   <LogOutIcon sizeClass={sizeClass}></LogOutIcon>
@@ -121,6 +124,70 @@ const Header = ({ user, setUser, setMessage, bgColor }) => {
               </button>
             </li>
           }
+          <div className="inline-block md:hidden relative">
+            <button className={`menu-item ${invertColor === '' ? 'menu-item-dark-hover' : 'menu-item-light-hover'}`} onClick={event => {
+              event.stopPropagation()
+              setShow(!showDropdown)
+              document.addEventListener('click', () => setShow(false))
+            }}>
+              <div className={`w-fit m-auto ${invertColor}`}>
+                <MoreIcon sizeClass={sizeClass}></MoreIcon>
+              </div>
+              More
+            </button>
+            {showDropdown &&
+              <div className="absolute mt-1 bottom-full rounded-lg p-4 drop-shadow-lg border border-gray-200 z-50"
+                style={{ background: bgColor }}>
+                <li className="">
+                  <Link className={`menu-item ${invertColor === '' ? 'menu-item-dark-hover' : 'menu-item-light-hover'}`} to='/about' >
+                    <div className={`w-fit m-auto ${invertColor}`}>
+                      <AboutIcon sizeClass={sizeClass}></AboutIcon>
+                    </div>
+                    About
+                  </Link>
+                </li>
+                {user &&
+                  <li className="">
+                    <Link className={`menu-item ${invertColor === '' ? 'menu-item-dark-hover' : 'menu-item-light-hover'}`} to='/profile' >
+                      <div className={`w-fit m-auto ${invertColor}`}>
+                        <ProfileIcon sizeClass={sizeClass}></ProfileIcon>
+                      </div>
+                      User Profile
+                    </Link>
+                  </li>
+                }
+                {!user &&
+                  <>
+                    <li className="">
+                      <Link className={`menu-item ${invertColor === '' ? 'menu-item-dark-hover' : 'menu-item-light-hover'}`} to='/login' >
+                        <div className={`w-fit m-auto ${invertColor}`}>
+                          <LoginIcon sizeClass={sizeClass}></LoginIcon>
+                        </div>
+                        Login
+                      </Link>
+                    </li>
+                    <li className="">
+                      <Link className={`menu-item ${invertColor === '' ? 'menu-item-dark-hover' : 'menu-item-light-hover'}`} to='/signup' >
+                        <div className={`w-fit m-auto ${invertColor}`}>
+                          <SignUpIcon sizeClass={sizeClass}></SignUpIcon>
+                        </div>
+                        Sign up
+                      </Link>
+                    </li>
+                  </>
+                }
+                {user &&
+                  <li className="">
+                    <button className={`menu-item ${invertColor === '' ? 'menu-item-dark-hover' : 'menu-item-light-hover'}`} onClick={logOut}>
+                      <div className={`w-fit m-auto ${invertColor}`}>
+                        <LogOutIcon sizeClass={sizeClass}></LogOutIcon>
+                      </div>
+                      Log out
+                    </button>
+                  </li>
+                }
+              </div>}
+          </div>
         </ul>
       </nav>
     </div>

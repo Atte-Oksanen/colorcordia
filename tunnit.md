@@ -50,5 +50,5 @@
 |11.11.23|2| Ladattavan paletin optimointi + järjestelmäviestien rikastus + sessioriippuvaisen kirjautumisen mahdollistaminen
 |12-13.11.23|4| Mobiilikäyttöliittymän toteutus
 |13.11.12|1| Käyttäjän poiston toteutus
-
-Yhteensä: 168h
+||1| Korjattu Node.js versioihin liittyvä epäyhteensopivuus + mobiilikäyttöliittymää paranneltu + paranneltu mobiilikäyttöliittymää
+Yhteensä: 169h

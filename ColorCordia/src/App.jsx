@@ -56,7 +56,7 @@ function App() {
 
 
   return (
-    <div className='font-extralight grid md:grid-cols-[8rem_1fr] md:grid-rows-1 grid-rows-[1fr_7rem] h-screen'>
+    <div className='font-extralight grid md:grid-cols-[8rem_1fr] md:grid-rows-1 grid-rows-[1fr_7rem] h-[100svh]'>
       <div className='order-last md:order-none'>
         <Header user={user} setMessage={setMessage} setUser={setUser} bgColor={pickedColor || bgColor}></Header>
       </div>

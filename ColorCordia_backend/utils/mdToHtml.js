@@ -22,24 +22,6 @@ const mdToHtml = mdString => {
             element: 'h3',
             text: element.replace(/#/g, '').trim()
           }
-          break
-        case 3:
-          returnObject = {
-            element: 'h4',
-            text: element.replace(/#/g, '').trim()
-          }
-          break
-        case 4:
-          returnObject = {
-            element: 'h5',
-            text: element.replace(/#/g, '').trim()
-          }
-          break
-        case 5:
-          returnObject = {
-            element: 'h6',
-            text: element.replace(/#/g, '').trim()
-          }
       }
     } else if (element.charAt(0).match(/^\p{L}$/u)) {
       returnObject = {

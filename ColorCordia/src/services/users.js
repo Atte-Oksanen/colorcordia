@@ -36,3 +36,7 @@ export const getUser = async userId => {
 export const changePassword = async creds => {
   return (await axios.post(`${BASE_URL}/password`, creds)).data
 }
+
+export const deleteUser = async userId => {
+  return (await axios.delete(`${BASE_URL}/delete/${userId}`, { headers: { authorization: token } })).data
+}

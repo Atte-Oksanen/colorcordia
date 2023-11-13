@@ -97,4 +97,19 @@ userRouter.post('/password', async (req, res) => {
   res.status(200).json(returnedUser)
 })
 
+userRouter.delete('/delete/:id', async (req, res) => {
+  if (!req.user) {
+    return res.status(401).json({ message: "authorization needed" })
+  }
+  if (req.params.id !== req.user.id) {
+    return res.status(401).json({ message: "invalid token" })
+  }
+  try {
+    await User.findByIdAndDelete(req.params.id)
+  } catch (error) {
+    return res.status(500).json({ message: "internal server error" })
+  }
+  res.status(200).end()
+})
+
 module.exports = userRouter

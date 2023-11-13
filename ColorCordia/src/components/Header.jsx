@@ -29,7 +29,12 @@ const Header = ({ user, setUser, setMessage, bgColor }) => {
   }, [bgColor])
 
   const logOut = () => {
-    window.localStorage.removeItem('userToken')
+    try {
+      window.localStorage.removeItem('userToken')
+    } catch (error) { }
+    try {
+      window.sessionStorage.removeItem('userToken')
+    } catch (error) { }
     setUser(null)
     navigate('/')
     setMessage({ text: "Logged out", warning: false })

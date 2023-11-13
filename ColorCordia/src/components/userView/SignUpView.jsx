@@ -25,7 +25,7 @@ const SignUpView = ({ setMessage }) => {
   }
 
   return (
-    <div className="flex h-full">
+    <div className="flex h-full mx-4">
       <div className="w-fit m-auto border bg-white border-black drop-shadow-md p-10 rounded-lg">
         <h2 className="text-4xl font-normal">Sign up</h2>
         <form onSubmit={handleFormSubmit}>

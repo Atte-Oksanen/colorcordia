@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import EditableField from "../utils/editableField"
 import { deletePalette, getPalettesByCreator } from "../../services/palettes"
 import CommunityPalette from "../communityView/CommunityPalette"
@@ -9,6 +9,7 @@ const UserView = ({ user, setUser, setMessage }) => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [palettes, setPalettes] = useState([])
+  const deleteConfirm = useRef()
 
   useEffect(() => {
     if (user) {
@@ -41,6 +42,7 @@ const UserView = ({ user, setUser, setMessage }) => {
   }
   return (
     <div className="m-5">
+      <dialog ref={deleteConfirm}></dialog>
       <h2 className="text-4xl font-normal">User Info</h2>
       <div className="w-fit p-5 mt-4 border border-gray-200 rounded-lg">
         <form>

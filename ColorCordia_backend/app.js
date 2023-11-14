@@ -17,6 +17,9 @@ const authExtractor = (req, res, next) => {
     if (Date.now() - req.user.lastLogin > 604800000) {
       return res.status(401).json({ message: "Manual login required" })
     }
+    if (req.user.remoteAddress !== req.socket.remoteAddress) {
+      return res.status(401).json({ message: "Invalid credentials" })
+    }
   } catch (error) { }
   next()
 }

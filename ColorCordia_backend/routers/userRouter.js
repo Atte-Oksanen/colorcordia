@@ -1,7 +1,6 @@
 const userRouter = require('express').Router()
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
-const { MongooseError, default: mongoose } = require('mongoose')
 const User = require('../models/user')
 const { checkProfanity } = require('../utils/checkProfanity')
 
@@ -13,11 +12,11 @@ userRouter.post('/login', async (req, res) => {
     res.status(401).json({ message: "invalid username or password" })
     return
   }
-
   const tokenData = {
     username: user.username,
     id: user._id,
-    lastLogin: Date.now()
+    lastLogin: Date.now(),
+    remoteAddress: req.socket.remoteAddress
   }
   const token = jwt.sign(tokenData, process.env.SECRET)
   res.json({ token: token, username: user.username, id: user._id })

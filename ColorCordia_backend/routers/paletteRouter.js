@@ -34,13 +34,19 @@ paletteRouter.put('/:id', async (req, res) => {
     return res.status(401).json({ message: "invalid credentials" })
   }
   const user = await User.findById(req.user.id)
+  let updatedUser
   if (user.likedPosts.find(element => element === req.body.id)) {
-    return res.status(401).json({ message: "post already liked" })
-  }
-  const updatedUser = {
-    username: user.username,
-    password: user.password,
-    likedPosts: user.likedPosts.concat(req.body.id)
+    updatedUser = {
+      username: user.username,
+      password: user.password,
+      likedPosts: user.likedPosts.filter(element => element !== req.body.id)
+    }
+  } else {
+    updatedUser = {
+      username: user.username,
+      password: user.password,
+      likedPosts: user.likedPosts.concat(req.body.id)
+    }
   }
   await User.findByIdAndUpdate(req.user.id, updatedUser, { new: true })
   const updatedPalette = {

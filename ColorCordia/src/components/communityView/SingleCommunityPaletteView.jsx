@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
 import { getPaletteById, likePalette } from "../../services/palettes"
@@ -6,6 +5,7 @@ import { GetColorNames } from "../../services/colorNames"
 import LikeIcon from "../icons/LikeIcon"
 import ColorPaletteSkeleton from "../utils/ColorPaletteSkeleton"
 import DownloadablePalette from "../utils/DownloadablePalette"
+import LoadingComponent from "../utils/LoadingComponent"
 
 const SingleCommunityPaletteView = ({ palettes, user, setUser }) => {
   const params = useParams().id
@@ -14,6 +14,7 @@ const SingleCommunityPaletteView = ({ palettes, user, setUser }) => {
   const [colors, setColors] = useState()
   const [type, setType] = useState()
   const [disableLike, setDisableLike] = useState(false)
+  const [alreadyLiked, setLiked] = useState(false)
   useEffect(() => {
     (async () => {
       if (palettes.length === 0) {
@@ -39,26 +40,39 @@ const SingleCommunityPaletteView = ({ palettes, user, setUser }) => {
       if (!user) {
         return setDisableLike(true)
       }
-      if (user && palette && disableLike !== true) {
+      if (user && palette) {
         if (user.likedPosts.find(element => element === palette.id)) {
-          setDisableLike(true)
+          setLiked(true)
         }
       }
+      setDisableLike(false)
     })()
-  }, [palette, user])
+  }, [palette, user, alreadyLiked])
 
 
   if (!palette) {
-    return null
+    return (
+      <div className="h-full flex">
+        <LoadingComponent></LoadingComponent>
+      </div>
+    )
   }
 
   const handleLike = () => {
-    const updatedPalette = { ...palette, likes: palette.likes + 1 }
-    const updatedUser = { ...user, likedPosts: user.likedPosts.concat(palette.id) }
+    let updatedPalette
+    let updatedUser
+    if (alreadyLiked) {
+      updatedPalette = { ...palette, likes: palette.likes - 1 }
+      updatedUser = { ...user, likedPosts: user.likedPosts.filter(element => element !== palette.id) }
+      setLiked(false)
+    } else {
+      updatedPalette = { ...palette, likes: palette.likes + 1 }
+      updatedUser = { ...user, likedPosts: user.likedPosts.concat(palette.id) }
+      setLiked(true)
+    }
     setUser(updatedUser)
     setPalette(updatedPalette)
     likePalette(updatedPalette)
-    setDisableLike(true)
   }
 
 
@@ -69,8 +83,8 @@ const SingleCommunityPaletteView = ({ palettes, user, setUser }) => {
         <br />
         {palette.likes} Likes
       </div>
-      <button className="pill-button disabled:bg-blue-400 mr-5" onClick={handleLike} disabled={disableLike}>
-        Like
+      <button className={`pill-button ${alreadyLiked ? 'pill-button-empty' : 'pill-button'} disabled:bg-blue-400 mr-5`} onClick={() => handleLike()} disabled={disableLike}>
+        {alreadyLiked ? 'Unlike' : 'Like'}
         <div className="inline-block align-middle ml-2">
           <LikeIcon sizeClass='h-5 w-5'></LikeIcon>
         </div>

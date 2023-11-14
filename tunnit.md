@@ -51,4 +51,5 @@
 |12-13.11.23|4| Mobiilikäyttöliittymän toteutus
 |13.11.12|1| Käyttäjän poiston toteutus
 ||1| Korjattu Node.js versioihin liittyvä epäyhteensopivuus + mobiilikäyttöliittymää paranneltu + paranneltu mobiilikäyttöliittymää
-Yhteensä: 169h
+|14.11.23|5| Parannettu backendin tietoturvallisuutta varastettuja tokeneita vastaan + luotu toiminnallisuus tykkäyksen poistamiseen + lisätty palettinäkymiin eri väriavaruuksia + päivitetty tyylejä
+Yhteensä: 174h

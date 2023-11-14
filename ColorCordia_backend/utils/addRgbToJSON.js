@@ -1,13 +1,13 @@
 const fs = require('fs')
-const { rgbToHex } = require('./colorConverters')
+const { rgbToHex, hexToRgb } = require('./colorConverters')
 
 const inputColors = JSON.parse(fs.readFileSync('../data/ncs_values_new.json'))
 
 const outputColors = inputColors.map(element => {
   return {
-    ncs: element.NCS,
-    hex: rgbToHex({ r: element.R, g: element.G, b: element.B }),
-    rgb: { r: element.R, g: element.G, b: element.B }
+    ncs: element.ncs,
+    hex: element.hex,
+    rgb: hexToRgb(element.hex)
   }
 })
 

@@ -7,5 +7,9 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 export const hexToNcs = async hex => {
-  return (await axios.get(`${BASE_URL}/${hex}`)).data
+  return (await axios.get(`${BASE_URL}/hex/${hex}`)).data
+}
+
+export const ncsToHex = async ncs => {
+  return (await axios.get(`${BASE_URL}/ncs/${ncs}`)).data
 }

@@ -1,7 +1,8 @@
-import { useState } from "react"
-import { hexToRgb, hsvToRgb, ncsToRgb, rgbToHex, rgbToHsv } from "../utils/colorConverters"
-import { hexToNcs } from "../services/ncsConvert"
+import { useEffect, useState } from "react"
+import { hexToRgb, hsvToRgb, rgbToHex, rgbToHsv } from "../utils/colorConverters"
+import { hexToNcs, ncsToHex } from "../services/ncsConvert"
 import SwitchIcon from "./icons/SwitchIcon"
+import { checkServer } from "../services/serverCheck"
 
 const ColorConverterView = ({ setMessage }) => {
   const [startUnit, setStartUnit] = useState('Hex')
@@ -10,6 +11,16 @@ const ColorConverterView = ({ setMessage }) => {
   const [endValue, setEndValue] = useState('')
   const [showComparison, setShowComparison] = useState(false)
   const [comparableColors, setComparable] = useState([])
+  const [serverOnline, setServerStatus] = useState(false)
+
+  useEffect(() => {
+    checkServer().then(() => {
+      setServerStatus(true)
+    })
+      .catch(() => {
+        setServerStatus(false)
+      })
+  }, [startUnit, endUnit])
 
   const getPlaceHolderFormat = (unit) => {
     switch (unit) {
@@ -99,7 +110,7 @@ const ColorConverterView = ({ setMessage }) => {
           case 'NCS': {
             const ncs = await hexToNcs(hex.substring(1))
             setEndValue(ncs.ncs)
-            setComparable([{ color: startValue, name: startValue }, ncs])
+            setComparable([{ color: hex, name: startValue }, ncs])
             setShowComparison(true)
             return
           }
@@ -143,7 +154,7 @@ const ColorConverterView = ({ setMessage }) => {
           case 'NCS': {
             const ncs = await hexToNcs(hex.substring(1))
             setEndValue(ncs.ncs)
-            setComparable([{ color: startValue, name: startValue }, ncs])
+            setComparable([{ color: hex, name: startValue }, ncs])
             setShowComparison(true)
             return
           }
@@ -151,9 +162,11 @@ const ColorConverterView = ({ setMessage }) => {
             return 'Color Code'
         }
       }
-
       case 'NCS': {
-        const hex = rgbToHex(ncsToRgb(startValue))
+        let hex = null
+        try {
+          hex = await ncsToHex(startValue)
+        } catch (error) { /* empty */ }
         if (!hex) {
           setMessage({ text: "Invalid color input", warning: true })
           break
@@ -190,9 +203,12 @@ const ColorConverterView = ({ setMessage }) => {
   }
 
   const switchUnits = () => {
-    const temp = startUnit
+    const tempUnit = startUnit
     setStartUnit(endUnit)
-    setEndUnit(temp)
+    setEndUnit(tempUnit)
+    const tempValue = startValue
+    setStartValue(endValue)
+    setEndValue(tempValue)
   }
 
   const renderComparison = () => {
@@ -228,7 +244,7 @@ const ColorConverterView = ({ setMessage }) => {
   return (
     <div className="h-full md:flex">
       <div className="w-full h-2/3 m-auto">
-        <div className="w-fit p-4 mx-auto md:block flex flex-col items-center text-center md:h-auto h-4/5 justify-between">
+        <div className="w-fit p-4 mx-auto md:block flex flex-col items-center text-center md:h-auto justify-between">
           <div className="inline-block w-fit">
             <label htmlFor="startUnit">
               Color system
@@ -237,7 +253,7 @@ const ColorConverterView = ({ setMessage }) => {
               <option>Hex</option>
               <option>RGB</option>
               <option>HSV</option>
-              <option>NCS</option>
+              {serverOnline && <option>NCS</option>}
             </select>
             <input className="text-input" type="text" placeholder={getPlaceHolderFormat(startUnit)} value={startValue} onChange={event => setStartValue(event.target.value)}></input>
           </div>
@@ -253,7 +269,7 @@ const ColorConverterView = ({ setMessage }) => {
               <option>Hex</option>
               <option>RGB</option>
               <option>HSV</option>
-              <option>NCS</option>
+              {serverOnline && <option>NCS</option>}
             </select>
             <input className="text-input" type="text" placeholder={getPlaceHolderFormat(endUnit)} readOnly value={endValue}></input>
           </div>

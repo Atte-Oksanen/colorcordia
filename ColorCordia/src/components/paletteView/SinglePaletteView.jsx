@@ -45,15 +45,15 @@ const SinglePaletteView = ({ setMessage, user, communityPalettes, setPalettes })
   }
   return (
     <ColorPaletteSkeleton type={type} colors={colors}>
-      <div className="md:block flex justify-between mx-1 md:h-fit">
+      <div className="md:block grid grid-cols-2 gap-2 mx-1 md:h-fit">
         <button className="pill-button md:mr-5 disabled:bg-blue-400" disabled={shareButtonDisabled} onClick={handlePaletteCreation}>
           Share
-          <div className="inline-block align-middle md:ml-2">
+          <div className="inline-block align-middle ml-2">
             <ShareIcon sizeClass='h-5 w-5'></ShareIcon>
           </div>
         </button>
         <DownloadablePalette palette={colors} type={type}></DownloadablePalette>
-        <button className="pill-button-empty md:mx-5">
+        <button className="pill-button-empty md:mx-5 col-span-2">
           <Link to={`/palettes/${colorsForId.toString().replaceAll(',', '-')}`}>
             Derivative palettes
             <div className="inline-block align-middle ml-2">

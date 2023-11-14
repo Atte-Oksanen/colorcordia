@@ -2,9 +2,7 @@ import { getTextColor } from "../../utils/colorConverters"
 import VisualiserDashboardBilling from "./VisualiserDashboardBilling"
 import VisualiserDashboardTraffic from "./VisualiserDashboardTraffic"
 
-/* eslint-disable react/prop-types */
 const VisualiserDashboard = ({ colors }) => {
-
   if (colors.length < 1) {
     return null
   }
@@ -28,7 +26,6 @@ const VisualiserDashboard = ({ colors }) => {
             </clipPath>
           </defs>
         </svg>
-
         <h2 className="inline-block p-4 text-2xl font-normal"
           style={{ color: getTextColor(colors[4]) }}>
           InfoVista

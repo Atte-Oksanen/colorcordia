@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import ColorTweaker from "./ColorTweaker"
 import PaletteGenerator from "./paletteGenerator"
 

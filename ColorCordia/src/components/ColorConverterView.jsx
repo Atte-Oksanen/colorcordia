@@ -1,12 +1,12 @@
-/* eslint-disable react/prop-types */
 import { useState } from "react"
 import { hexToRgb, hsvToRgb, ncsToRgb, rgbToHex, rgbToHsv } from "../utils/colorConverters"
 import { hexToNcs } from "../services/ncsConvert"
+import SwitchIcon from "./icons/SwitchIcon"
 
 const ColorConverterView = ({ setMessage }) => {
   const [startUnit, setStartUnit] = useState('Hex')
   const [startValue, setStartValue] = useState('')
-  const [endUnit, setEndUnit] = useState('NCS')
+  const [endUnit, setEndUnit] = useState('HSV')
   const [endValue, setEndValue] = useState('')
   const [showComparison, setShowComparison] = useState(false)
   const [comparableColors, setComparable] = useState([])
@@ -189,6 +189,12 @@ const ColorConverterView = ({ setMessage }) => {
     }
   }
 
+  const switchUnits = () => {
+    const temp = startUnit
+    setStartUnit(endUnit)
+    setEndUnit(temp)
+  }
+
   const renderComparison = () => {
     if (comparableColors.length < 1) {
       return null
@@ -235,7 +241,10 @@ const ColorConverterView = ({ setMessage }) => {
             </select>
             <input className="text-input" type="text" placeholder={getPlaceHolderFormat(startUnit)} value={startValue} onChange={event => setStartValue(event.target.value)}></input>
           </div>
-          <button className="pill-button mx-4" onClick={handleColorConversion}>Convert to</button>
+          <button className="pill-button mx-4 my-2" onClick={handleColorConversion}>Convert to</button>
+          <button className="pill-button-empty align-middle md:mr-4 my-2" onClick={() => switchUnits()}>
+            <SwitchIcon sizeClass='h-6 w-6'></SwitchIcon>
+          </button>
           <div className="inline-block">
             <label htmlFor="endUnit">
               Color system

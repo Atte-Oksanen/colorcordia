@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import LoadingComponent from "./LoadingComponent"
 
-/* eslint-disable react/prop-types */
 const PaletteDropDown = ({ palettes, setColors }) => {
   const [paletteArray, setPaletteArray] = useState([])
   const [selectedPalette, setSelected] = useState('')

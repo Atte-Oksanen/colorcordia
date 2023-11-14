@@ -18,7 +18,7 @@ import ColorWheelView from './components/colorWheelView/ColorWheelView'
 import { createRandomBgColor } from './utils/colorRandomizer'
 import AboutView from './components/AboutView'
 
-function App() {
+const App = () => {
   const navigate = useNavigate()
   const [pickedColor, setColor] = useState(null)
   const [message, setMessage] = useState(null)

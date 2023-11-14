@@ -1,6 +1,5 @@
 import XIcon from "../icons/XIcon"
 
-/* eslint-disable react/prop-types */
 const Notification = ({ message, setMessage }) => {
   if (!message) {
     return null

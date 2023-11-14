@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 const VisualiserDashboardTraffic = ({ colors }) => {
   return (
     <div className="bg-white border border-black rounded-md">

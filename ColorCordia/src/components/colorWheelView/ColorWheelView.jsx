@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import ColorWheel from "./ColorWheel"
 
 const ColorWheelView = ({ setColor, setMessage, reRenderWheel }) => {

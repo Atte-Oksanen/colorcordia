@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { useEffect, useRef, useState } from "react"
 import EditableField from "../utils/editableField"
 import { deletePalette, getPalettesByCreator } from "../../services/palettes"
@@ -15,6 +14,7 @@ const UserView = ({ user, setUser, setMessage }) => {
   const palDeleteModal = useRef()
   const userDeleteModal = useRef()
   const [paletteForDelete, setForDelete] = useState(null)
+
   useEffect(() => {
     if (user) {
       setUsername(user.username);
@@ -81,10 +81,10 @@ const UserView = ({ user, setUser, setMessage }) => {
               setUser(null)
               try {
                 window.localStorage.removeItem('userToken')
-              } catch (error) { }
+              } catch (error) { /* empty */ }
               try {
                 window.sessionStorage.removeItem('userToken')
-              } catch (error) { }
+              } catch (error) { /* empty */ }
               navigate('/')
             }}>Delete</button>
             <button className="pill-button" onClick={() => palDeleteModal.current.close()}>Cancel</button>

@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { useEffect, useState } from "react"
 import { changePassword } from "../../services/users"
 import { useNavigate } from "react-router-dom"
@@ -10,14 +9,11 @@ const EditableField = ({ fieldLabel, fieldValue, setNewState, user, setUser, set
   const [newPass, setNewPass] = useState('')
   const [disabled, setDisabled] = useState(true)
 
-
-
   useEffect(() => {
     if (fieldValue) {
       setText(fieldValue)
     }
   }, [fieldValue])
-
 
   const changeEditState = () => {
     if (buttonMessage === 'Edit') {

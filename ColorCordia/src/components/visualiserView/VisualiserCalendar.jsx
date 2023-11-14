@@ -1,8 +1,6 @@
 import { getTextColor } from "../../utils/colorConverters"
 
-/* eslint-disable react/prop-types */
 const VisualiserCalendar = ({ colors }) => {
-
   if (colors.length < 1) {
     return null
   }

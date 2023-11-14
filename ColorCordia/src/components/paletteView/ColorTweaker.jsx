@@ -1,11 +1,15 @@
 import { Link } from "react-router-dom"
 import NextIcon from "../icons/NextIcon"
 import ColorRange from "../utils/ColorRange"
+import LoadingComponent from "../utils/LoadingComponent"
 
-/* eslint-disable react/prop-types */
 const ColorTweaker = ({ color, setColor }) => {
   if (!color) {
-    return null
+    return (
+      <div className="h-full flex">
+        <LoadingComponent></LoadingComponent>
+      </div>
+    )
   }
   return (
     <div className="grid md:grid-rows-[2fr_1fr_1fr] grid-rows-[1fr_1fr_1fr] grid-cols-1 md:py-10">

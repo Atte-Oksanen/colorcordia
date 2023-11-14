@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { Link, useParams } from "react-router-dom"
 import { createPalette } from "../../services/palettes"
 import { useEffect, useState } from "react"
@@ -39,7 +38,7 @@ const SinglePaletteView = ({ setMessage, user, communityPalettes, setPalettes })
 
   if (!colors) {
     return (
-      <div className="h-fit m-auto">
+      <div className="h-full flex">
         <LoadingComponent></LoadingComponent>
       </div>
     )

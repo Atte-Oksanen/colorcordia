@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom"
 
-/* eslint-disable react/prop-types */
 const ColorPalette = ({ palette }) => {
   const paletteId = palette.harmony.toString().replaceAll('#', '').replaceAll(',', '-')
   return (

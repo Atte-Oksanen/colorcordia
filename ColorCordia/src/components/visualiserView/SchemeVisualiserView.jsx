@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { useEffect, useState } from "react"
 import VisualiserBlog from "./VisualiserBlog"
 import VisualiserCalendar from "./VisualiserCalendar"

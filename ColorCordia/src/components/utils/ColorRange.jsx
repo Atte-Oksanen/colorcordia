@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { useEffect, useState } from "react"
 import { hexToRgb, rgbToHex } from "../../utils/colorConverters"
 

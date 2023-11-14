@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import { Link } from "react-router-dom"
+
 const CommunityPalette = (props) => {
   const [type, ...colorHarmony] = props.palette.palette.split('-')
   const colors = colorHarmony.map(color => `#${color}`)

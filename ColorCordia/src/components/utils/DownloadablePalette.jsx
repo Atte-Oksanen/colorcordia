@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import DownloadIcon from "../icons/DownloadIcon"
 
 const DownloadablePalette = ({ palette, type }) => {

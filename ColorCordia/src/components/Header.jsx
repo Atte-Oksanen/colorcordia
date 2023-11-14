@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { Link, useNavigate } from "react-router-dom"
 import ColorPaletteIcon from "./icons/ColorPaletteIcon"
 import ExploreIcon from "./icons/ExploreIcon"
@@ -12,6 +11,7 @@ import ProfileIcon from "./icons/ProfileIcon"
 import { useEffect, useState } from "react"
 import { getTextColor } from "../utils/colorConverters"
 import MoreIcon from "./icons/MoreIcon"
+
 const Header = ({ user, setUser, setMessage, bgColor }) => {
   const navigate = useNavigate()
   const sizeClass = 'h-10 w-10'
@@ -31,10 +31,10 @@ const Header = ({ user, setUser, setMessage, bgColor }) => {
   const logOut = () => {
     try {
       window.localStorage.removeItem('userToken')
-    } catch (error) { }
+    } catch (error) { /* empty */ }
     try {
       window.sessionStorage.removeItem('userToken')
-    } catch (error) { }
+    } catch (error) { /* empty */ }
     setUser(null)
     navigate('/')
     setMessage({ text: "Logged out", warning: false })

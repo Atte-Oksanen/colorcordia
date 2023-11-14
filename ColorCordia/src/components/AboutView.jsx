@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { getAboutText } from "../services/textContent"
 import { textToJsx } from "../utils/textToJsx"
 import LoadingComponent from './utils/LoadingComponent'
+
 const AboutView = () => {
   const [viewContent, setContent] = useState([])
   useEffect(() => {
@@ -12,7 +13,7 @@ const AboutView = () => {
 
   if (viewContent.length < 1) {
     return (
-      <div className="h-fit m-auto">
+      <div className="h-full flex">
         <LoadingComponent></LoadingComponent>
       </div>
     )

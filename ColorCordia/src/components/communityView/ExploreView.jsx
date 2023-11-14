@@ -1,8 +1,8 @@
-/* eslint-disable react/prop-types */
 import { useEffect } from "react"
 import { getPalettes } from "../../services/palettes"
 import CommunityPalette from "./CommunityPalette"
 import LoadingComponent from "../utils/LoadingComponent"
+
 const ExploreView = ({ palettes, setPalettes }) => {
   useEffect(() => {
     (async () => {
@@ -12,7 +12,9 @@ const ExploreView = ({ palettes, setPalettes }) => {
 
   if (palettes.length < 1) {
     return (
-      <LoadingComponent></LoadingComponent>
+      <div className="h-full flex">
+        <LoadingComponent></LoadingComponent>
+      </div>
     )
   }
   return (

@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { useEffect, useState } from "react"
 import {
   analogousHarmony, monoHarmony, triadHarmony,
@@ -7,6 +6,7 @@ import {
 } from "../../utils/colorHarmonies"
 import ColorPalette from "./ColorPalette"
 import { randomizeColor } from "../../utils/colorRandomizer"
+
 const PaletteGenerator = ({ color, setColor }) => {
   const [colorHarmonies, setHarmonies] = useState([])
 

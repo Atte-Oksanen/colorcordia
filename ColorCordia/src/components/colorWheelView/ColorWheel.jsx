@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { useEffect, useRef, useState } from 'react'
 import { hexToRgb, hsvToRgb, rgbToHex, rgbToHsv } from '../../utils/colorConverters'
 import { useNavigate } from 'react-router-dom'

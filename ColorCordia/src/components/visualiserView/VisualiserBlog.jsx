@@ -1,5 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
-/* eslint-disable react/prop-types */
 import { getTextColor } from "../../utils/colorConverters"
 import VisualiserCanvas from "./VisualiserCanvas"
 
@@ -55,15 +53,15 @@ const VisualiserBlog = ({ colors }) => {
           </h2>
         </div>
         <p className="bg-white p-4 rounded-md m-5">
-          Consistency is key in color usage, especially when it comes to branding. A well-defined color palette that aligns with the brand identity helps users remember and trust a product. Consistent color choices create familiarity and credibility, reinforcing the brand's personality and values.
+          Consistency is key in color usage, especially when it comes to branding. A well-defined color palette that aligns with the brand identity helps users remember and trust a product. Consistent color choices create familiarity and credibility, reinforcing the brand&apos;s personality and values.
           <br />
           <br />
-          Creating meaning with color often involves testing and iteration. User testing provides valuable feedback on how users perceive and interact with color choices. A/B testing can help identify which color variations are more effective. It's important to stay updated with design trends and user preferences, as the meaning of colors can evolve over time.
+          Creating meaning with color often involves testing and iteration. User testing provides valuable feedback on how users perceive and interact with color choices. A/B testing can help identify which color variations are more effective. It&apos;s important to stay updated with design trends and user preferences, as the meaning of colors can evolve over time.
         </p>
         <p className="bg-white p-4 rounded-md m-5">
           Inclusivity and accessibility are essential in UI design.
           Colors should not exclude anyone, including those with visual impairments.
-          It's vital to ensure sufficient contrast between text and background colors, following accessibility guidelines.
+          It&apos;s vital to ensure sufficient contrast between text and background colors, following accessibility guidelines.
           Additionally, alternative text descriptions for images and icons are essential for users who rely on screen readers.
           Designers must also be aware of color blindness and create interfaces that are distinguishable for users with different forms of color vision deficiencies.
         </p>
@@ -71,7 +69,7 @@ const VisualiserBlog = ({ colors }) => {
           Creating meaning with color often involves testing and iteration.
           User testing provides valuable feedback on how users perceive and interact with color choices.
           A/B testing can help identify which color variations are more effective.
-          It's important to stay updated with design trends and user preferences, as the meaning of colors can evolve over time.
+          It&apos;s important to stay updated with design trends and user preferences, as the meaning of colors can evolve over time.
         </p>
       </div>
     </div >

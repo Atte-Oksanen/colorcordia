@@ -1,5 +1,3 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable react/no-unescaped-entities */
 import { useState } from "react"
 import { getUser, login, setUserToken } from "../../services/users"
 import { setPaletteToken } from "../../services/palettes"
@@ -45,7 +43,7 @@ const LoginView = ({ setUser, setMessage }) => {
           <button className="pill-button my-4 w-full" type="submit">Log in</button>
         </form>
         <div>
-          <p>Don't have an account? <Link className="link-text" to='/signup'>Create account</Link></p>
+          <p>Don&apos;t have an account? <Link className="link-text" to='/signup'>Create account</Link></p>
         </div>
       </div>
     </div>

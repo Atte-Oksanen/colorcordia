@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { useState } from "react"
 import { checkUsername, signUp } from "../../services/users"
 import { useNavigate, Link } from "react-router-dom"

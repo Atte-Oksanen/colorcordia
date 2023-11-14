@@ -36,20 +36,6 @@ Users can create an account with a username (must be over 3 characters long and 
 
 This project and it's source code are licensed under the MIT License. Source code can be found from the [GitHub](https://github.com/Atte-Oksanen/Full_stack_open_Project).
 
-### NCS to RGB conversion
-
-Algorithm for color system conversion provided by [Frederik Ring](https://www.frederikring.com/), Frederik Ring's [GitHub](https://github.com/m90) under the MIT License.
-
-MIT License
-
-Copyright (c) 2014 Frederik Ring
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
 ### Font
 
 Font [Rubik](https://fonts.google.com/specimen/Rubik) Designed by [Hubert and Fischer](https://hfs-studio.com/), [Meir Sadan](https://meirsadan.com/), [Cyreal](https://github.com/cyrealtype), [Daniel Grumer](http://www.danielgrumer.com/), and Omaima Dajani. Licensed under the [Open Font License](https://scripts.sil.org/OFL).

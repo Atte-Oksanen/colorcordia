@@ -158,11 +158,13 @@ const ColorWheel = ({ setColor, setMessage, reRenderWheel }) => {
         <div className='value-wheel' ref={valueWheel}>
         </div>
       </div>
-      <div className='flex mt-4'>
+      <div className='flex mt-4 justify-between'>
         <label htmlFor='vSlider' className='mx-2'>
           V
         </label>
-        <input className='inline-block w-full' type="range" max={100} value={colorValue} id='vSlider' onChange={handleSliderInput} />
+        <input className='w-full rounded-full m-auto border box-content border-black px-1'
+          style={{ WebkitAppearance: 'none', appearance: 'none', outline: 'none', background: `linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(255,255,255,1) 100%)`, height: '0.5rem', accentColor: rgbToHex({ r: colorValue * 2.45, g: colorValue * 2.45, b: colorValue * 2.45 }) }}
+          type="range" max={100} value={colorValue} id='vSlider' onChange={handleSliderInput} />
         <span className='w-6 mx-2'>
           {colorValue}
         </span>

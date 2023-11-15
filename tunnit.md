@@ -53,5 +53,6 @@
 ||1| Korjattu Node.js versioihin liittyvä epäyhteensopivuus + mobiilikäyttöliittymää paranneltu + paranneltu mobiilikäyttöliittymää
 |14.11.23|5| Parannettu backendin tietoturvallisuutta varastettuja tokeneita vastaan + luotu toiminnallisuus tykkäyksen poistamiseen + lisätty palettinäkymiin eri väriavaruuksia + päivitetty tyylejä
 ||2| Paranneltu NCS konversiota + päivitetty about tekstiä + päivitetty linttausta
+|15.11.23|2| Lisätty tyylejä + sivun ikoni suunniteltu + toteutettu
 
-Yhteensä: 176h
+Yhteensä: 178h

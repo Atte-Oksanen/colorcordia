@@ -3,6 +3,7 @@ import { hexToRgb, hsvToRgb, rgbToHex, rgbToHsv } from '../../utils/colorConvert
 import { useNavigate } from 'react-router-dom'
 import { randomizeColorWheelPos } from '../../utils/colorRandomizer'
 import NextIcon from '../icons/NextIcon'
+import EyeDropperIcon from '../icons/EyeDropperIcon'
 
 const ColorWheel = ({ setColor, setMessage, reRenderWheel }) => {
   const navigate = useNavigate()
@@ -41,6 +42,10 @@ const ColorWheel = ({ setColor, setMessage, reRenderWheel }) => {
     window.onresize = () => setWidth(window.innerWidth)
   }, [windowWidth])
 
+  useEffect(() => {
+    valueWheel.current.style.opacity = 1 - colorValue / 100
+  }, [colorValue])
+
   const handlePointerClick = event => {
     if (
       Math.sqrt(
@@ -76,6 +81,7 @@ const ColorWheel = ({ setColor, setMessage, reRenderWheel }) => {
       const theta = coords.h * Math.PI / 180
       pointer.current.style.left = coords.s * Math.cos(theta) + wheelBox.current.x - pointerBox.current.width + 'px'
       pointer.current.style.top = coords.s * Math.sin(theta) + wheelBox.current.y - pointerBox.current.height + 'px'
+      setValue(Math.round(hsv.v * 100))
     }
   }
 
@@ -128,7 +134,6 @@ const ColorWheel = ({ setColor, setMessage, reRenderWheel }) => {
 
   const handleSliderInput = event => {
     setValue(event.target.value)
-    valueWheel.current.style.opacity = 1 - event.target.value / 100
     if (event.target.value === '0') {
       event.target.value += 1
     } else if (event.target.value >= 100) {
@@ -138,6 +143,15 @@ const ColorWheel = ({ setColor, setMessage, reRenderWheel }) => {
     const newHex = rgbToHex(hsvToRgb({ ...currentHsv, v: (event.target.value / 100) }))
     pointer.current.style.backgroundColor = newHex
     setInput(newHex)
+  }
+
+  const handleEyeDropper = () => {
+    // eslint-disable-next-line no-undef
+    const eyeDropper = new EyeDropper()
+    eyeDropper.open().then(result => {
+      setInput(result.sRGBHex)
+      movePointerOnInput(result.sRGBHex)
+    })
   }
 
   return (
@@ -169,13 +183,15 @@ const ColorWheel = ({ setColor, setMessage, reRenderWheel }) => {
           {colorValue}
         </span>
       </div>
-      <form onSubmit={handleColorSubmit} className=''>
-        <input className='text-input mt-4'
+      <form onSubmit={handleColorSubmit} className='grid grid-cols-[2f_1fr] grid-rows-2'>
+        <input className='text-input inline-block'
           type='text'
           value={colorInput}
           onChange={handleColorInput} />
-        <br />
-        <button className='pill-button mt-4' type='submit'>
+        {window.EyeDropper && <button type='button' className='pill-button-empty inline-block h-fit w-fit m-auto' onClick={() => handleEyeDropper()}>
+          <EyeDropperIcon sizeClass={'h-6 w-6'}></EyeDropperIcon>
+        </button>}
+        <button className='pill-button mt-4 col-span-2 mx-auto' type='submit'>
           Create palettes
           <div className='inline-block align-text-bottom ml-1'>
             <NextIcon sizeClass={'h-5 w-5'}></NextIcon>

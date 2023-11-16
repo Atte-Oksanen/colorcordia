@@ -12,7 +12,7 @@ export const randomizeColor = () => {
 export const randomizeColorWheelPos = () => {
   return rgbToHex(hsvToRgb({
     h: Math.random(),
-    s: (Math.random() + 0.1) % 0.98,
+    s: (Math.random() + 0.1) % 0.95,
     v: 1
   }))
 }

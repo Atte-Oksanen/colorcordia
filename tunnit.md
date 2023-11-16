@@ -54,5 +54,6 @@
 |14.11.23|5| Parannettu backendin tietoturvallisuutta varastettuja tokeneita vastaan + luotu toiminnallisuus tykkäyksen poistamiseen + lisätty palettinäkymiin eri väriavaruuksia + päivitetty tyylejä
 ||2| Paranneltu NCS konversiota + päivitetty about tekstiä + päivitetty linttausta
 |15.11.23|2| Lisätty tyylejä + sivun ikoni suunniteltu + toteutettu
+|16.11.23|1| Lisätty eyedropper värivalintaan + paranneltu värirandomisaatiota
 
 Yhteensä: 178h

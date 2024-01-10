@@ -1,4 +1,4 @@
-import { hexToRgb, hsvToRgb, rgbToHex, rgbToHsv } from "./colorConverters"
+import { hexToRgb, hsvToRgb, rgbToHex, rgbToHsv } from './colorConverters'
 
 const checkColorArray = array => {
   return transformToHexArray(array.map(color => {

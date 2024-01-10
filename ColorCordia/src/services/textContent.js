@@ -1,4 +1,4 @@
-import axios from "axios"
+import axios from 'axios'
 let BASE_URL = ''
 if (process.env.NODE_ENV === 'development') {
   BASE_URL = 'http://localhost:3001/api/md'
@@ -7,5 +7,5 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 export const getAboutText = async () => {
-  return (await axios.get(`${BASE_URL}/about`)).data
+  return (await axios.get(`${BASE_URL}/about`)).data.text
 }

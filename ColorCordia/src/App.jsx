@@ -16,7 +16,7 @@ import SchemeVisualiserView from './components/visualiserView/SchemeVisualiserVi
 import Header from './components/Header'
 import ColorWheelView from './components/colorWheelView/ColorWheelView'
 import { createRandomBgColor } from './utils/colorRandomizer'
-import AboutView from './components/AboutView'
+import AboutView from './components/aboutView/AboutView'
 
 const App = () => {
   const navigate = useNavigate()

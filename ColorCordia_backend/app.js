@@ -15,12 +15,12 @@ const authExtractor = (req, res, next) => {
   try {
     req.user = (jwt.verify(req.get('authorization'), process.env.SECRET))
     if (Date.now() - req.user.lastLogin > 604800000) {
-      return res.status(401).json({ message: "Manual login required" })
+      return res.status(401).json({ message: 'Manual login required' })
     }
     if (req.user.remoteAddress !== req.socket.remoteAddress) {
-      return res.status(401).json({ message: "Invalid credentials" })
+      return res.status(401).json({ message: 'Invalid credentials' })
     }
-  } catch (error) { }
+  } catch (error) { /* empty */ }
   next()
 }
 
@@ -34,7 +34,7 @@ app.use(cors())
 app.use(express.json())
 app.use(authExtractor)
 app.get('/', (req, res) => {
-  res.json({ test: "test" })
+  res.json({ test: 'test' })
 })
 
 app.use('/api/colors', colorNameRouter)

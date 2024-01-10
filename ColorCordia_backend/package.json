@@ -18,5 +18,8 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^7.6.2",
     "naughty-words": "^1.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.56.0"
   }
 }

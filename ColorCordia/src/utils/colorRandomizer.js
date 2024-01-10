@@ -1,5 +1,5 @@
-import { hsvToRgb, rgbToHex } from "./colorConverters"
-import { analogousHarmony, complementaryHarmony, compoundHarmony, doubleSplitComplementary, monoHarmony, shadeHarmony, splitComplementaryHarmony, squareHarmony, triadHarmony } from "./colorHarmonies"
+import { hsvToRgb, rgbToHex } from './colorConverters'
+import { analogousHarmony, complementaryHarmony, compoundHarmony, doubleSplitComplementary, monoHarmony, shadeHarmony, splitComplementaryHarmony, squareHarmony, triadHarmony } from './colorHarmonies'
 
 export const randomizeColor = () => {
   return rgbToHex({
@@ -20,24 +20,24 @@ export const randomizeColorWheelPos = () => {
 export const createRandomHarmony = hex => {
   const harmonyNum = Math.round(Math.random() * 9)
   switch (harmonyNum) {
-    case 1:
-      return analogousHarmony(hex)
-    case 2:
-      return monoHarmony(hex)
-    case 3:
-      return triadHarmony(hex)
-    case 4:
-      return complementaryHarmony(hex)
-    case 5:
-      return splitComplementaryHarmony(hex)
-    case 6:
-      return doubleSplitComplementary(hex)
-    case 7:
-      return squareHarmony(hex)
-    case 8:
-      return compoundHarmony(hex)
-    default:
-      return shadeHarmony(hex)
+  case 1:
+    return analogousHarmony(hex)
+  case 2:
+    return monoHarmony(hex)
+  case 3:
+    return triadHarmony(hex)
+  case 4:
+    return complementaryHarmony(hex)
+  case 5:
+    return splitComplementaryHarmony(hex)
+  case 6:
+    return doubleSplitComplementary(hex)
+  case 7:
+    return squareHarmony(hex)
+  case 8:
+    return compoundHarmony(hex)
+  default:
+    return shadeHarmony(hex)
   }
 }
 

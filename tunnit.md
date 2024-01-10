@@ -1,5 +1,7 @@
 # Tuntikirjanpito
 
+Yhteensä: 179h
+
 | Päivä | aika | mitä tein |
 | ----- | ---- | --------- |
 |3.10.23|1| Toiminnallisuuden & käyttöliittymän suunnittelu|
@@ -55,5 +57,4 @@
 ||2| Paranneltu NCS konversiota + päivitetty about tekstiä + päivitetty linttausta
 |15.11.23|2| Lisätty tyylejä + sivun ikoni suunniteltu + toteutettu
 |16.11.23|1| Lisätty eyedropper värivalintaan + paranneltu värirandomisaatiota
-
-Yhteensä: 178h
+|10.1.23|1| Paranneltu linttausta, projekti viimeistelty

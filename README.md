@@ -6,6 +6,8 @@ This project was created as a part of [Full stack open](https://fullstackopen.co
 
 The live version of the project can be found at [colorcordia.com](https://www.colorcordia.com/)
 
+The hour tracking for this project can be found [here](tunnit.md)
+
 ## Features
 
 ### Color wheel & palette creation

@@ -1,13 +1,16 @@
-const mongoose = require('mongoose')
+import { Schema, model } from 'mongoose'
+import { PaletteInterface } from '../types/mongooseTypes'
 
-const PaletteSchema = mongoose.Schema({
+
+const paletteSchema = new Schema<PaletteInterface>({
   palette: { type: String },
   user: { type: Object },
   name: { type: String },
   likes: { type: Number }
 })
 
-PaletteSchema.set('toJSON', {
+
+paletteSchema.set('toJSON', {
   transform: (document, returnedObject) => {
     returnedObject.id = returnedObject._id.toString()
     delete returnedObject._id
@@ -15,4 +18,4 @@ PaletteSchema.set('toJSON', {
   }
 })
 
-module.exports = mongoose.model('Palette', PaletteSchema)
+export const Palette = model<PaletteInterface>('Palette', paletteSchema)

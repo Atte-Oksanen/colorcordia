@@ -13,6 +13,7 @@ const LoginView = ({ setUser, setMessage }) => {
     event.preventDefault()
     try {
       const user = await login({ username, password })
+      console.log(user.token)
       setUserToken(user.token)
       setUser(await getUser(user.id))
 

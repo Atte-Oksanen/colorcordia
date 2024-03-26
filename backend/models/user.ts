@@ -1,10 +1,12 @@
-const mongoose = require('mongoose')
+import { Schema, model } from 'mongoose'
+import { UserInterface } from '../types/mongooseTypes'
 
-const userSchema = mongoose.Schema({
+const userSchema = new Schema<UserInterface>({
   username: { type: String },
   password: { type: String },
   likedPosts: [String]
 })
+
 
 userSchema.set('toJSON', {
   transform: (document, returnedObject) => {
@@ -14,4 +16,4 @@ userSchema.set('toJSON', {
   }
 })
 
-module.exports = mongoose.model('User', userSchema)
+export const User = model('User', userSchema)

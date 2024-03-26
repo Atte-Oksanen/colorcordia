@@ -22,9 +22,11 @@ const getAllColorNames = async (req: Request, res: Response, next: NextFunction)
 }
 
 const getColorNameById = async (req: Request, res: Response, next: NextFunction) => {
+  //TODO: Add type validation
   const hexArray = req.params.id.split('-')
   const returnArray: ColorNameInterface[] = []
   hexArray.forEach(element => {
+    //TODO: change loop for in
     const elementRgb = colorConverter.hexToRgb(element)
     let closestName = colors[0]
     let distanceToName = Math.pow(elementRgb.r - colors[0].rgb.r, 2) + Math.pow(elementRgb.g - colors[0].rgb.g, 2) + Math.pow(elementRgb.b - colors[0].rgb.b, 2)

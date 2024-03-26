@@ -2,13 +2,14 @@ import { NextFunction, Response } from 'express'
 import jwt, { JsonWebTokenError, JwtPayload } from 'jsonwebtoken'
 import { AxiosError } from 'axios'
 import { RequestWithUser, TokenContent } from '../types/httpTypes'
+import { User } from '../models/user'
 
 /**
  * Middleware for extracting and validating bearer tokens
  * @param {string} secret Bearer token 
  * @throws {JsonWebTokenError, AxiosError}
  */
-export const authExtractor = (secret: string) => (req: RequestWithUser, res: Response, next: NextFunction) => {
+export const authenticateUser = async (secret: string) => async (req: RequestWithUser, res: Response, next: NextFunction) => {
   try {
     const authToken = req.get('authorization')
     if (!authToken) {
@@ -24,7 +25,8 @@ export const authExtractor = (secret: string) => (req: RequestWithUser, res: Res
     if (decodedToken.remoteAddress !== req.socket.remoteAddress) {
       throw new AxiosError('Invalid token provided', '401')
     }
-    req.user = decodedToken as TokenContent
+    if (await User.findById(decodedToken.id))
+      req.user = decodedToken as TokenContent
   } catch (error) {
     return next(error)
   }

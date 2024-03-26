@@ -5,7 +5,6 @@ import { PaletteInterface } from '../types/mongooseTypes'
 const paletteSchema = new Schema<PaletteInterface>({
   palette: { type: String },
   user: { type: Object },
-  name: { type: String },
   likes: { type: Number }
 })
 

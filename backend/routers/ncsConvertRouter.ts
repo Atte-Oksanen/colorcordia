@@ -17,6 +17,7 @@ console.info(`${ncsColors.length} ncs colors loaded`)
  * @param {NextFunction} next 
  */
 const hexToNcs = (req: Request, res: Response, next: NextFunction) => {
+  //TODO: Add type validation
   try {
     const searchedRgb = colorConverter.hexToRgb(req.params.id)
     let closestColor = ncsColors[0]
@@ -46,6 +47,7 @@ const hexToNcs = (req: Request, res: Response, next: NextFunction) => {
  * @param {NextFunction} next 
  */
 const ncsToHex = (req: Request, res: Response, next: NextFunction) => {
+  //TODO: Add type validation
   try {
     const searchedColor = ncsColors.find(element => element.ncs === req.params.id)
     if (!searchedColor) {

@@ -5,6 +5,7 @@ import { AxiosError } from 'axios'
 import { PaletteInterface, UserInterface } from '../types/mongooseTypes'
 import { MongooseError } from 'mongoose'
 import { RequestWithUser } from '../types/httpTypes'
+import { validator } from '../utils/validator'
 
 export const paletteRouter = express.Router()
 
@@ -30,21 +31,11 @@ const getAllPalettes = async (req: Request, res: Response, next: NextFunction) =
  */
 const getPaletteById = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    res.json(await Palette.findById(req.params.id))
-  } catch (error) {
-    next(error)
-  }
-}
-
-/**
- * Function for fetching all palettes by a user. Responds to user with an array of palettes.
- * @param {Request} req 
- * @param {Response} res 
- * @param {NextFunction} next 
- */
-const getPaletteByUser = async (req: Request, res: Response, next: NextFunction) => {
-  try {
-    return res.json(await Palette.find({ 'user.id': req.params.id }))
+    const palette: PaletteInterface | null = await Palette.findById(req.params.id)
+    if (!palette) {
+      throw new AxiosError('Palette not found', '404')
+    }
+    res.json(palette)
   } catch (error) {
     next(error)
   }
@@ -61,11 +52,8 @@ const createNewPalette = async (req: RequestWithUser, res: Response, next: NextF
     if (!req.user) {
       throw new AxiosError('This action requires logging in', '401')
     }
-    const newPalette = new Palette({
-      palette: req.body.palette,
-      user: req.user,
-      likes: req.body.likes
-    })
+    const palette = validator.validateNewPalette(req)
+    const newPalette = new Palette(palette)
     const returnedPalette = await newPalette.save()
     res.status(200).json(returnedPalette)
   } catch (error) {
@@ -102,13 +90,8 @@ const likePalette = async (req: RequestWithUser, res: Response, next: NextFuncti
         likedPosts: user.likedPosts.concat(req.body.id)
       }
     }
+    const updatedPalette = validator.validateNewPalette(req)
     await User.findByIdAndUpdate(req.user.id, updatedUser, { new: true })
-    const updatedPalette = {
-      palette: req.body.palette,
-      user: req.body.user,
-      name: req.body.name,
-      likes: req.body.likes
-    }
     const returnedPalette = await Palette.findByIdAndUpdate(req.params.id, updatedPalette, { new: true })
     res.status(200).json(returnedPalette)
   } catch (error) {
@@ -143,7 +126,6 @@ const deletePalette = async (req: RequestWithUser, res: Response, next: NextFunc
 
 paletteRouter.get('/', async (req, res, next) => getAllPalettes(req, res, next))
 paletteRouter.get('/:id', async (req, res, next) => getPaletteById(req, res, next))
-paletteRouter.get('/getpalettesbycreator/:id', async (req, res, next) => getPaletteByUser(req, res, next))
 paletteRouter.post('/', async (req, res, next) => createNewPalette(req, res, next))
 paletteRouter.put('/:id', async (req, res, next) => likePalette(req, res, next))
 paletteRouter.delete('/:id', async (req, res, next) => deletePalette(req, res, next))

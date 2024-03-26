@@ -2,10 +2,12 @@ import express, { NextFunction, Request, Response } from 'express'
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt'
 import { User } from '../models/user'
-import { checkProfanity } from '../utils/checkProfanity'
 import { AxiosError } from 'axios'
 import { MongooseError } from 'mongoose'
 import { RequestWithUser } from '../types/httpTypes'
+import { validator } from '../utils/validator'
+import { UserInterface } from '../types/mongooseTypes'
+import { Palette } from '../models/palette'
 
 export const userRouter = express.Router()
 
@@ -30,7 +32,7 @@ const login = async (req: Request, res: Response, next: NextFunction) => {
     if (secret === '') {
       throw new Error('enviroment secret not available - Login not possible')
     }
-    const { username, password } = req.body
+    const { username, password } = validator.validateUserCreds(req)
     const user = await User.findOne({ username })
     if (!user) {
       throw new AxiosError('Username not found', '404')
@@ -60,28 +62,10 @@ const login = async (req: Request, res: Response, next: NextFunction) => {
  */
 const signUp = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    if (req.body.username.length < 3) {
-      throw new AxiosError('Username must be atleast 3 characters long', '400')
-    }
-    if (!req.body.username.match(/^[a-zA-Z0-9_-]+$/)) {
-      throw new AxiosError('Username cannot include special characters', '400')
-    }
-    if (checkProfanity(req.body.username)) {
-      throw new AxiosError('Username must not contain any profanities', '400')
-    }
-    else if (await User.findOne({ username: req.body.username })) {
-      throw new AxiosError('Username already in use', '400')
-    }
-    else if (req.body.password.length < 8) {
-      throw new AxiosError('Password must be atleas 8 characters long', '400')
-    }
-    else if (!req.body.password.match(/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9!@#\$%\^&\*])(.{8,})$/)) {
-      throw new AxiosError('Password must include uppercase and lowercase letters, and atleast one number or special character', '400')
-    }
-
+    const { username, password } = await validator.validateSignUpCreds(req)
     const newUser = new User({
-      username: req.body.username,
-      password: await bcrypt.hash(req.body.password, 10)
+      username: username,
+      password: await bcrypt.hash(password, 10)
     })
     res.json(await newUser.save())
   } catch (error) {
@@ -109,12 +93,18 @@ const checkUniqueUsername = async (req: Request, res: Response, next: NextFuncti
 }
 
 /**
- * Function to fetch users liked posts. Responds to client with an array of liked posts
- * @param {Request} req 
+ * Function to fetch users liked posts by user id. Responds to client with an array of liked posts
+ * @param {RequestWithUser} req 
  * @param {Response} res 
  * @param {NextFunction} next 
  */
-const getLikedPosts = async (req: Request, res: Response, next: NextFunction) => {
+const getLikedPosts = async (req: RequestWithUser, res: Response, next: NextFunction) => {
+  if (!req.user) {
+    throw new AxiosError('Login needed for this action', '401')
+  }
+  if (req.user.id !== req.params.id) {
+    throw new AxiosError('Invalid credentials', '401')
+  }
   try {
     const user = await User.findById(req.params.id)
     if (!user) {
@@ -127,19 +117,24 @@ const getLikedPosts = async (req: Request, res: Response, next: NextFunction) =>
 }
 
 /**
- * Function for fetching a user by id. Responds to client with user details.
+ * Function for fetching a user and palettes created by user by id. Responds to client with user details.
+ * If request is made with authentication, returns also liked posts
  * @param {Request} req 
  * @param {Response} res 
  * @param {NextFunction} next 
  */
 const getUser = async (req: RequestWithUser, res: Response, next: NextFunction) => {
   try {
-    if (!req.user) {
-      throw new AxiosError('Login needed for this action', '401')
-    } else if (req.user.id !== req.params.id) {
-      throw new AxiosError('Invalid credentials', '401')
+    const user: UserInterface | null = await User.findById(req.params.id)
+    if (!user) {
+      throw new AxiosError('User not found', '404')
     }
-    res.json(await User.findById(req.params.id))
+    const userPalettes = await Palette.find({ 'user.id': req.params.id })
+    if (!req.user || req.user.id !== req.params.id) {
+      return res.json({ username: user.username, palettes: userPalettes })
+    } else {
+      return res.json({ username: user.username, palettes: userPalettes, likesPosts: user.likedPosts })
+    }
   } catch (error) {
     next(error)
   }
@@ -156,7 +151,7 @@ const changePassword = async (req: RequestWithUser, res: Response, next: NextFun
     if (!req.user) {
       throw new AxiosError('Login needed for this action', '401')
     }
-    const { username, currentPassword, newPassword } = req.body
+    const { username, currentPassword, newPassword } = validator.validateNewPassword(req)
     const user = await User.findOne({ username })
     if (!user) {
       throw new AxiosError('Username not found', '404')
@@ -165,15 +160,10 @@ const changePassword = async (req: RequestWithUser, res: Response, next: NextFun
     if (!authenticated) {
       throw new AxiosError('Invalid username or password', '401')
     }
-    if (newPassword.length < 8) {
-      throw new AxiosError('Password must be atleast 8 characters long', '400')
-    }
     if (newPassword === currentPassword) {
       throw new AxiosError('Current and new passwords cannot be the same', '400')
     }
-    else if (!newPassword.match(/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9!@#\$%\^&\*])(.{8,})$/)) {
-      throw new AxiosError('Password must include uppercase and lowercase letters, and atleast one number or special character', '400')
-    }
+    validator.validatePassword(newPassword)
     const updatedUser = {
       username: user.username,
       password: await bcrypt.hash(newPassword, 10),

@@ -17,3 +17,4 @@ export interface NCS {
 }
 
 export type HEX = string
+

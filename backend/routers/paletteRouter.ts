@@ -76,6 +76,7 @@ const likePalette = async (req: RequestWithUser, res: Response, next: NextFuncti
     if (!user) {
       throw new MongooseError('User not found')
     }
+
     let updatedUser
     if (user.likedPosts.find(element => element === req.body.id)) {
       updatedUser = {

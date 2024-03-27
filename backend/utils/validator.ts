@@ -38,7 +38,7 @@ const validateSignUpCreds = async (req: Request): Promise<UserCreds> => {
 }
 
 /**
- * Validates username on login and signup
+ * Validates username on signup
  * @param {string} username 
  * @returns {Promise<string>} Returns username
  * @throws {AxiosError} Throws exception if validation fails
@@ -47,7 +47,7 @@ const validateUsername = async (username: string): Promise<string> => {
   if (username.length < 3) {
     throw new AxiosError('Username must be atleast 3 characters long', '400')
   }
-  if (username.match(/^[a-zA-Z0-9_-]+$/)) {
+  if (!username.match(/^[a-zA-Z0-9_-]+$/)) {
     throw new AxiosError('Username cannot include special characters', '400')
   }
   if (checkProfanity(username)) {
@@ -81,7 +81,10 @@ const validatePassword = (password: string): string => {
  * @returns {PaletteInterface}
  */
 const validateNewPalette = (req: Request): PaletteInterface => {
-  return validatePalette({ ...req, ...req.body, likes: 0 })
+  if (req.body.likes !== 0) {
+    throw new AxiosError('New palettes must have 0 likes', '400')
+  }
+  return validatePalette(req)
 }
 
 /**
@@ -92,7 +95,7 @@ const validateNewPalette = (req: Request): PaletteInterface => {
  */
 const validatePalette = (req: Request): PaletteInterface => {
   const body: PaletteInterface = req.body
-  if (!body.likes || !body.palette || !body.user) {
+  if (body.likes === undefined || !body.palette || !body.user) {
     throw new AxiosError('Palette must include palette and user fields', '400')
   }
   if (typeof body.likes !== 'number') {
@@ -115,6 +118,7 @@ const validatePalette = (req: Request): PaletteInterface => {
  * @throws {AxiosError} throws exception when validation fails
  */
 const validateColorPalette = (palette: string): string => {
+
   const paletteTypes = [
     "Analogous",
     "Monochromatic",
@@ -130,7 +134,7 @@ const validateColorPalette = (palette: string): string => {
   if (!paletteTypes.includes(paletteElements[0])) {
     throw new AxiosError('Palette name must be some of the following: Analogous, Monochromatic, Triad, Complementary, Split complementary, Double Split Complementary, Square, Compound, or Shade')
   }
-  for (const color in paletteElements.slice(1)) {
+  for (const color of paletteElements.slice(1)) {
     colorConverter.hexToRgb(color)
   }
   return palette

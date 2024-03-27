@@ -133,7 +133,7 @@ const getUser = async (req: RequestWithUser, res: Response, next: NextFunction) 
     if (!req.user || req.user.id !== req.params.id) {
       return res.json({ username: user.username, palettes: userPalettes })
     } else {
-      return res.json({ username: user.username, palettes: userPalettes, likesPosts: user.likedPosts })
+      return res.json({ username: user.username, palettes: userPalettes, likedPosts: user.likedPosts, id: user.id })
     }
   } catch (error) {
     next(error)

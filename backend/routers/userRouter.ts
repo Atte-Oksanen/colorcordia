@@ -14,7 +14,7 @@ export const userRouter = express.Router()
 let secret = ''
 
 /**
- * Setter for enviroment secret used for password hashing
+ * Setter for enviroment secret used for token hashing
  * @param {string} tempSecret 
  */
 export const setSecret = (tempSecret: string) => {
@@ -37,7 +37,7 @@ const login = async (req: Request, res: Response, next: NextFunction) => {
     if (!user) {
       throw new AxiosError('Username not found', '404')
     }
-    const authenticated = await bcrypt.compare(password, user.password)
+    const authenticated = bcrypt.compareSync(password, user.password)
     if (!authenticated) {
       throw new AxiosError('Invalid username or password', '401')
     }
@@ -65,7 +65,7 @@ const signUp = async (req: Request, res: Response, next: NextFunction) => {
     const { username, password } = await validator.validateSignUpCreds(req)
     const newUser = new User({
       username: username,
-      password: await bcrypt.hash(password, 10)
+      password: bcrypt.hashSync(password, 10)
     })
     res.json(await newUser.save())
   } catch (error) {

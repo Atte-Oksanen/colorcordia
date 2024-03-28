@@ -45,7 +45,6 @@ const login = async (req: Request, res: Response, next: NextFunction) => {
       username: user.username,
       id: user._id,
       lastLogin: Date.now(),
-      remoteAddress: req.socket.remoteAddress
     }
     const token = jwt.sign(tokenData, secret)
     res.json({ token: token, username: user.username, id: user._id })

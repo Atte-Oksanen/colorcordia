@@ -16,14 +16,11 @@ export const authenticateUser = async (secret: string) => async (req: RequestWit
       return next()
     }
     const decodedToken = jwt.verify(authToken, secret) as JwtPayload
-    if (!decodedToken.username || !decodedToken.id || !decodedToken.lastLogin || !decodedToken.remoteAddress) {
+    if (!decodedToken.username || !decodedToken.id || !decodedToken.lastLogin) {
       throw new JsonWebTokenError('Invalid token provided')
     }
     if (Date.now() - decodedToken.lastLogin > 604800000) {
       throw new AxiosError('Last login was too long ago - please login again', '440')
-    }
-    if (decodedToken.remoteAddress !== req.socket.remoteAddress) {
-      throw new AxiosError('Invalid token provided', '401')
     }
     if (await User.findById(decodedToken.id))
       req.user = decodedToken as TokenContent

@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { ColorName } from '../types/colorTypes'
+import { ColorAttribute, ColorName } from '../types/colorTypes'
 let BASE_URL = ''
 if (process.env.NODE_ENV === 'development') {
   BASE_URL = 'http://localhost:3001/api/colors'
@@ -9,5 +9,17 @@ if (process.env.NODE_ENV === 'development') {
 
 
 export const GetColorNames = async (palette: string): Promise<ColorName[]> => {
-  return (await axios.get(`${BASE_URL}/${palette}`)).data
+  return (await axios.get(`${BASE_URL}/colorname/${palette}`)).data
+}
+
+export const sendColorAttributes = async (attributes: ColorAttribute) => {
+  await axios.post(`${BASE_URL}/attribute`, attributes)
+}
+
+export const getColorAttributeCount = async (): Promise<number> => {
+  return (await axios.get(`${BASE_URL}/attribute/count`)).data.count
+}
+
+export const getColorAttributes = async (): Promise<{ attributes: string[] }> => {
+  return (await axios.get(`${BASE_URL}/attribute`)).data
 }

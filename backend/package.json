@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "attribute": "ts-node ./utils/colorAttributes.ts",
     "dev": "ts-node-dev index.ts",
     "build": "tsc",
     "serve": "node ./dist/index.js"

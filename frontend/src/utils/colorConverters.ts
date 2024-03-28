@@ -39,10 +39,13 @@ export const hsvToRgb = (hsv: HSV): RGB => {
 }
 
 export const rgbToHsv = (rgb: RGB): HSV => {
-  let r = rgb.r, g = rgb.g, b = rgb.b
-  r = r / 255, g = g / 255, b = b / 255
-  let max = Math.max(r, g, b), min = Math.min(r, g, b)
-  let h = 0, s, v = max
+  const r = rgb.r / 255
+  const g = rgb.g / 255
+  const b = rgb.b / 255
+  const max = Math.max(r, g, b)
+  const min = Math.min(r, g, b)
+  let h = 0
+  let s = 0
 
   const d = max - min
   s = max == 0 ? 0 : d / max
@@ -51,14 +54,20 @@ export const rgbToHsv = (rgb: RGB): HSV => {
     h = 0
   } else {
     switch (max) {
-      case r: h = (g - b) / d + (g < b ? 6 : 0); break
-      case g: h = (b - r) / d + 2; break
-      case b: h = (r - g) / d + 4; break
+      case r:
+        h = (g - b) / d + (g < b ? 6 : 0)
+        break
+      case g:
+        h = (b - r) / d + 2
+        break
+      case b:
+        h = (r - g) / d + 4
+        break
     }
     h /= 6
   }
 
-  return { h: h, s: s, v: v }
+  return { h: h, s: s, v: max }
 }
 
 export const rgbToHex = (rgb: RGB): HEX => {

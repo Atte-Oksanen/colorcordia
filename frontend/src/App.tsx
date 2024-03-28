@@ -19,6 +19,7 @@ import { createRandomBgColor } from './utils/colorRandomizer'
 import AboutView from './components/aboutView/AboutView'
 import { Message, Palette } from './types/componentTypes'
 import { User } from './types/userManagementTypes'
+import ColorAttributeView from './components/colorAttributeView/ColorAttributeView'
 
 const App = () => {
   const navigate = useNavigate()
@@ -76,6 +77,7 @@ const App = () => {
           <Route path='/converter' element={<ColorConverterView setMessage={setMessage}></ColorConverterView>}></Route>
           <Route path='/visualiser' element={<SchemeVisualiserView palettes={communityPalettes} setPalettes={setPalettes} user={user}></SchemeVisualiserView>}></Route>
           <Route path='/about' element={<AboutView></AboutView>}></Route>
+          <Route path='/colorattribute' element={<ColorAttributeView />}></Route>
         </Routes>
       </div>
     </div>

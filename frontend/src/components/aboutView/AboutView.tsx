@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import { getAboutText } from "../../services/textContent"
 import MarkDown from 'react-markdown'
 import LoadingComponent from '../utils/LoadingComponent'
+import { Link } from "react-router-dom"
 
 const AboutView = () => {
   const [viewContent, setContent] = useState('')
@@ -30,6 +31,7 @@ const AboutView = () => {
 
   return (
     <div className="md:w-1/2 w-3/4 mx-auto mt-8">
+      <div>Psst... You can help this project by giving some attributes to colors <Link to={'/colorattribute'} className="link-text"> here</Link>.</div>
       <div className="markdown py-5">
         <MarkDown components={{ a: LinkRenderer as any }}>
           {viewContent}

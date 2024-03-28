@@ -5,6 +5,7 @@ import badWords from 'naughty-words'
 import { User } from "../models/user"
 import { PaletteInterface } from "../types/mongooseTypes"
 import { colorConverter } from "./colorConverters"
+import { ColorAttribute } from "../types/colorTypes"
 
 
 /**
@@ -157,6 +158,26 @@ const validateNewPassword = (req: Request): PasswordChangeObject => {
   return body
 }
 
+const validateColorAttributes = (req: Request, attributes: string[]): ColorAttribute => {
+  const body: ColorAttribute = req.body
+  if (!body.attributes || !body.hex) {
+    throw new AxiosError('Body must include hex and attributes fields', '400')
+  }
+  colorConverter.hexToRgb(body.hex)
+  if (body.attributes.length !== [...new Set(body.attributes)].length) {
+    throw new AxiosError('Attributes must not contain duplicates', '400')
+  }
+  for (const attribute of body.attributes) {
+    if (typeof attribute !== 'string') {
+      throw new AxiosError('Attribute field must include only strings', '400')
+    }
+    if (!attributes.find(element => element === attribute)) {
+      throw new AxiosError('Attributes field must only contain approved attributes', '400')
+    }
+  }
+  return body
+}
+
 /**
  * A function for checking profanities
  * @param {string} input 
@@ -189,5 +210,6 @@ export const validator = {
   validatePalette,
   validateNewPalette,
   validatePassword,
-  validateNewPassword
+  validateNewPassword,
+  validateColorAttributes
 }

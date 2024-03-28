@@ -43,7 +43,7 @@ const ColorWheel = ({ setColor, setMessage }: props) => {
       pointer.current.style.top = wheelBoxTemp.y + wheelBoxTemp.height / 2 - pointerBoxTemp.height / 2 + 'px'
       pointer.current.style.left = wheelBoxTemp.x + wheelBoxTemp.width / 2 - pointerBoxTemp.width / 2 + 'px'
       pointerBox.current = pointerBoxTemp
-      let seedColor
+      let seedColor: string
       if (colorInput !== '') {
         seedColor = colorInput
       } else {

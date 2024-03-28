@@ -35,3 +35,7 @@ export interface Harmony {
 
 export type HEX = string
 
+export interface ColorAttribute {
+  hex: HEX,
+  attributes: string[]
+}

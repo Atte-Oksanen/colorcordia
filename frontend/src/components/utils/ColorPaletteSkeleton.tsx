@@ -27,7 +27,7 @@ const ColorPaletteSkeleton = ({ type, colors, children }: props) => {
   }
   return (
     <div className="flex items-center justify-center md:h-screen mx-4">
-      <div className="md:w-[95%] my-4 h-fit">
+      <div className="md:w-[95%] p-4 h-fit element-border rounded-lg">
         <div className="md:flex justify-between">
           <h2 className="text-2xl font-normal my-2">
             {`${type} pallette from ${colors[2].hex}`}

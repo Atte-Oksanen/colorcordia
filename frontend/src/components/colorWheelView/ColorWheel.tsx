@@ -181,7 +181,7 @@ const ColorWheel = ({ setColor, setMessage }: props) => {
 
   return (
     <>
-      <div className='grid w-fit grid-cols-1 grid-rows-1'>
+      <div className='grid w-fit mx-auto grid-cols-1 grid-rows-1'>
         <div ref={wheel} className='bottom-wheel border border-black'></div>
         <div className='top-wheel'></div>
         <div
@@ -208,15 +208,17 @@ const ColorWheel = ({ setColor, setMessage }: props) => {
           {colorValue}
         </span>
       </div>
-      <form onSubmit={handleColorSubmit} className='grid grid-cols-[2f_1fr] grid-rows-2'>
-        <input className='text-input inline-block'
-          type='text'
-          value={colorInput}
-          onChange={handleColorInput} />
-        {eyeDropper.isSupported() && <button type='button' className='pill-button-empty inline-block h-fit w-fit m-auto' onClick={() => handleEyeDropper()}>
-          <EyeDropperIcon sizeClass={'h-6 w-6'}></EyeDropperIcon>
-        </button>}
-        <button className='pill-button mt-4 col-span-2 mx-auto' type='submit'>
+      <form onSubmit={handleColorSubmit} className='grid grid-rows-2'>
+        <div className='flex justify-center items-center'>
+          <input className='text-input text-lg h-14 inline-block'
+            type='text'
+            value={colorInput}
+            onChange={handleColorInput} />
+          {eyeDropper.isSupported() && <button type='button' className='pill-button-empty ml-4 inline-block h-fit w-fit' onClick={() => handleEyeDropper()}>
+            <EyeDropperIcon sizeClass={'h-7 w-7'}></EyeDropperIcon>
+          </button>}
+        </div>
+        <button className='pill-button mt-4 mx-auto text-xl' type='submit'>
           Create palettes
           <div className='inline-block align-text-bottom ml-1'>
             <NextIcon sizeClass={'h-5 w-5'}></NextIcon>

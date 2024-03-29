@@ -12,7 +12,7 @@ const CommunityPalette = ({ palette, children }: props) => {
   const paletteId: string = `${palette.id}-${type}-${colorHarmony.join('-')}`
   return (
     <Link className="m-2" to={`/explore/${paletteId}`}>
-      <div className="bg-gray-200 rounded-md p-2 dark-grey-hover h-full">
+      <div className=" element-border rounded-md p-2 dark-grey-hover h-full active:bg-gray-200">
         <h3 className="block text-xl font-normal mb-2">{type} palette from {colors[2]}</h3>
         <div className="md:grid grid-cols-1 grid-rows-[8fr_1fr]">
           <div className="grid grid-cols-5 rounded-md overflow-hidden border border-gray-300 w-full h-24 md:h-auto">

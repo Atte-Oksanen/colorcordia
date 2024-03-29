@@ -117,7 +117,7 @@ const SinglePaletteView = ({ setMessage, user, setUser, communityPalettes, setPa
 
   return (
     <ColorPaletteSkeleton type={type} colors={colors}>
-      <dialog ref={modalRef} className="w-[30vw] overflow-hidden h-fit p-8 rounded-lg">
+      <dialog ref={modalRef} className="md:w-[30vw] w-[85vw] overflow-y-auto h-fit p-8 rounded-lg">
         <h3 className="text-2xl font-normal mb-4">Share palette</h3>
         <form className="h-full">
           <div className="flex justify-between items-center mb-4">
@@ -125,9 +125,9 @@ const SinglePaletteView = ({ setMessage, user, setUser, communityPalettes, setPa
             <button onClick={handleNameGeneration} className="pill-button text-sm">Generate name automatically</button>
           </div>
           <input id="paletteName" value={paletteName} onChange={event => setPaletteName(event.target.value)} type="text" className="text-input w-full mb-5" />
-          <div className="flex justify-between items-center mb-1">
+          <div className="flex md:justify-between justify-around items-center mb-1">
             <label htmlFor="paletteTags" className="text-lg font-normal">Tags</label>
-            <button onClick={handleTagGeneration} className="pill-button text-sm">Generate tags automatically</button>
+            <button onClick={handleTagGeneration} className="pill-button text-sm md:ml-0 ml-4">Generate tags automatically</button>
           </div>
           <div className="text-sm text-gray-600 italic">Use commas to separate tags</div>
           <input className="text-input w-full h-10" value={tagString} onChange={handleTagChange} />

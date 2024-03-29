@@ -10,43 +10,45 @@
 
 @layer components {
   .menu-item {
-    @apply block md:w-32 transition duration-150 ease-in-out py-2 rounded-lg w-full
+    @apply block md:w-32 transition duration-150 ease-in-out py-2 rounded-lg w-full;
   }
 
-  .menu-item-dark-hover{
-    @apply md:hover:bg-black md:hover:bg-opacity-10 md:active:bg-opacity-20
+  .menu-item-dark-hover {
+    @apply md:hover:bg-black md:hover:bg-opacity-10 md:active:bg-opacity-20;
   }
 
-  .menu-item-light-hover{
-    @apply md:hover:bg-white md:hover:bg-opacity-10 md:active:bg-opacity-20
+  .menu-item-light-hover {
+    @apply md:hover:bg-white md:hover:bg-opacity-10 md:active:bg-opacity-20;
   }
 
   .dark-grey-hover {
-    @apply hover:bg-gray-100 transition duration-150 ease-in-out
+    @apply hover:bg-gray-100 active:bg-gray-200 transition duration-150 ease-in-out;
   }
 
   .color-wheel {
     aspect-ratio: 1/1;
-    content: '';
+    content: "";
     border-radius: 50%;
     grid-area: 1/1/2/2;
-    @apply md:h-[40vh] h-[70vw]
+    @apply md:h-[40vh] h-[70vw];
   }
 
   .bottom-wheel {
     @apply color-wheel;
-    background: conic-gradient(#ff0000 0%,
-        #ff9a00 10%,
-        #d0de21 18%,
-        #4fdc4a 30%,
-        #3fdad8 45%,
-        #2fc9e2 48%,
-        #007fee 58%,
-        #001aff 65%,
-        #5f15f2 74%,
-        #ba0cf8 80%,
-        #fb07d9 90%,
-        #ff0000 100%);
+    background: conic-gradient(
+      #ff0000 0%,
+      #ff9a00 10%,
+      #d0de21 18%,
+      #4fdc4a 30%,
+      #3fdad8 45%,
+      #2fc9e2 48%,
+      #007fee 58%,
+      #001aff 65%,
+      #5f15f2 74%,
+      #ba0cf8 80%,
+      #fb07d9 90%,
+      #ff0000 100%
+    );
     transform: rotate(90deg);
   }
 
@@ -66,65 +68,63 @@
   .pointer {
     @apply color-wheel;
     position: absolute;
-    content: '';
+    content: "";
     cursor: crosshair;
     z-index: 3;
     border: 1px solid white;
     touch-action: none;
-    @apply md:h-8 h-6
+    @apply md:h-8 h-6;
   }
 
   .test-border {
-    @apply border-solid border-2 border-gray-600
+    @apply border-solid border-2 border-gray-600;
   }
 
   .element-border {
-    @apply border border-gray-300
+    @apply border border-gray-300;
   }
 
   .pill-button {
-    @apply bg-blue-600 hover:bg-blue-700 active:bg-blue-900 border border-blue-600 text-white font-normal py-2 px-4 rounded-full transition duration-150 ease-in-out
+    @apply bg-blue-600 hover:bg-blue-700 active:bg-blue-900 border disabled:border-blue-400 border-blue-600 text-white font-normal py-2 px-4 rounded-full transition duration-150 ease-in-out;
   }
-  
+
   .pill-button-empty {
-    @apply bg-white text-blue-600  hover:bg-blue-100 border active:bg-blue-200 border-blue-600 font-normal py-2 px-4 rounded-full transition duration-150 ease-in-out
+    @apply bg-white text-blue-600  hover:bg-blue-100 border active:bg-blue-200 border-blue-600 font-normal py-2 px-4 rounded-full transition duration-150 ease-in-out;
   }
 
   .pill-button-delete {
-    @apply bg-red-50 text-red-600  hover:bg-red-100 active:bg-red-200 border border-red-600 font-normal py-2 px-4 rounded-full transition duration-150 ease-in-out
-
+    @apply bg-red-50 text-red-600  hover:bg-red-100 active:bg-red-200 border border-red-600 font-normal py-2 px-4 rounded-full transition duration-150 ease-in-out;
   }
 
   .text-input {
-    @apply appearance-none bg-gray-200 border-2 border-gray-200 rounded py-2 px-4 text-gray-700 focus:bg-white focus:border-gray-700 disabled:text-gray-300 disabled:bg-gray-100
+    @apply appearance-none bg-gray-200 border-2 border-gray-200 rounded py-2 px-4 text-gray-700 focus:bg-white focus:border-gray-700 disabled:text-gray-300 disabled:bg-gray-100;
   }
 
   .link-text {
-    @apply underline text-blue-600 hover:text-blue-800 visited:text-purple-600
+    @apply underline text-blue-600 hover:text-blue-800 visited:text-purple-600;
   }
 
   .dropdown {
-    @apply  border border-black rounded py-2 px-2 text-gray-700 focus:bg-gray-200  
+    @apply border border-black rounded py-2 px-2 text-gray-700 focus:bg-gray-200;
   }
 
   .markdown h1 {
-    @apply text-3xl mb-2 font-normal
+    @apply text-3xl mb-2 font-normal;
   }
 
   .markdown h2 {
-    @apply text-2xl mb-2 font-normal
+    @apply text-2xl mb-2 font-normal;
   }
 
   .markdown h3 {
-    @apply text-xl font-normal
+    @apply text-xl font-normal;
   }
 
   .markdown p {
-    @apply my-2
+    @apply my-2;
   }
 
   .markdown a {
-    @apply link-text
+    @apply link-text;
   }
-
 }

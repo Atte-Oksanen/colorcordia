@@ -50,7 +50,7 @@ const getColorNameById = async (req: Request, res: Response, next: NextFunction)
 const receiveColorAttributes = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const attributeObj = validator.validateColorAttributes(req, colorAttributes.attributes)
-    const colorClass = colorAttributor.getAttributes(colorConverter.hexToHsv(attributeObj.hex))
+    const colorClass = colorAttributor.getColorClasses(colorConverter.hexToHsv(attributeObj.hex))
     const attributeSkeleton = (await ColorAttribute.find({}))[0].toJSON() as AttributeSkeleton
     const attributeArr = attributeSkeleton[colorClass[0]][colorClass[1]][colorClass[2]]
     for (const attribute of attributeObj.attributes) {
@@ -83,12 +83,24 @@ const getColorAttributeCount = async (req: Request, res: Response, next: NextFun
   res.json({ count: count })
 }
 
-const getColorAttributes = (req: Request, res: Response, next: NextFunction) => {
+const getColorAttributeList = (req: Request, res: Response, next: NextFunction) => {
   res.json(colorAttributes)
+}
+
+const getColorAttributes = async (req: Request, res: Response, next: NextFunction) => {
+  const body: string[] = req.body
+  const attributeSkeleton = (await ColorAttribute.find({}))[0].toJSON() as AttributeSkeleton
+  const attributes: string[] = []
+  for (const color of body) {
+    const classes = (colorAttributor.getColorClasses(colorConverter.hexToHsv(color)))
+    attributes.push(...attributeSkeleton[classes[0]][classes[1]][classes[2]])
+  }
+  res.json([...new Set(attributes)])
 }
 
 colorNameRouter.get('/colorname', (req, res, next) => getAllColorNames(req, res, next))
 colorNameRouter.get('/colorname/:id', (req, res, next) => getColorNameById(req, res, next))
 colorNameRouter.post('/attribute', (req, res, next) => receiveColorAttributes(req, res, next))
-colorNameRouter.get('/attribute', (req, res, next) => getColorAttributes(req, res, next))
+colorNameRouter.get('/attribute', (req, res, next) => getColorAttributeList(req, res, next))
 colorNameRouter.get('/attribute/count', (req, res, next) => getColorAttributeCount(req, res, next))
+colorNameRouter.post('/attribute/getattributes', (req, res, next) => getColorAttributes(req, res, next))

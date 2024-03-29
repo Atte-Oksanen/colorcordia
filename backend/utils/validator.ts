@@ -96,8 +96,8 @@ const validateNewPalette = (req: Request): PaletteInterface => {
  */
 const validatePalette = (req: Request): PaletteInterface => {
   const body: PaletteInterface = req.body
-  if (body.likes === undefined || !body.palette || !body.user) {
-    throw new AxiosError('Palette must include palette and user fields', '400')
+  if (body.likes === undefined || !body.palette || !body.user || !body.name || !body.tags) {
+    throw new AxiosError('Palette must include palette, likes, name, and user fields', '400')
   }
   if (typeof body.likes !== 'number') {
     throw new AxiosError('Like field must include only numbers', '400')
@@ -105,10 +105,21 @@ const validatePalette = (req: Request): PaletteInterface => {
   if (!body.user.id || !body.user.username) {
     throw new AxiosError('User field must include username and id fields', '400')
   }
-  if (typeof body.user.id !== 'string' || typeof body.user.username !== 'string') {
-    throw new AxiosError('ID and username fields must include strings', '400')
+  if (typeof body.user.id !== 'string' || typeof body.user.username !== 'string' || typeof body.name !== 'string') {
+    throw new AxiosError('ID, username, and name fields must include strings', '400')
   }
-  validateColorPalette(body.palette)
+  if (checkProfanity(body.name)) {
+    throw new AxiosError('Name cannot be inappropriate', '400')
+  }
+  for (const tag of body.tags) {
+    if (typeof tag !== 'string') {
+      throw new AxiosError('Tags must include strings', '400')
+    }
+    if (checkProfanity(tag)) {
+      throw new AxiosError('Tags cannot include inappropriate words', '400')
+    }
+  }
+  validateColorPalette(body)
   return body
 }
 
@@ -118,8 +129,7 @@ const validatePalette = (req: Request): PaletteInterface => {
  * @returns {string}
  * @throws {AxiosError} throws exception when validation fails
  */
-const validateColorPalette = (palette: string): string => {
-
+const validateColorPalette = (palette: PaletteInterface): PaletteInterface => {
   const paletteTypes = [
     "Analogous",
     "Monochromatic",
@@ -131,7 +141,7 @@ const validateColorPalette = (palette: string): string => {
     "Compound",
     "Shade",
   ]
-  const paletteElements = palette.split('-')
+  const paletteElements = palette.palette.split('-')
   if (!paletteTypes.includes(paletteElements[0])) {
     throw new AxiosError('Palette name must be some of the following: Analogous, Monochromatic, Triad, Complementary, Split complementary, Double Split Complementary, Square, Compound, or Shade')
   }
@@ -184,6 +194,7 @@ const validateColorAttributes = (req: Request, attributes: string[]): ColorAttri
  * @returns {boolean}
  */
 const checkProfanity = (input: string): boolean => {
+  const keys = ['en', 'fi']
   const cleanedInput = input.toLowerCase().replace(/[^A-Za-z0-9]/g, '')
     .replace(/4/g, 'a')
     .replace(/8/g, 'b')
@@ -194,8 +205,8 @@ const checkProfanity = (input: string): boolean => {
     .replace(/5/g, 's')
     .replace(/7/g, 't')
     .replace(/2/g, 'z')
-  for (const property in badWords) {
-    if (badWords[property as keyof typeof badWords].some(word => cleanedInput.replace(/1/g, 'i').includes(word)) || badWords[property as keyof typeof badWords].some(word => cleanedInput.replace(/1/g, 'l').includes(word))) {
+  for (const key of keys) {
+    if (badWords[key as keyof typeof badWords].some(word => cleanedInput.replace(/1/g, 'i').includes(word)) || badWords[key as keyof typeof badWords].some(word => cleanedInput.replace(/1/g, 'l').includes(word))) {
       return true
     }
   }

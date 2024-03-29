@@ -91,7 +91,7 @@ const likePalette = async (req: RequestWithUser, res: Response, next: NextFuncti
         likedPosts: user.likedPosts.concat(req.body.id)
       }
     }
-    const updatedPalette = validator.validateNewPalette(req)
+    const updatedPalette = validator.validatePalette(req)
     await User.findByIdAndUpdate(req.user.id, updatedUser, { new: true })
     const returnedPalette = await Palette.findByIdAndUpdate(req.params.id, updatedPalette, { new: true })
     res.status(200).json(returnedPalette)

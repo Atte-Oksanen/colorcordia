@@ -5,10 +5,11 @@ import { ColorName, HEX } from "../../types/colorTypes"
 interface props {
   type: string,
   colors: ColorName[],
-  children: React.ReactNode
+  children: React.ReactNode,
+  name?: string
 }
 
-const ColorPaletteSkeleton = ({ type, colors, children }: props) => {
+const ColorPaletteSkeleton = ({ name, type, colors, children }: props) => {
   const [shownColorSpace, setColorSpace] = useState('Hex')
 
   const getColorCode = (hex: HEX) => {
@@ -30,7 +31,7 @@ const ColorPaletteSkeleton = ({ type, colors, children }: props) => {
       <div className="md:w-[95%] p-4 h-fit element-border rounded-lg">
         <div className="md:flex justify-between">
           <h2 className="text-2xl font-normal my-2">
-            {`${type} pallette from ${colors[2].hex}`}
+            {name ? name : `${type} pallette from ${colors[2].hex}`}
           </h2>
           <div>
             <label htmlFor="shownUnit">

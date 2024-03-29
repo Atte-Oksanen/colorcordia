@@ -93,11 +93,15 @@ const SingleCommunityPaletteView = ({ palettes, user, setUser }: props) => {
 
 
   return (
-    <ColorPaletteSkeleton colors={colors} type={type}>
+    <ColorPaletteSkeleton colors={colors} type={type} name={palette.name}>
       <div className="text-xl my-3 leading-loose">
         Created by {palette.user.username}
         <br />
         {palette.likes} Likes
+        <br />
+        {palette.tags.length > 5
+          ? <>{palette.tags.slice(0, 5).map(tag => <div className="text-blue-600 inline-block mr-1 text-base">#{tag}</div>)}<span className="text-blue-600">...</span></>
+          : palette.tags.map(tag => <div className="text-blue-600 inline-block mr-1 text-base">#{tag}</div>)}
       </div>
       <button className={`pill-button ${alreadyLiked ? 'pill-button-empty' : 'pill-button'} disabled:bg-blue-400 mr-5`} onClick={() => handleLike()} disabled={disableLike}>
         {alreadyLiked ? 'Unlike' : 'Like'}

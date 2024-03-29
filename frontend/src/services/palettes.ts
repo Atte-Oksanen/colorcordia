@@ -26,10 +26,12 @@ export const likePalette = async (palette: Palette): Promise<Palette> => {
   return (await axios.put(`${BASE_URL}/${palette.id}`, palette, { headers: { authorization: token } }))
 }
 
-export const createPalette = async (paletteString: string, user: User): Promise<Palette> => {
+export const createPalette = async (palette: { palette: string, name: string, tags: string[] }, user: User): Promise<Palette> => {
   const newPalette = {
-    palette: paletteString,
+    palette: palette.palette,
     likes: 0,
+    tags: palette.tags,
+    name: palette.name,
     user: {
       username: user.username,
       id: user.id

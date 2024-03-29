@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { randomizeColor } from "../../utils/colorRandomizer"
 import XIcon from "../icons/XIcon"
-import { getColorAttributeCount, getColorAttributes, sendColorAttributes } from "../../services/colorNames"
+import { getColorAttributeCount, getColorAttributeList, sendColorAttributes } from "../../services/colorNames"
 
 const ColorAttributeView = () => {
   const [color, setColor] = useState<string | null>(null)
@@ -9,14 +9,11 @@ const ColorAttributeView = () => {
   const [pickedAttributes, setPickedAttributes] = useState<string[]>([])
   const [searchterm, setSearchterm] = useState('')
   const [attributes, setAttributes] = useState<string[]>([])
-  const [smallScreen, setScreenSize] = useState(false)
-
   useEffect(() => {
     (async () => {
-      setAttributes((await getColorAttributes()).attributes.sort(() => Math.random() < 0.5 ? -1 : 1))
+      setAttributes((await getColorAttributeList()).attributes.sort(() => Math.random() < 0.5 ? -1 : 1))
       setAttributeCount(await getColorAttributeCount())
     })()
-    window.onresize = () => setScreenSize(window.screen.width < 768)
     setColor(randomizeColor())
   }, [])
 
@@ -58,22 +55,18 @@ const ColorAttributeView = () => {
             <h3 className="block md:text-xl font-normal ml-4">{color}</h3>
             <div style={{ background: color }}></div>
           </div>
-          <div className="grid md:grid-cols-2 h-full overflow-hidden md:grid-rows-[1fr_6fr] grid-rows-[2fr_1fr]">
-            {!smallScreen &&
-              <>
-                <div className="md:flex justify-between items-center m-4 md:h-10">
-                  <h3 className="text-xl font-normal">
-                    Attributes
-                  </h3>
-                  <input type="text" placeholder="Search attributes" className="text-input" value={searchterm} onChange={handleAdjectiveSearch} />
-                </div>
-                <div className="flex justify-between items-center m-4 h-10">
-                  <h3 className="text-xl font-normal">
-                    Picked attributes
-                  </h3>
-                </div>
-              </>
-            }
+          <div className="grid md:grid-cols-2 h-full overflow-hidden md:grid-rows-[1fr_6fr] grid-rows-2">
+            <div className=" invisible md:visible md:flex justify-between items-center m-4 md:h-10">
+              <h3 className="text-xl font-normal">
+                Attributes
+              </h3>
+              <input type="text" placeholder="Search attributes" className="text-input" value={searchterm} onChange={handleAdjectiveSearch} />
+            </div>
+            <div className=" invisible md:visible md:flex justify-between items-center m-4 h-10">
+              <h3 className="text-xl font-normal">
+                Picked attributes
+              </h3>
+            </div>
             <div className="overflow-y-scroll m-4 p-2 element-border md:rounded-l-lg rounded-lg">
               {attributes.filter(element => !pickedAttributes.includes(element) && element.toLowerCase().includes(searchterm.toLowerCase()))
                 .map(adjective => <button className="pill-button m-1" key={adjective} value={adjective} onClick={pickAdjective}>{adjective}</button>)}

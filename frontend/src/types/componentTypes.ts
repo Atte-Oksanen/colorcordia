@@ -9,7 +9,9 @@ export interface Palette {
   id?: string,
   palette: string,
   user: PaletteUser,
-  likes: number
+  likes: number,
+  tags: string[],
+  name: string
 }
 
 export interface PaletteUser {

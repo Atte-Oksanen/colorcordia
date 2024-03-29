@@ -26,7 +26,7 @@ const brightnessSegments = [
 ]
 
 
-const getAttributes = (hsv: HSV): [keyof AttributeSkeleton, keyof SaturationAttributes, keyof BrightnessAttributes] => {
+const getColorClasses = (hsv: HSV): [keyof AttributeSkeleton, keyof SaturationAttributes, keyof BrightnessAttributes] => {
   const h = hsv.h * 360
   const s = hsv.s * 100
   const v = hsv.v * 100
@@ -68,14 +68,5 @@ const createSkeleton = (): AttributeSkeleton => {
 
 export const colorAttributor = {
   createSkeleton,
-  getAttributes
+  getColorClasses
 }
-import fs from 'fs'
-const removeDupes = () => {
-  const attributes: string[] = JSON.parse(fs.readFileSync('./data/colorAttributes.json').toString()).attributes
-  const newAttributes = [... new Set(attributes)]
-  console.log(attributes.length, newAttributes.length)
-  fs.writeFileSync('./data/colorAttributes.json', JSON.stringify({ attributes: newAttributes }))
-}
-
-removeDupes()

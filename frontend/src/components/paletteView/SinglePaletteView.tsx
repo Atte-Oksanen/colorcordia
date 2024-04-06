@@ -99,7 +99,8 @@ const SinglePaletteView = ({ setMessage, user, setUser, communityPalettes, setPa
 
   const handleNameGeneration = async (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault()
-    setPaletteName(`${type} palette from ${colors[2].name}`)
+    const colorAttributes = await getColorAttributes(colors.map(color => color.hex))
+    setPaletteName(`${colorAttributes[Math.floor(colorAttributes.length * Math.random())]} ${type} from ${colors[2].name}`)
   }
 
   const openShareModal = () => {

@@ -95,7 +95,8 @@ const getColorAttributes = async (req: Request, res: Response, next: NextFunctio
     const classes = (colorAttributor.getColorClasses(colorConverter.hexToHsv(color)))
     attributes.push(...attributeSkeleton[classes[0]][classes[1]][classes[2]])
   }
-  res.json([...new Set(attributes)])
+  const returnArray = [...new Set(attributes)].sort((a, b) => Math.random() > 0.5 ? 1 : -1)
+  res.json(returnArray.length > 10 ? returnArray.slice(0, 10) : returnArray)
 }
 
 colorNameRouter.get('/colorname', (req, res, next) => getAllColorNames(req, res, next))
